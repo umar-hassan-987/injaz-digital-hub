@@ -78,7 +78,7 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
     setErrors({});
 
     const templateParams = {
-      to_email: 'info@enjazdigitalhub.com',
+      to_email: 'info@injazdigitalhub.com',
       from_name: formData.name,
       from_email: formData.email,
       company: formData.company || 'Not provided',

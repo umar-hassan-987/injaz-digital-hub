@@ -1,9 +1,9 @@
 export const companyInfo = {
-  name: 'ENJAZ Digital Hub',
+  name: 'INJAZ Digital Hub',
   tagline: "Qatar's Premier Digital Solutions Partner",
-  phone: '+974 XXXX XXXX',
-  email: 'info@enjazdigitalhub.com',
-  address: 'Doha, Qatar',
+  phone: '+974 0000 0000',
+  email: 'info@injazdigitalhub.com',
+  address: 'Lusail City, Doha, Qatar',
   socials: {
     linkedin: '#',
     facebook: '#',

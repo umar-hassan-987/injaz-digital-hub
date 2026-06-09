@@ -160,7 +160,7 @@ export const processSteps = [
 // ─── Testimonials ───
 export const testimonials = [
   {
-    quote: "ENJAZ's ability to translate complex business requirements into a scalable architectural framework was remarkable. They didn't just build an app; they engineered a foundation for our next decade of growth.",
+    quote: "INJAZ's ability to translate complex business requirements into a scalable architectural framework was remarkable. They didn't just build an app; they engineered a foundation for our next decade of growth.",
     author: "Jonathan Vance",
     role: "Chief Technology Officer",
     company: "",
@@ -171,7 +171,7 @@ export const testimonials = [
     image: jonathanAvatar
   },
   {
-    quote: "The level of transparency and technical rigor ENJAZ brought to our FinTech migration was unparalleled. Their team managed the transition with zero downtime, exceeding every security benchmark we set.",
+    quote: "The level of transparency and technical rigor INJAZ brought to our FinTech migration was unparalleled. Their team managed the transition with zero downtime, exceeding every security benchmark we set.",
     author: "Elena Rodriguez",
     role: "VP of Engineering",
     company: "",
@@ -182,7 +182,7 @@ export const testimonials = [
     image: elenaAvatar
   },
   {
-    quote: "We've worked with many agencies, but ENJAZ is the only one that truly acts as a partner. Their rapid prototyping and iterative delivery allowed us to beat our competitors to market by three months.",
+    quote: "We've worked with many agencies, but INJAZ is the only one that truly acts as a partner. Their rapid prototyping and iterative delivery allowed us to beat our competitors to market by three months.",
     author: "Marcus Thorne",
     role: "Head of Product",
     company: "",
@@ -193,7 +193,7 @@ export const testimonials = [
     image: marcusAvatar
   },
   {
-    quote: "Digital transformation is often a messy process, but ENJAZ's structured methodology made it feel effortless. They revolutionized our patient intake system while maintaining strict HIPAA compliance.",
+    quote: "Digital transformation is often a messy process, but INJAZ's structured methodology made it feel effortless. They revolutionized our patient intake system while maintaining strict HIPAA compliance.",
     author: "Dr. Sarah Chen",
     role: "Medical Director",
     company: "",

@@ -19,9 +19,9 @@ const PrivacyPolicy = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl text-gray-900 leading-[1.1] tracking-tight mb-6">
               <span className="font-bold">Privacy</span> <span className="font-light">Policy</span>
             </h1>
-            <p className="text-gray-500 text-lg font-medium max-w-2xl">
-              Last updated: June 2026. This Privacy Policy explains how ENJAZ Digital Hub collects, uses, and discloses information about you.
-            </p>
+            <p className="text-gray-600 leading-relaxed mb-6">
+            Last updated: June 2026. This Privacy Policy explains how INJAZ Digital Hub collects, uses, and discloses information about you.
+          </p>
           </motion.div>
         </div>
       </div>
@@ -45,8 +45,8 @@ const PrivacyPolicy = () => {
             <li>Provide, maintain, and improve our digital services and products.</li>
             <li>Process transactions and send related information.</li>
             <li>Send technical notices, updates, security alerts, and support messages.</li>
-            <li>Respond to your comments, questions, and requests.</li>
-            <li>Communicate with you about products, services, offers, and events offered by ENJAZ Digital Hub.</li>
+            <li>Provide, maintain, and improve our services;</li>
+            <li>Communicate with you about products, services, offers, and events offered by INJAZ Digital Hub.</li>
           </ul>
 
           <h2>3. Sharing of Information</h2>
@@ -59,14 +59,13 @@ const PrivacyPolicy = () => {
             <li>With your consent or at your direction.</li>
           </ul>
 
-          <h2>4. Security</h2>
-          <p>
-            ENJAZ Digital Hub takes reasonable measures to help protect information about you from loss, theft, misuse and unauthorized access, disclosure, alteration and destruction.
+          <p className="text-gray-600 leading-relaxed mb-6">
+            INJAZ Digital Hub takes reasonable measures to help protect information about you from loss, theft, misuse and unauthorized access, disclosure, alteration and destruction.
           </p>
 
-          <h2>5. Contact Us</h2>
-          <p>
-            If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:info@enjazdigitalhub.com">info@enjazdigitalhub.com</a>
+          <h2 className="text-xl md:text-2xl font-bold font-display text-gray-900 mt-12 mb-6">Contact Us</h2>
+          <p className="text-gray-600 leading-relaxed mb-6">
+            If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:info@injazdigitalhub.com" className="text-accent hover:underline">info@injazdigitalhub.com</a>
           </p>
         </motion.div>
       </div>

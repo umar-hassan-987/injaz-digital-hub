@@ -6,7 +6,7 @@ const cards = [
     icon: Compass,
     label: 'Our Vision',
     headline: 'To be the most trusted technology partner for businesses that want to lead their industry.',
-    body: "We envision a future where geography is no barrier to world-class engineering. ENJAZ aspires to be the partner of choice for the world's most ambitious founders — not because we're the largest firm, but because we're the most invested in your success.",
+    body: "We envision a future where geography is no barrier to world-class engineering. INJAZ aspires to be the partner of choice for the world's most ambitious founders — not because we're the largest firm, but because we're the most invested in your success.",
     gradient: 'from-accent/20 to-transparent',
     glow: 'rgba(139,26,74,0.10)',
     borderGrad: 'from-accent/30 via-white/5 to-white/5',

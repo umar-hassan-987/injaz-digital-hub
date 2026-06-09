@@ -41,32 +41,30 @@ const TermsOfService = () => {
 
           <h2>2. Intellectual Property</h2>
           <p>
-            The Service and its original content, features, and functionality are and will remain the exclusive property of ENJAZ Digital Hub and its licensors. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of ENJAZ Digital Hub.
+            The Service and its original content, features, and functionality are and will remain the exclusive property of INJAZ Digital Hub and its licensors. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of INJAZ Digital Hub.
           </p>
 
-          <h2>3. Service Provision</h2>
-          <p>
-            We reserve the right to withdraw or amend our service, and any service or material we provide, in our sole discretion without notice. We will not be liable if for any reason all or any part of the service is unavailable at any time or for any period.
+          <h2 className="text-xl md:text-2xl font-bold font-display text-gray-900 mt-12 mb-6">Links To Other Web Sites</h2>
+          <p className="text-gray-600 leading-relaxed mb-6">
+            Our Service may contain links to third-party web sites or services that are not owned or controlled by INJAZ Digital Hub.
+          </p>
+          <p className="text-gray-600 leading-relaxed mb-6">
+            INJAZ Digital Hub has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that INJAZ Digital Hub shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.
           </p>
 
-          <h2>4. Client Responsibilities</h2>
-          <p>
-            You are responsible for making all arrangements necessary for you to have access to our services and ensuring that all persons who access our services through your internet connection are aware of these Terms and comply with them.
+          <h2 className="text-xl md:text-2xl font-bold font-display text-gray-900 mt-12 mb-6">Limitation Of Liability</h2>
+          <p className="text-gray-600 leading-relaxed mb-6">
+            In no event shall INJAZ Digital Hub, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.
           </p>
 
-          <h2>5. Limitation of Liability</h2>
-          <p>
-            In no event shall ENJAZ Digital Hub, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.
+          <h2 className="text-xl md:text-2xl font-bold font-display text-gray-900 mt-12 mb-6">Disclaimer</h2>
+          <p className="text-gray-600 leading-relaxed mb-6">
+            Your use of the Service is at your sole risk. The Service is provided on an "AS IS" and "AS AVAILABLE" basis. The Service is provided without warranties of any kind, whether express or implied.
           </p>
 
-          <h2>6. Governing Law</h2>
-          <p>
-            These Terms shall be governed and construed in accordance with the laws of the State of Qatar, without regard to its conflict of law provisions.
-          </p>
-
-          <h2>7. Contact Us</h2>
-          <p>
-            If you have any questions about these Terms, please contact us at: <a href="mailto:info@enjazdigitalhub.com">info@enjazdigitalhub.com</a>
+          <h2 className="text-xl md:text-2xl font-bold font-display text-gray-900 mt-12 mb-6">Contact Us</h2>
+          <p className="text-gray-600 leading-relaxed mb-6">
+            If you have any questions about these Terms, please contact us at: <a href="mailto:info@injazdigitalhub.com" className="text-accent hover:underline">info@injazdigitalhub.com</a>
           </p>
         </motion.div>
       </div>

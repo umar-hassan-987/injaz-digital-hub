@@ -126,7 +126,7 @@ const Navbar = () => {
             <Link to="/" className="flex items-center shrink-0 max-w-[140px] sm:max-w-[180px] lg:max-w-none">
               <img
                 src={logo}
-                alt="ENJAZ Digital Hub"
+                alt="INJAZ Digital Hub"
                 width="200"
                 height="65"
                 className="h-[45px] sm:h-[55px] lg:h-[65px] w-auto max-w-full object-contain transition-all duration-500 nav-logo"
@@ -272,7 +272,7 @@ const Navbar = () => {
               <div className="flex items-center">
                 <img 
                   src={logo} 
-                  alt="ENJAZ Digital Hub" 
+                  alt="INJAZ Digital Hub" 
                   width="140"
                   height="40"
                   className="h-10 w-auto object-contain brightness-0" 

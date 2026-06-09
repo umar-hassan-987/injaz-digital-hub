@@ -37,7 +37,7 @@ const Footer = () => {
             <Link to="/" className="inline-block mb-8">
               <img 
                 src={logo} 
-                alt="ENJAZ Digital Hub" 
+                alt="INJAZ Digital Hub" 
                 width="240"
                 height="80"
                 className="h-[70px] sm:h-[80px] w-auto object-contain" 
@@ -112,7 +112,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-xs font-bold text-gray-500 tracking-wider">
-            &copy; {currentYear} ENJAZ DIGITAL HUB. ALL RIGHTS RESERVED.
+            &copy; {currentYear} INJAZ DIGITAL HUB. ALL RIGHTS RESERVED.
           </p>
           <div className="flex items-center gap-8">
             <Link to="/privacy-policy" className="text-xs font-bold text-gray-500 hover:text-[#8B1A4A] tracking-wider transition-colors">PRIVACY POLICY</Link>

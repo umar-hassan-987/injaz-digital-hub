@@ -38,7 +38,7 @@ export default function CompanyHero() {
             <FadeUp delay={0.3}>
               <span className="hidden sm:inline-flex items-center gap-3 text-[10px] md:text-[11px] font-black uppercase tracking-[0.25em] text-accent mb-6 md:mb-8">
                 <span className="w-8 md:w-10 h-px bg-accent" />
-                About ENJAZ
+                About INJAZ
               </span>
             </FadeUp>
 
@@ -55,7 +55,7 @@ export default function CompanyHero() {
 
             <FadeUp delay={0.7}>
               <p className="text-[15px] md:text-[17px] text-gray-600 max-w-[600px] leading-relaxed mb-10 mx-auto lg:mx-0 font-light border-l-2 border-accent/20 pl-6 py-2">
-                ENJAZ is a leading digital solutions firm building scalable, elegant digital products that drive real-world impact for enterprises across Qatar and the GCC.
+                INJAZ is a leading digital solutions firm building scalable, elegant digital products that drive real-world impact for enterprises across Qatar and the GCC.
               </p>
             </FadeUp>
 

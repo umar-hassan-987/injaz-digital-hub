@@ -54,7 +54,7 @@ const ServiceWhyUs = ({ service, theme = 'dark' }) => {
             className={`text-3xl lg:text-5xl font-bold font-display tracking-tight leading-[1.1] text-gray-900`}
           >
             Why Partner with <br />
-            <span className="text-accent italic font-light">ENJAZ Digital Hub?</span>
+            <span className="text-accent italic font-light">INJAZ Digital Hub?</span>
           </motion.h2>
         </div>
 

@@ -49,7 +49,7 @@ export default function WhyChooseUs() {
             className="flex items-center gap-4 mb-5"
           >
             <div className="w-12 h-px bg-accent/60" />
-            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-accent">The ENJAZ Difference</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-accent">The INJAZ Difference</span>
           </motion.div>
 
           <motion.h2
@@ -59,7 +59,7 @@ export default function WhyChooseUs() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display font-bold text-gray-900 tracking-tight max-w-2xl text-3xl sm:text-4xl lg:text-5xl"
           >
-            Why choose ENJAZ over 10,000 other dev shops?
+            Why choose INJAZ over 10,000 other dev shops?
           </motion.h2>
         </div>
 
