@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #8B1A4A; /* Qatar Maroon */
+  --color-accent-hover: #A82255; /* Rose Maroon (lighter) */
+  --color-accent-dark: #6B1538; /* Dark Burgundy */
+
+  --color-silver: #A8A9AD; /* Metallic Silver from logo */
+  --color-silver-light: #C0C0C0; /* Light Silver */
+
+  --color-dark-bg: #ffffff;
+  --color-dark-card: #f8f9fa;
+  --color-dark-border: #eeeeee;
+  --color-dark-surface: #ffffff;
+
+  --color-light-bg: #ffffff;
+  --color-light-card: #f8f9fa;
+  --color-light-border: #eeeeee;
+  --color-light-surface: #f3f4f6;
+
+  --color-text-secondary: #6b7280;
+
+  --font-sans: "Montserrat", system-ui, sans-serif;
+  --font-display: "Montserrat", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    @apply antialiased bg-white text-gray-900;
+    font-family: var(--font-sans);
+    overflow-x: clip;
+    width: 100%;
+    position: relative;
+  }
+
+  #root {
+    width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-delay: -1ms !important;
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      background-attachment: initial !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0s !important;
+      transition-delay: 0s !important;
+    }
+  }
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes loading {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* Custom scrollbar - Global */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 20px;
+  border: 2px solid transparent;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Utility: Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Utility: Professional Thin Scrollbar */
+.scrollbar-premium::-webkit-scrollbar {
+  height: 2px;
+}
+.scrollbar-premium::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  margin: 0 16px;
+  border-radius: 10px;
+}
+.scrollbar-premium::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+.scrollbar-premium:hover::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+}
+
+/* Text gradient utility - Brand style */
+.text-gradient-accent {
+  background: linear-gradient(135deg, #A82255, #8B1A4A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section specific styling */
+.bg-dark-section {
+  background-color: #ffffff;
+  color: #111827;
+}
+/* Navbar Optimization Styles */
+header.nav-hidden {
+  transform: translateY(-100%);
+}
+
+header.nav-scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Logo retains natural maroon color on light backgrounds */
+header.nav-scrolled .nav-logo,
+header.is-mega-open .nav-logo {
+  /* removed filter: brightness(0); */
+}
+
+header.nav-transparent .nav-logo {
+  filter: brightness(0) invert(1);
+}
+
+header.nav-scrolled .nav-link,
+header.is-mega-open .nav-link,
+header:not(.nav-scrolled):not(.is-mega-open):not(.nav-transparent) .nav-link {
+  color: #111827;
+}
+
+header.nav-transparent .nav-link {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+header.nav-transparent .nav-link:hover,
+header.nav-transparent .nav-link.is-active {
+  color: #ffffff !important;
+}
+
+header .nav-link:hover,
+header .nav-link.is-active {
+  color: var(--color-accent) !important;
+}
+
+header .nav-mobile-toggle {
+  color: #111827;
+}
+
+header.nav-transparent .nav-mobile-toggle {
+  color: #ffffff;
+}
+
+/* Nav CTA */
+.nav-cta {
+  background-color: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 10px 15px -3px rgba(138, 21, 56, 0.1);
+}
+
+.nav-cta:hover {
+  background-color: var(--color-accent-hover);
+}

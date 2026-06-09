@@ -1,0 +1,2 @@
+"# Redesign Front Page (Cubix-Style Dark Theme)\n\nThis plan outlines the steps to redesign the \"Ozone Lmt\" front page components based on the `cubex.mp4` video template. The core focus is to implement a high-end, premium dark-themed aesthetic (Cubix-sty
+<truncated 4265 bytes>
