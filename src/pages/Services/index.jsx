@@ -59,8 +59,8 @@ const ServicesPage = () => {
               transition={{ duration: 1, ease: [0.2, 0, 0, 1] }} 
               className="text-5xl sm:text-6xl md:text-7xl xl:text-[84px] text-white leading-[1.1] tracking-tight mb-8"
             >
-              <span className="font-light">We Engineer</span><br />
-              <span className="font-bold">The Future</span>
+              <span className="font-bold">We Engineer</span><br />
+              <span className="text-[var(--color-gold)] italic font-light pr-2">The Future</span>
             </motion.h1>
             
             <motion.div

@@ -60,8 +60,8 @@ const Hero = () => {
             
             {/* Refined Typography (Mixing Weights for elegance) */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-[68px] text-white leading-[1.1] tracking-tight mb-8">
-              <span className="font-light">Empowering</span><br />
-              <span className="font-bold">Global Enterprises</span>
+              <span className="font-bold">Empowering</span><br />
+              <span className="text-[var(--color-gold)] italic font-light pr-2">Global Enterprises</span>
             </h1>
             
             {/* Subtitle */}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import { companyInfo } from '../../data/commonData';
 
-import logo from '../../assets/img/enjaz-logo.svg';
+import logo from '../../assets/img/footer-logo.svg';
 
 
 const FooterLinkColumn = ({ title, links }) => (
@@ -35,14 +35,16 @@ const Footer = () => {
           {/* Brand Info */}
           <div className="lg:col-span-4 max-w-sm">
             <Link to="/" className="inline-block mb-8">
-              <img 
-                src={logo} 
-                alt="INJAZ Digital Hub" 
-                width="240"
-                height="80"
-                className="h-[70px] sm:h-[80px] w-auto object-contain brightness-0 invert opacity-90" 
-                loading="lazy"
-              />
+              <div className="bg-white px-6 py-4 rounded-2xl shadow-lg inline-flex items-center justify-center">
+                <img 
+                  src={logo} 
+                  alt="INJAZ Digital Hub" 
+                  width="240"
+                  height="80"
+                  className="h-[50px] sm:h-[60px] w-auto object-contain" 
+                  loading="lazy"
+                />
+              </div>
             </Link>
             <p className="text-gray-300 text-[14px] leading-relaxed font-medium mb-10">
               Qatar's premier digital engineering and AI-driven solutions for enterprise scaling across the GCC.

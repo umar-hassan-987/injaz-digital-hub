@@ -14,8 +14,7 @@ const Navbar = () => {
   const megaTimeout = useRef(null);
   const hideTimeout = useRef(null);
   const location = useLocation();
-  const isHome = location.pathname === '/';
-
+  const isTransparentHeroPage = location.pathname === '/' || location.pathname.startsWith('/services') || location.pathname.startsWith('/company');
 
   const headerRef = useRef(null);
 
@@ -116,7 +115,7 @@ const Navbar = () => {
           activeMega 
             ? 'bg-white py-2 duration-0 is-mega-open' 
             : !isScrolled
-              ? `bg-transparent border-transparent ${isHome ? 'nav-transparent' : ''}`
+              ? `bg-transparent border-transparent ${isTransparentHeroPage ? 'nav-transparent' : ''}`
               : 'bg-white/90 backdrop-blur-md border-b border-gray-100'
         }`}
       >
