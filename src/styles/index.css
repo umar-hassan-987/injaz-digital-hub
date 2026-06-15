@@ -5,8 +5,9 @@
   --color-accent-hover: #157F8E; /* Lighter Teal */
   --color-accent-dark: #0A4048; /* Darker Teal */
 
-  --color-silver: #C9A453; /* Gold from logo */
-  --color-silver-light: #D6B874; /* Lighter Gold */
+  --color-gold: #C9A453; /* Gold from logo */
+  --color-gold-light: #D6B874; /* Lighter Gold */
+  --color-gold-dark: #A38440; /* Darker Gold */
 
   --color-dark-bg: #ffffff;
   --color-dark-card: #f8f9fa;
@@ -186,11 +187,11 @@ header.nav-transparent .nav-mobile-toggle {
 
 /* Nav CTA */
 .nav-cta {
-  background-color: var(--color-accent);
+  background-color: var(--color-gold);
   color: #fff;
-  box-shadow: 0 10px 15px -3px rgba(15, 95, 106, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(201, 164, 83, 0.2);
 }
 
 .nav-cta:hover {
-  background-color: var(--color-accent-hover);
+  background-color: var(--color-gold-dark);
 }

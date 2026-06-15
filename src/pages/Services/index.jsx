@@ -24,9 +24,12 @@ const ServicesPage = () => {
           <img 
             src={servicesImg} 
             alt="Services Background" 
-            className="w-full h-full object-cover opacity-[0.25]"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 via-transparent to-gray-50" />
+          {/* ═══ Elegant Qatari Corporate Overlay ═══ */}
+          <div className="absolute inset-0 z-10 bg-[#0F5F6A]/30 mix-blend-multiply" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#062A30]/95 via-[#0F5F6A]/60 to-transparent" />
+          <div className="absolute inset-0 z-10 bg-black/10" />
           
           {/* Subtle grid pattern */}
           <div className="absolute inset-0 opacity-[0.03]" 
@@ -37,15 +40,15 @@ const ServicesPage = () => {
         </div>
 
         <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-24 xl:px-32 relative z-10 w-full">
-          <div className="max-w-5xl flex flex-col items-center sm:items-start text-center sm:text-left">
+          <div className="max-w-5xl flex flex-col items-center sm:items-start text-center sm:text-left relative z-20">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="flex items-center gap-6 mb-8"
             >
-              <div className="w-16 h-px bg-accent/60"></div>
-              <span className="text-sm font-semibold tracking-[0.3em] uppercase text-accent">
+              <div className="w-16 h-px bg-white/60"></div>
+              <span className="text-sm font-semibold tracking-[0.3em] uppercase text-white/80">
                 Strategic Technical Partner
               </span>
             </motion.div>
@@ -54,7 +57,7 @@ const ServicesPage = () => {
               initial={{ opacity: 0, y: 30 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 1, ease: [0.2, 0, 0, 1] }} 
-              className="text-4xl sm:text-5xl md:text-6xl xl:text-[68px] text-gray-900 leading-[1.1] tracking-tight mb-8"
+              className="text-5xl sm:text-6xl md:text-7xl xl:text-[84px] text-white leading-[1.1] tracking-tight mb-8"
             >
               <span className="font-light">We Engineer</span><br />
               <span className="font-bold">The Future</span>
@@ -66,15 +69,15 @@ const ServicesPage = () => {
               transition={{ duration: 1, delay: 0.2, ease: [0.2, 0, 0, 1] }} 
               className="flex flex-col sm:flex-row items-center sm:items-center gap-8 sm:gap-12"
             >
-              <p className="text-base sm:text-lg md:text-[20px] text-gray-600 leading-relaxed max-w-2xl font-light border-l-2 border-accent/20 pl-6 py-2">
+              <p className="text-base sm:text-lg md:text-[20px] text-white/90 leading-relaxed max-w-2xl font-light border-l-2 border-white/20 pl-6 py-2">
                 From high-performance software to AI-driven ecosystems, we provide the engineering excellence required to scale global enterprises.
               </p>
               
               <div className="flex items-center gap-6 sm:gap-8">
-                <div className="hidden sm:block w-[1px] h-12 bg-gray-300" />
+                <div className="hidden sm:block w-[1px] h-12 bg-white/20" />
                 <div className="flex flex-col items-center sm:items-start">
-                  <span className="text-gray-900 font-bold text-3xl sm:text-4xl leading-none">100+</span>
-                  <span className="text-gray-500 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mt-2 sm:mt-3">Solutions Deployed</span>
+                  <span className="text-white font-bold text-3xl sm:text-4xl leading-none">100+</span>
+                  <span className="text-white/60 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mt-2 sm:mt-3">Solutions Deployed</span>
                 </div>
               </div>
             </motion.div>

@@ -36,7 +36,7 @@ const differentiators = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 sm:py-28 lg:py-32 bg-white overflow-hidden">
+    <section className="py-24 sm:py-28 lg:py-32 bg-accent overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-24 xl:px-32">
 
         {/* Header */}
@@ -48,8 +48,8 @@ export default function WhyChooseUs() {
             transition={{ duration: 0.6 }}
             className="flex items-center gap-4 mb-5"
           >
-            <div className="w-12 h-px bg-accent/60" />
-            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-accent">The INJAZ Difference</span>
+            <div className="w-12 h-px bg-[var(--color-gold)]" />
+            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-[var(--color-gold)]">The INJAZ Difference</span>
           </motion.div>
 
           <motion.h2
@@ -57,7 +57,7 @@ export default function WhyChooseUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display font-bold text-gray-900 tracking-tight max-w-2xl text-3xl sm:text-4xl lg:text-5xl"
+            className="font-display font-bold text-white tracking-tight max-w-2xl text-3xl sm:text-4xl lg:text-5xl"
           >
             Why choose INJAZ over 10,000 other dev shops?
           </motion.h2>
@@ -72,28 +72,28 @@ export default function WhyChooseUs() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: idx * 0.07 }}
-              className="group flex items-start gap-4 sm:gap-6 py-6 sm:py-8 border-b border-gray-100 hover:border-accent/30 transition-colors duration-300"
+              className="group flex items-start gap-4 sm:gap-6 py-6 sm:py-8 border-b border-white/10 hover:border-[var(--color-gold)]/50 transition-colors duration-300"
             >
               {/* Icon */}
-              <div className="shrink-0 w-10 h-10 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center group-hover:bg-accent/15 transition-colors duration-300 mt-0.5">
-                <item.icon className="w-5 h-5 text-accent" />
+              <div className="shrink-0 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[var(--color-gold)] transition-colors duration-300 mt-0.5">
+                <item.icon className="w-5 h-5 text-[var(--color-gold)] group-hover:text-accent transition-colors duration-300" />
               </div>
 
               {/* Content */}
               <div className="flex-1 min-w-0">
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 font-display mb-1.5">{item.title}</h3>
-                <p className="text-[13px] sm:text-sm text-gray-600 leading-relaxed max-w-2xl">{item.desc}</p>
+                <h3 className="text-base sm:text-lg font-bold text-white font-display mb-1.5">{item.title}</h3>
+                <p className="text-[13px] sm:text-sm text-gray-300 leading-relaxed max-w-2xl">{item.desc}</p>
               </div>
 
               {/* Checkmark — appears on hover */}
               <div className="shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <CheckCircle2 className="w-5 h-5 text-accent" />
+                <CheckCircle2 className="w-5 h-5 text-[var(--color-gold)]" />
               </div>
 
               {/* Decorative index number */}
               <div
                 aria-hidden="true"
-                className="shrink-0 font-display font-black text-gray-900/[0.04] select-none pointer-events-none self-center hidden sm:block"
+                className="shrink-0 font-display font-black text-white/[0.04] select-none pointer-events-none self-center hidden sm:block"
                 style={{ fontSize: '44px', lineHeight: 1 }}
               >
                 {String(idx + 1).padStart(2, '0')}

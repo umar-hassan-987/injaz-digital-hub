@@ -23,9 +23,12 @@ export default function CompanyHero() {
         <img 
           src={heroImg} 
           alt="Company Hero Background" 
-          className="w-full h-full object-cover opacity-[0.25]"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 via-transparent to-gray-50" />
+        {/* ═══ Elegant Qatari Corporate Overlay ═══ */}
+        <div className="absolute inset-0 z-10 bg-[#0F5F6A]/30 mix-blend-multiply" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#062A30]/95 via-[#0F5F6A]/60 to-transparent" />
+        <div className="absolute inset-0 z-10 bg-black/10" />
         <div className="absolute top-1/4 left-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-accent/5 blur-[80px] md:blur-[140px]" />
         <div className="absolute bottom-1/3 right-1/4 w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full bg-accent/5 blur-[60px] md:blur-[120px]" />
       </div>
@@ -34,27 +37,27 @@ export default function CompanyHero() {
         <div className="grid lg:grid-cols-[70%_30%] gap-12 lg:gap-16 items-center">
 
           {/* ── Left — Text block ── */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left relative z-20">
             <FadeUp delay={0.3}>
-              <span className="hidden sm:inline-flex items-center gap-3 text-[10px] md:text-[11px] font-black uppercase tracking-[0.25em] text-accent mb-6 md:mb-8">
-                <span className="w-8 md:w-10 h-px bg-accent" />
+              <span className="hidden sm:inline-flex items-center gap-3 text-[10px] md:text-[11px] font-black uppercase tracking-[0.25em] text-white/80 mb-6 md:mb-8">
+                <span className="w-8 md:w-10 h-px bg-white/60" />
                 About INJAZ
               </span>
             </FadeUp>
 
             <FadeUp delay={0.5}>
               <h1
-                className="font-display font-bold text-gray-900 tracking-tight leading-[1.1] mb-6"
+                className="font-display font-bold text-white tracking-tight leading-[1.1] mb-6"
                 style={{ fontSize: 'clamp(28px, 7vw, 64px)' }}
               >
                 We Build Digital<br />
                 Products That<br />
-                <span className="text-accent italic font-light pr-2">Shape Tomorrow</span>
+                <span className="text-[var(--color-gold)] italic font-light pr-2">Shape Tomorrow</span>
               </h1>
             </FadeUp>
 
             <FadeUp delay={0.7}>
-              <p className="text-[15px] md:text-[17px] text-gray-600 max-w-[600px] leading-relaxed mb-10 mx-auto lg:mx-0 font-light border-l-2 border-accent/20 pl-6 py-2">
+              <p className="text-[15px] md:text-[17px] text-white/90 max-w-[600px] leading-relaxed mb-10 mx-auto lg:mx-0 font-light border-l-2 border-white/20 pl-6 py-2">
                 INJAZ is a leading digital solutions firm building scalable, elegant digital products that drive real-world impact for enterprises across Qatar and the GCC.
               </p>
             </FadeUp>
@@ -85,8 +88,8 @@ export default function CompanyHero() {
             </div>
 
             {/* Main overview card */}
-            <div className="relative lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:left-0 w-full max-w-[340px] bg-white border border-gray-100 shadow-2xl shadow-gray-200/50 rounded-[28px] p-6 md:p-8 z-20">
-              <div className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-5">Company Overview</div>
+            <div className="relative lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:left-0 w-full max-w-[340px] bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl rounded-[28px] p-6 md:p-8 z-20">
+              <div className="text-[10px] font-black uppercase tracking-[0.3em] text-[var(--color-gold)] mb-5">Company Overview</div>
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { label: 'Founded',       value: '2014' },
@@ -96,10 +99,10 @@ export default function CompanyHero() {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="bg-gray-50 hover:bg-gray-100 transition-colors duration-300 rounded-2xl p-4 border border-gray-100"
+                    className="bg-white/5 transition-colors duration-300 rounded-2xl p-4 border border-white/10"
                   >
-                    <div className="text-xl md:text-2xl font-bold font-display text-gray-900 mb-1">{item.value}</div>
-                    <div className="text-[10px] md:text-[11px] text-gray-500 font-bold uppercase tracking-wider">{item.label}</div>
+                    <div className="text-xl md:text-2xl font-bold font-display text-white mb-1">{item.value}</div>
+                    <div className="text-[10px] md:text-[11px] text-white/60 font-bold uppercase tracking-wider">{item.label}</div>
                   </div>
                 ))}
               </div>
