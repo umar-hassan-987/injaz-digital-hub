@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import ContactForm from '../common/ContactForm';
+import bgImage from '../../assets/img/Qatar.webp';
 
 const ServiceCTA = ({ variant = 'banner', theme = 'light' }) => {
   const isLight = theme === 'light';
@@ -64,13 +65,12 @@ const ServiceCTA = ({ variant = 'banner', theme = 'light' }) => {
 
   // Default 'banner' variant
   return (
-    <section className="relative bg-[#0F5F6A] py-24">
+    <section className="relative bg-[#0F5F6A] py-24 overflow-hidden">
       {/* Dynamic Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0F5F6A] via-[#0A4048] to-[#062A30] opacity-90" />
-        
-        {/* Animated Grid lines */}
-        <div className="absolute inset-0 opacity-[0.15]" style={{ backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+      <div className="absolute inset-0 z-0">
+        <img src={bgImage} alt="Background" className="w-full h-full object-cover object-center absolute inset-0" />
+        <div className="absolute inset-0 bg-[#0F5F6A]/40 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-black/20" />
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10 w-full text-center">
