@@ -121,7 +121,7 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
 
   const pillClasses = (active) => `px-5 py-3 rounded-xl border text-[12px] font-bold transition-all duration-500 cursor-pointer whitespace-nowrap
     ${active
-      ? 'bg-accent border-accent text-black shadow-[0_10px_30px_rgba(139,26,74,0.25)] scale-[1.05]'
+      ? 'bg-accent border-accent text-white shadow-[0_10px_30px_rgba(15,95,106,0.25)] scale-[1.05]'
       : isDark
         ? 'bg-white/5 border-white/10 text-gray-400 hover:border-white/30 hover:text-white'
         : 'bg-white border-gray-100 text-gray-500 hover:border-gray-300 hover:text-gray-900 shadow-sm'
@@ -310,10 +310,10 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="flex-1 py-5 rounded-full bg-accent hover:bg-white text-black font-black uppercase tracking-widest text-[13px] transition-all duration-500 flex items-center justify-center gap-3 group disabled:opacity-70 shadow-[0_0_30px_rgba(139,26,74,0.15)] hover:shadow-[0_0_50px_rgba(139,26,74,0.3)] hover:scale-[1.02]"
+          className="flex-1 py-5 rounded-full bg-accent hover:bg-white text-white hover:text-accent font-black uppercase tracking-widest text-[13px] transition-all duration-500 flex items-center justify-center gap-3 group disabled:opacity-70 shadow-[0_0_30px_rgba(15,95,106,0.15)] hover:shadow-[0_0_50px_rgba(15,95,106,0.3)] hover:scale-[1.02]"
         >
           {status === 'sending' ? (
-            <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
+            <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
           ) : (
             <>
               Send Message

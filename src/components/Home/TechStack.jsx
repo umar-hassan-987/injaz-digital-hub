@@ -90,7 +90,7 @@ const TechStack = () => {
                       }`}
                     >
                       <div className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-500 ${
-                        isActive ? 'bg-accent text-black shadow-lg shadow-accent/20' : 'bg-gray-100 text-gray-400'
+                        isActive ? 'bg-accent text-white shadow-lg shadow-accent/20' : 'bg-gray-100 text-gray-400'
                       }`}>
                         <Icon size={18} strokeWidth={2.5} />
                       </div>
@@ -101,7 +101,7 @@ const TechStack = () => {
                       {isActive && (
                         <motion.div 
                           layoutId="active-nav-bg"
-                          className="absolute inset-0 bg-[#fdf0f4] border border-accent/10 rounded-2xl -z-10"
+                          className="absolute inset-0 bg-[#F0F8FA] border border-accent/10 rounded-2xl -z-10"
                           transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                         />
                       )}

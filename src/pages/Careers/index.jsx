@@ -10,7 +10,7 @@ export default function CareersPage() {
       <section className="relative min-h-[50vh] flex flex-col justify-center overflow-hidden bg-gray-50 pt-32 pb-16 border-b border-gray-100">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute inset-0 opacity-[0.03]" 
-               style={{ backgroundImage: 'linear-gradient(#8B1A4A 1px, transparent 1px), linear-gradient(90deg, #8B1A4A 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+               style={{ backgroundImage: 'linear-gradient(#0F5F6A 1px, transparent 1px), linear-gradient(90deg, #0F5F6A 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
           <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[150px] opacity-20 bg-accent/10" />
         </div>
         

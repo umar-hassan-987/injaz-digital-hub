@@ -73,7 +73,7 @@ export const caseStudies = [
     category: 'Artificial Intelligence',
     description: 'Design and deployment of self-evolving "agentic workflows" that handle complex business logic without manual intervention. Leveraging tools like n8n, Make.com, or custom LLM frameworks to automate lead generation, customer support, and data processing.',
     image: 'automation',
-    color: '#8B1A4A',
+    color: '#0F5F6A',
     impact: '-80% Operational Overhead',
     tech: ['n8n', 'Make.com', 'OpenAI', 'Python'],
   },
@@ -83,7 +83,7 @@ export const caseStudies = [
     category: 'SaaS Development',
     description: 'Building scalable, multi-tenant ecosystems that utilize Large Language Models (LLMs) as a core feature. Architecting high-performance web applications using the MERN stack and Next.js with embedded AI functionalities.',
     image: 'healthcare',
-    color: '#4ECDC4',
+    color: '#157F8E',
     impact: '3x Workflow Acceleration',
     tech: ['MERN', 'Next.js', 'PostgreSQL', 'LangChain'],
   },
@@ -93,7 +93,7 @@ export const caseStudies = [
     category: 'DevOps & Infrastructure',
     description: 'Engineering secure, auto-scaling environments that minimize latency and eliminate server management. Implementing .NET 8 or Node.js microservices on cloud providers for high security.',
     image: 'logistics',
-    color: '#FF8C42',
+    color: '#D6B874',
     impact: '99.9% Uptime SLA',
     tech: ['.NET 8', 'Node.js', 'AWS', 'Terraform'],
   },
@@ -103,7 +103,7 @@ export const caseStudies = [
     category: 'Fintech',
     description: 'Developing high-security financial middleware and complex escrow systems for peer-to-peer and B2B transactions. Creating secure API integrations and multi-layered authentication for platforms.',
     image: 'fintech',
-    color: '#A78BFA',
+    color: '#0A4048',
     impact: 'Zero Transaction Errors',
     tech: ['Node.js', 'Stripe API', 'OAuth 2.0', 'Redis'],
   },
@@ -167,7 +167,7 @@ export const testimonials = [
     companySlug: "salesforce",
     rating: 5,
     initials: "JV",
-    color: "#00A1E0",
+    color: "#C9A453",
     image: jonathanAvatar
   },
   {
@@ -178,7 +178,7 @@ export const testimonials = [
     companySlug: "stripe",
     rating: 5,
     initials: "ER",
-    color: "#635BFF",
+    color: "#0F5F6A",
     image: elenaAvatar
   },
   {
@@ -189,7 +189,7 @@ export const testimonials = [
     companySlug: "fedex",
     rating: 5,
     initials: "MT",
-    color: "#4D148C",
+    color: "#0A4048",
     image: marcusAvatar
   },
   {
@@ -200,7 +200,7 @@ export const testimonials = [
     companySlug: "pfizer",
     rating: 5,
     initials: "SC",
-    color: "#0070BF",
+    color: "#157F8E",
     image: sarahAvatar
   }
 ];

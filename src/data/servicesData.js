@@ -27,7 +27,7 @@ export const servicesDetail = {
     headline: 'Engineering High-Performance Mobile Ecosystems',
     description: 'We build native and cross-platform mobile applications that combine fluid performance with intuitive design. Our mobile solutions are engineered to scale, reaching millions of users while maintaining enterprise-grade security.',
     icon: Smartphone,
-    color: '#0d9488',
+    color: '#157F8E',
     category: 'Application Development',
     subServices: [
       { title: 'iOS Development', description: 'Native iPhone and iPad apps built with Swift and SwiftUI.' },
@@ -66,7 +66,7 @@ export const servicesDetail = {
     headline: 'Modern Web Architectures for Global Scale',
     description: 'From complex enterprise dashboards to high-conversion customer portals, we engineer web applications that are fast, secure, and fully responsive. Our stack is chosen for speed and long-term maintainability.',
     icon: Monitor,
-    color: '#6B1538',
+    color: '#0A4048',
     category: 'Application Development',
     subServices: [
       { title: 'Single Page Apps (SPA)', description: 'Fast, fluid web experiences built with React and Next.js.' },
@@ -105,7 +105,7 @@ export const servicesDetail = {
     headline: 'Tailored Software Engineered for Your Unique Workflows',
     description: 'Off-the-shelf software often creates bottlenecks. We build bespoke software solutions that map perfectly to your business processes, eliminating manual tasks and driving operational efficiency.',
     icon: Database,
-    color: '#4f46e5',
+    color: '#0F5F6A',
     category: 'Application Development',
     subServices: [
       { title: 'ERP Systems', description: 'Integrated management of core business processes in real-time.' },
@@ -144,7 +144,7 @@ export const servicesDetail = {
     headline: 'Intelligent Workflows for the Autonomous Enterprise',
     description: 'We deploy custom AI solutions that transform manual operations into intelligent, self-optimizing systems. From Large Language Models (LLMs) to specialized automation agents, we bring the power of AI to your core workflows.',
     icon: Cpu,
-    color: '#7c3aed',
+    color: '#C9A453',
     category: 'Advanced Tech',
     subServices: [
       { title: 'Custom LLM Integration', description: 'Fine-tuned AI models trained on your proprietary data.' },
@@ -183,7 +183,7 @@ export const servicesDetail = {
     headline: 'High-Availability Infrastructure for the Modern Era',
     description: 'We architect and manage cloud ecosystems that are optimized for performance, cost, and reliability. Our DevOps-first approach ensures that your code moves from development to production with zero friction.',
     icon: Cloud,
-    color: '#4338ca',
+    color: '#0A4048',
     category: 'Advanced Tech',
     subServices: [
       { title: 'Cloud Infrastructure', description: 'Multi-region deployments on AWS, Azure, and Google Cloud.' },
@@ -222,7 +222,7 @@ export const servicesDetail = {
     headline: 'Building Scalable Multi-Tenant Platforms',
     description: 'We help you transform your business logic into a scalable Software-as-a-Service product. From subscription management to multi-tenant architectures, we build for high retention and global scale.',
     icon: Layers,
-    color: '#0369a1',
+    color: '#D6B874',
     category: 'Advanced Tech',
     subServices: [
       { title: 'Multi-Tenant Architecture', description: 'Secure data isolation for thousands of concurrent users.' },
@@ -261,7 +261,7 @@ export const servicesDetail = {
     headline: 'Visualizing Your Future, One Pixel at a Time',
     description: 'We turn abstract ideas into tangible product concepts. Our design process focuses on feasibility, usability, and aesthetic excellence, ensuring your product stands out in a crowded market.',
     icon: Palette,
-    color: '#ec4899',
+    color: '#157F8E',
     category: 'Design & Growth',
     subServices: [
       { title: 'Concept Articulation', description: 'Defining the visual language and core metaphors of your product.' },
@@ -300,7 +300,7 @@ export const servicesDetail = {
     headline: 'Interfaces That Feel Like Second Nature',
     description: 'We design experiences that solve problems. By combining psychological principles with modern interface design, we create apps and websites that users love to use and never want to leave.',
     icon: Layout,
-    color: '#8b5cf6',
+    color: '#C9A453',
     category: 'Design & Growth',
     subServices: [
       { title: 'User Research', description: 'Understanding your users through interviews and data analysis.' },
@@ -339,7 +339,7 @@ export const servicesDetail = {
     headline: 'Omni-Channel Strategies for Dominant Growth',
     description: 'We don’t just buy ads; we build growth engines. Our performance marketing team uses data-driven strategies to reach your ideal customers and turn them into lifelong brand advocates.',
     icon: TrendingUp,
-    color: '#ea580c',
+    color: '#157F8E',
     category: 'Design & Growth',
     subServices: [
       { title: 'Performance Marketing', description: 'Paid search and social ads optimized for maximum ROI.' },
@@ -378,7 +378,7 @@ export const servicesDetail = {
     headline: 'Organic Visibility That Drives Sustainable Revenue',
     description: 'Stop paying for every click. We optimize your digital presence to dominate search results for the keywords that matter most to your business, building long-term authority and trust.',
     icon: Globe,
-    color: '#1d4ed8',
+    color: '#0A4048',
     category: 'Design & Growth',
     subServices: [
       { title: 'Technical SEO', description: 'Ensuring your site is fast, mobile-friendly, and indexable.' },

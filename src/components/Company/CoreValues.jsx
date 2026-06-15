@@ -63,7 +63,7 @@ export default function CoreValues() {
               {/* Left accent bar — slides in on hover */}
               <div
                 className="absolute left-0 top-4 bottom-4 w-0.5 bg-accent scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500 rounded-full"
-                style={{ boxShadow: '0 0 12px rgba(139,26,74,0.6)' }}
+                style={{ boxShadow: '0 0 12px rgba(15,95,106,0.6)' }}
               />
 
               {/* Number */}

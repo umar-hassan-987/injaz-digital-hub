@@ -13,8 +13,8 @@ const PrivacyPolicy = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-[#8B1A4A]" />
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#8B1A4A]">Legal Documentation</span>
+              <div className="w-12 h-[2px] bg-[#0F5F6A]" />
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#0F5F6A]">Legal Documentation</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl text-gray-900 leading-[1.1] tracking-tight mb-6">
               <span className="font-bold">Privacy</span> <span className="font-light">Policy</span>
@@ -32,7 +32,7 @@ const PrivacyPolicy = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="prose prose-lg prose-slate max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-a:text-[#8B1A4A] prose-a:no-underline hover:prose-a:underline"
+          className="prose prose-lg prose-slate max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-a:text-[#0F5F6A] prose-a:no-underline hover:prose-a:underline"
         >
           <h2>1. Information We Collect</h2>
           <p>

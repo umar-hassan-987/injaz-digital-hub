@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #8B1A4A; /* Qatar Maroon */
-  --color-accent-hover: #A82255; /* Rose Maroon (lighter) */
-  --color-accent-dark: #6B1538; /* Dark Burgundy */
+  --color-accent: #0F5F6A; /* Dark Teal from logo */
+  --color-accent-hover: #157F8E; /* Lighter Teal */
+  --color-accent-dark: #0A4048; /* Darker Teal */
 
-  --color-silver: #A8A9AD; /* Metallic Silver from logo */
-  --color-silver-light: #C0C0C0; /* Light Silver */
+  --color-silver: #C9A453; /* Gold from logo */
+  --color-silver-light: #D6B874; /* Lighter Gold */
 
   --color-dark-bg: #ffffff;
   --color-dark-card: #f8f9fa;
@@ -122,7 +122,7 @@
 
 /* Text gradient utility - Brand style */
 .text-gradient-accent {
-  background: linear-gradient(135deg, #A82255, #8B1A4A);
+  background: linear-gradient(135deg, #157F8E, #0F5F6A);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -188,7 +188,7 @@ header.nav-transparent .nav-mobile-toggle {
 .nav-cta {
   background-color: var(--color-accent);
   color: #fff;
-  box-shadow: 0 10px 15px -3px rgba(138, 21, 56, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(15, 95, 106, 0.1);
 }
 
 .nav-cta:hover {

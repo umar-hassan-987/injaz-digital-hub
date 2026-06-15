@@ -10,7 +10,7 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
   const mobileImg = bgImageMobile || bgImage;
 
   return (
-    <section className={`relative min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center overflow-hidden pt-32 pb-20 bg-white`}>
+    <section className={`relative min-h-screen flex flex-col justify-center overflow-hidden pt-32 pb-20 bg-white`}>
       {/* ═══ Background Layer ═══ */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {(desktopImg || mobileImg) && (
@@ -19,14 +19,14 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
               <img 
                 src={desktopImg} 
                 alt="" 
-                className={`w-full h-full object-cover opacity-[0.15] ${mobileImg ? 'hidden md:block' : ''}`}
+                className={`w-full h-full object-cover opacity-[0.25] ${mobileImg ? 'hidden md:block' : ''}`}
               />
             )}
             {mobileImg && (
               <img 
                 src={mobileImg} 
                 alt="" 
-                className={`w-full h-full object-cover opacity-[0.15] ${desktopImg ? 'block md:hidden' : ''}`}
+                className={`w-full h-full object-cover opacity-[0.25] ${desktopImg ? 'block md:hidden' : ''}`}
               />
             )}
             <div className={`absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white`} />
@@ -35,7 +35,7 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
         
         {/* Subtle grid pattern */}
         <div className="absolute inset-0 opacity-[0.03]" 
-             style={{ backgroundImage: 'linear-gradient(#8B1A4A 1px, transparent 1px), linear-gradient(90deg, #8B1A4A 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+             style={{ backgroundImage: 'linear-gradient(#0F5F6A 1px, transparent 1px), linear-gradient(90deg, #0F5F6A 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
              
         {/* Neural Elements */}
         <div className={`absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[150px] opacity-20 bg-accent/10`} />
@@ -72,7 +72,7 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
               transition={{ delay: 0.5 }}
               className="flex flex-wrap gap-4"
             >
-              <Link to="/contact" className="px-8 py-4 rounded-full bg-accent text-black font-black text-[11px] uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-500 shadow-xl shadow-accent/20">
+              <Link to="/contact" className="px-8 py-4 rounded-full bg-accent text-white font-black text-[11px] uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-500 shadow-xl shadow-accent/20">
                 Start a Project
               </Link>
               <button 

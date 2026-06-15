@@ -20,7 +20,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[calc(100dvh-80px)] lg:min-h-[calc(100dvh-90px)] w-full flex flex-col justify-center overflow-hidden">
+    <section className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden">
       
       {/* ═══ Full Screen Video Background ═══ */}
       <div className="absolute inset-0 w-full h-full z-0">
@@ -37,8 +37,8 @@ const Hero = () => {
 
       {/* ═══ Elegant Qatari Corporate Overlay ═══ */}
       {/* Clean left-to-right gradient provides perfect text readability while letting the video shine */}
-      <div className="absolute inset-0 z-10 bg-[#8A1538]/30 mix-blend-multiply" />
-      <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#4a0b1e]/95 via-[#8A1538]/60 to-transparent" />
+      <div className="absolute inset-0 z-10 bg-[#0F5F6A]/30 mix-blend-multiply" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#062A30]/95 via-[#0F5F6A]/60 to-transparent" />
       <div className="absolute inset-0 z-10 bg-black/10" />
       
       {/* ═══ Content Container ═══ */}
@@ -73,7 +73,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto">
               <Link 
                 to="/contact" 
-                className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-3 bg-white text-[#8A1538] px-10 py-4 font-bold text-sm uppercase tracking-widest transition-transform hover:-translate-y-1 shadow-xl"
+                className="w-full sm:w-auto group relative inline-flex items-center justify-center gap-3 bg-white text-[#0F5F6A] px-10 py-4 font-bold text-sm uppercase tracking-widest transition-transform hover:-translate-y-1 shadow-xl"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Consult With Us <ArrowUpRight size={18} strokeWidth={2.5} />
@@ -82,7 +82,7 @@ const Hero = () => {
               
               <Link 
                 to="/services" 
-                className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 bg-transparent text-white border border-white/40 px-10 py-4 font-semibold text-sm uppercase tracking-widest transition-all hover:bg-white hover:text-[#8A1538]"
+                className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 bg-transparent text-white border border-white/40 px-10 py-4 font-semibold text-sm uppercase tracking-widest transition-all hover:bg-white hover:text-[#0F5F6A]"
               >
                 <span className="flex items-center gap-2">
                   Explore Services

@@ -183,7 +183,7 @@ const Process = () => {
                     </div>
 
                     <div className="w-1/2 flex justify-center xl:justify-end">
-                      <div className="w-full max-w-[280px] xl:max-w-[340px] aspect-10/13 rounded-[160px] overflow-hidden relative shadow-[0_10px_40px_rgba(138,21,56,0.12)] border border-gray-200 bg-white">
+                      <div className="w-full max-w-[280px] xl:max-w-[340px] aspect-10/13 rounded-[160px] overflow-hidden relative shadow-[0_10px_40px_rgba(15,95,106,0.12)] border border-gray-200 bg-white">
                         <AnimatePresence initial={false} mode="popLayout">
                           <motion.img
                             key={activeIndex}
@@ -248,7 +248,7 @@ const Process = () => {
               <div className="w-full h-full flex flex-col relative bg-transparent px-2">
                 
                 {/* Large Pill-Shaped Image */}
-                <div className="w-full h-[340px] rounded-[100px] overflow-hidden mb-10 relative border border-gray-200 shadow-[0_10px_40px_rgba(139,26,74,0.1)]">
+                <div className="w-full h-[340px] rounded-[100px] overflow-hidden mb-10 relative border border-gray-200 shadow-[0_10px_40px_rgba(15,95,106,0.1)]">
                   <img 
                     src={processImages[mobileIndex]} 
                     alt={processSteps[mobileIndex].title} 

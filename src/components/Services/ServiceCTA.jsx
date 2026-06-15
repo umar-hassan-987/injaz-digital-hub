@@ -46,7 +46,7 @@ const ServiceCTA = ({ variant = 'banner', theme = 'light' }) => {
               </p>
               <Link
                 to="/contact"
-                className="group relative inline-flex items-center justify-center gap-3 px-8 py-5 rounded-full bg-accent text-white font-bold text-[11px] uppercase tracking-[0.25em] transition-all duration-500 hover:scale-[1.02] shadow-[0_0_40px_rgba(139,26,74,0.2)] hover:shadow-[0_0_60px_rgba(139,26,74,0.4)] w-full sm:w-auto"
+                className="group relative inline-flex items-center justify-center gap-3 px-8 py-5 rounded-full bg-accent text-white font-bold text-[11px] uppercase tracking-[0.25em] transition-all duration-500 hover:scale-[1.02] shadow-[0_0_40px_rgba(15,95,106,0.2)] hover:shadow-[0_0_60px_rgba(15,95,106,0.4)] w-full sm:w-auto"
               >
                 Start Your Project
                 <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -64,10 +64,10 @@ const ServiceCTA = ({ variant = 'banner', theme = 'light' }) => {
 
   // Default 'banner' variant
   return (
-    <section className="relative bg-[#8A1538] py-24">
+    <section className="relative bg-[#0F5F6A] py-24">
       {/* Dynamic Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#8A1538] via-[#6a0f29] to-[#4a0b1e] opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F5F6A] via-[#0A4048] to-[#062A30] opacity-90" />
         
         {/* Animated Grid lines */}
         <div className="absolute inset-0 opacity-[0.15]" style={{ backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
@@ -89,7 +89,7 @@ const ServiceCTA = ({ variant = 'banner', theme = 'light' }) => {
           </h2>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-10 sm:mt-16">
-            <Link to="/contact" className="group relative px-8 sm:px-12 py-4 sm:py-6 rounded-full bg-white text-[#8A1538] font-bold text-[10px] sm:text-xs uppercase tracking-[0.25em] transition-all duration-500 hover:scale-105 shadow-xl w-full sm:w-auto">
+            <Link to="/contact" className="group relative px-8 sm:px-12 py-4 sm:py-6 rounded-full bg-white text-[#0F5F6A] font-bold text-[10px] sm:text-xs uppercase tracking-[0.25em] transition-all duration-500 hover:scale-105 shadow-xl w-full sm:w-auto">
               Contact Our Experts
               <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
             </Link>

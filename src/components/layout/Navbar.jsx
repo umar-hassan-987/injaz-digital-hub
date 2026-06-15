@@ -4,7 +4,7 @@ import { m, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { navLinks } from '../../data/navData';
 
-const logo = '/Injazlogo.svg';
+import logo from '../../assets/img/enjaz-logo.svg';
 
 const Navbar = () => {
   const lastScrollY = useRef(0);
@@ -115,8 +115,8 @@ const Navbar = () => {
         className={`fixed top-0 left-0 right-0 z-50 transform transition-all duration-500 py-4 ${
           activeMega 
             ? 'bg-white py-2 duration-0 is-mega-open' 
-            : isHome && !isScrolled
-              ? 'bg-transparent border-transparent nav-transparent'
+            : !isScrolled
+              ? `bg-transparent border-transparent ${isHome ? 'nav-transparent' : ''}`
               : 'bg-white/90 backdrop-blur-md border-b border-gray-100'
         }`}
       >

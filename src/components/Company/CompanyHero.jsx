@@ -23,7 +23,7 @@ export default function CompanyHero() {
         <img 
           src={heroImg} 
           alt="Company Hero Background" 
-          className="w-full h-full object-cover opacity-[0.15]"
+          className="w-full h-full object-cover opacity-[0.25]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 via-transparent to-gray-50" />
         <div className="absolute top-1/4 left-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-accent/5 blur-[80px] md:blur-[140px]" />

@@ -18,19 +18,19 @@ const ServicesPage = () => {
   return (
     <div className="bg-white text-gray-900 font-sans selection:bg-accent/20 selection:text-accent">
       {/* ═══ Hero Section (Premium Light) ═══ */}
-      <section className="relative min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center overflow-hidden pt-32 pb-20 bg-gray-50">
+      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-32 pb-20 bg-gray-50">
         <div className="absolute inset-0 z-0 pointer-events-none">
           {/* Re-added Image Background with light overlay */}
           <img 
             src={servicesImg} 
             alt="Services Background" 
-            className="w-full h-full object-cover opacity-[0.15]"
+            className="w-full h-full object-cover opacity-[0.25]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 via-transparent to-gray-50" />
           
           {/* Subtle grid pattern */}
           <div className="absolute inset-0 opacity-[0.03]" 
-               style={{ backgroundImage: 'linear-gradient(#8B1A4A 1px, transparent 1px), linear-gradient(90deg, #8B1A4A 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+               style={{ backgroundImage: 'linear-gradient(#0F5F6A 1px, transparent 1px), linear-gradient(90deg, #0F5F6A 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
           
           {/* Subtle accent glow */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[150px] -mr-32 -mt-32" />
@@ -86,7 +86,7 @@ const ServicesPage = () => {
       <section className="relative min-h-[70vh] flex flex-col justify-center py-20 lg:py-24 overflow-hidden bg-white">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
-             style={{ backgroundImage: 'radial-gradient(#8B1A4A 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+             style={{ backgroundImage: 'radial-gradient(#0F5F6A 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
         
         <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-24 xl:px-32 relative z-10 w-full">
           <div className="mb-10 sm:mb-14">
@@ -136,7 +136,7 @@ const ServicesPage = () => {
       <section className="relative overflow-hidden bg-white py-20 lg:py-24">
         {/* Subtle grid pattern */}
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
-             style={{ backgroundImage: 'linear-gradient(#8B1A4A 1px, transparent 1px), linear-gradient(90deg, #8B1A4A 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+             style={{ backgroundImage: 'linear-gradient(#0F5F6A 1px, transparent 1px), linear-gradient(90deg, #0F5F6A 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
         
         <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-24 xl:px-32 relative z-10 w-full">
           <div className="mb-10 sm:mb-14">
@@ -222,7 +222,7 @@ const ServiceWideCard = ({ service, idx, theme = 'dark' }) => {
         <p className={`text-base leading-relaxed mb-8 font-medium transition-colors ${isLight ? 'text-gray-500 group-hover:text-gray-600' : 'text-gray-400 group-hover:text-gray-300'}`}>
           {service.description}
         </p>
-        <Link to={`/services/${service.slug}`} className="group/btn inline-flex items-center gap-3 px-8 py-4 rounded-full bg-accent text-black font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white transition-all duration-500 shadow-xl shadow-accent/10 w-fit">
+        <Link to={`/services/${service.slug}`} className="group/btn inline-flex items-center gap-3 px-8 py-4 rounded-full bg-accent text-white font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-accent transition-all duration-500 shadow-xl shadow-accent/10 w-fit">
           Explore Solution <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
         </Link>
       </div>

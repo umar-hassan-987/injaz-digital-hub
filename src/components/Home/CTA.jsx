@@ -50,7 +50,7 @@ const CTA = () => {
             className="group relative bg-accent text-white px-8 py-4 rounded-full font-bold text-base overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95 shadow-2xl shadow-accent/20 inline-block"
           >
             {/* Hover Slide Effect */}
-            <div className="absolute inset-0 bg-[#A82255] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+            <div className="absolute inset-0 bg-[#157F8E] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
             
             <span className="relative z-10 flex items-center gap-3">
               Start Your Project <ArrowUpRight size={18} className="group-hover:rotate-45 transition-transform duration-500" />

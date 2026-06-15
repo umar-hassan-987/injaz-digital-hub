@@ -8,7 +8,7 @@ const cards = [
     headline: 'To be the most trusted technology partner for businesses that want to lead their industry.',
     body: "We envision a future where geography is no barrier to world-class engineering. INJAZ aspires to be the partner of choice for the world's most ambitious founders — not because we're the largest firm, but because we're the most invested in your success.",
     gradient: 'from-accent/20 to-transparent',
-    glow: 'rgba(139,26,74,0.10)',
+    glow: 'rgba(15,95,106,0.10)',
     borderGrad: 'from-accent/30 via-white/5 to-white/5',
   },
   {
@@ -17,7 +17,7 @@ const cards = [
     headline: 'To deliver software that moves businesses forward — on time, on budget, and beyond expectation.',
     body: "Our mission is to close the gap between an idea and its impact. We do this through rigorous engineering, transparent communication, and a relentless commitment to shipping software that actually works — for you and for your users.",
     gradient: 'from-accent/10 to-transparent',
-    glow: 'rgba(139,26,74,0.05)',
+    glow: 'rgba(15,95,106,0.05)',
     borderGrad: 'from-accent/20 via-gray-100 to-gray-50',
   },
 ];

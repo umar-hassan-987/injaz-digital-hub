@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Lightbulb, Heart, Rocket } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import bgImage from '../../assets/img/Qatar.webp';
 
 const pillars = [
   { icon: Lightbulb, label: 'Continuous Learning'   },
@@ -20,7 +21,7 @@ export default function CompanyCareers() {
             transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
             className="absolute inset-0 opacity-[0.03]"
             style={{
-              background: 'linear-gradient(135deg, #8B1A4A, #ffffff, #8B1A4A, #f8fafc)',
+              background: 'linear-gradient(135deg, #0F5F6A, #ffffff, #0F5F6A, #f8fafc)',
               backgroundSize: '400% 400%',
             }}
           />
@@ -97,10 +98,16 @@ export default function CompanyCareers() {
       </section>
 
       {/* ── Final CTA ── */}
-      <section className="py-24 lg:py-36 bg-gray-50 relative overflow-hidden">
+      <section className="py-24 lg:py-36 relative overflow-hidden">
+        {/* Background Image & Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img src={bgImage} alt="Qatar Background" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-white/75 backdrop-blur-[2px]" />
+        </div>
+
         {/* Central radial glow */}
-        <div className="absolute inset-0 pointer-events-none flex items-center justify-center" aria-hidden="true">
-          <div className="w-[700px] h-[400px] rounded-full bg-accent/5 blur-[140px]" />
+        <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-0" aria-hidden="true">
+          <div className="w-[700px] h-[400px] rounded-full bg-accent/10 blur-[140px]" />
         </div>
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 xl:px-32 text-center">
@@ -131,7 +138,7 @@ export default function CompanyCareers() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-[16px] text-gray-600 max-w-lg mx-auto leading-relaxed mb-12 font-light"
+            className="text-[16px] text-gray-800 max-w-lg mx-auto leading-relaxed mb-12 font-medium"
           >
             Tell us about your project. We'll come back with a clear plan, a realistic timeline, and a team
             that's genuinely excited to help you succeed.

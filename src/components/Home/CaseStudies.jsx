@@ -64,8 +64,8 @@ const CaseStudies = () => {
         {/* ═══ Elegant Header ═══ */}
         <div className="mb-20 lg:mb-28">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-px bg-[#8A1538]" />
-            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#8A1538]">Signature Work</span>
+            <div className="w-12 h-px bg-[#0F5F6A]" />
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#0F5F6A]">Signature Work</span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
             <h2 className="text-4xl md:text-5xl lg:text-6xl text-gray-900 leading-[1.1] tracking-tight">
@@ -117,7 +117,7 @@ const CaseStudies = () => {
                       className="max-w-md mx-auto lg:mx-0"
                     >
                       <div className="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
-                        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#8A1538]">
+                        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F5F6A]">
                           {study.category}
                         </span>
                         <span className="w-1 h-1 rounded-full bg-gray-300"></span>
@@ -173,7 +173,7 @@ const CaseStudies = () => {
                   transition={{ delay: idx * 0.1 }}
                   className={`flex flex-col ${idx !== 0 ? 'md:border-l md:border-gray-200 md:pl-10' : ''}`}
                 >
-                   <p className="text-4xl lg:text-5xl font-bold text-[#8A1538] mb-4 tracking-tighter">
+                   <p className="text-4xl lg:text-5xl font-bold text-[#C9A453] mb-4 tracking-tighter">
                      <AnimatedCounter target={stat.number} suffix={stat.number.replace(/[0-9,]/g, '')} />
                    </p>
                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
