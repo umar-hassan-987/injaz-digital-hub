@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, Users, Globe, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import heroImg from '../../assets/img/subservice/subServiceV.webp';
 
 const FadeUp = ({ children, delay = 0, className = '' }) => (
@@ -16,6 +17,9 @@ const FadeUp = ({ children, delay = 0, className = '' }) => (
 
 
 export default function CompanyHero() {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
+
   return (
     <section className="relative min-h-[100dvh] lg:h-screen flex items-center overflow-hidden bg-gray-50 py-0">
       {/* Background Image & glow blobs */}
@@ -37,11 +41,11 @@ export default function CompanyHero() {
         <div className="grid lg:grid-cols-[70%_30%] gap-12 lg:gap-16 items-center">
 
           {/* ── Left — Text block ── */}
-          <div className="text-center lg:text-left relative z-20">
+          <div className="text-center lg:text-start relative z-20">
             <FadeUp delay={0.3}>
               <span className="hidden sm:inline-flex items-center gap-3 text-[10px] md:text-[11px] font-black uppercase tracking-[0.25em] text-white/80 mb-6 md:mb-8">
                 <span className="w-8 md:w-10 h-px bg-white/60" />
-                About INJAZ
+                {t('company.hero.subtitle', 'About INJAZ')}
               </span>
             </FadeUp>
 
@@ -50,15 +54,17 @@ export default function CompanyHero() {
                 className="font-display font-bold text-white tracking-tight leading-[1.1] mb-6"
                 style={{ fontSize: 'clamp(28px, 7vw, 64px)' }}
               >
-                We Build Digital<br />
-                Products That<br />
-                <span className="text-[var(--color-gold)] italic font-light pr-2">Shape Tomorrow</span>
+                {t('company.hero.titlePart1', 'We Build Digital')}<br />
+                {t('company.hero.titlePart2', 'Products That')}<br />
+                <span className="text-[var(--color-gold)] italic font-light pe-2">
+                  {t('company.hero.titleHighlight', 'Shape Tomorrow')}
+                </span>
               </h1>
             </FadeUp>
 
             <FadeUp delay={0.7}>
-              <p className="text-[15px] md:text-[17px] text-white/90 max-w-[600px] leading-relaxed mb-10 mx-auto lg:mx-0 font-light border-l-2 border-white/20 pl-6 py-2">
-                INJAZ is a leading digital solutions firm building scalable, elegant digital products that drive real-world impact for enterprises across Qatar and the GCC.
+              <p className="text-[15px] md:text-[17px] text-white/90 max-w-[600px] leading-relaxed mb-10 mx-auto lg:mx-0 font-light border-s-2 border-white/20 ps-6 py-2">
+                {t('company.hero.description', 'INJAZ is a leading digital solutions firm building scalable, elegant digital products that drive real-world impact for enterprises across Qatar and the GCC.')}
               </p>
             </FadeUp>
 
@@ -68,8 +74,8 @@ export default function CompanyHero() {
                   to="/contact"
                   className="group inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-bold text-sm rounded-xl hover:bg-black transition-colors duration-300 shadow-lg shadow-accent/20 uppercase tracking-widest text-[11px]"
                 >
-                  Let's Talk
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  {t('company.hero.cta', "Let's Talk")}
+                  <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
                 </Link>
               </div>
             </FadeUp>
@@ -88,14 +94,16 @@ export default function CompanyHero() {
             </div>
 
             {/* Main overview card */}
-            <div className="relative lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:left-0 w-full max-w-[340px] bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl rounded-[28px] p-6 md:p-8 z-20">
-              <div className="text-[10px] font-black uppercase tracking-[0.3em] text-[var(--color-gold)] mb-5">Company Overview</div>
+            <div className="relative lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:start-0 w-full max-w-[340px] bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl rounded-[28px] p-6 md:p-8 z-20">
+              <div className="text-[10px] font-black uppercase tracking-[0.3em] text-[var(--color-gold)] mb-5">
+                {t('company.hero.overview.title', 'Company Overview')}
+              </div>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { label: 'Founded',       value: '2014' },
-                  { label: 'Team Members',  value: '50+'  },
-                  { label: 'Projects',      value: '500+' },
-                  { label: 'Countries',     value: '30+'  },
+                  { label: t('company.hero.overview.founded', 'Founded'),       value: '2014' },
+                  { label: t('company.hero.overview.team', 'Team Members'),  value: '50+'  },
+                  { label: t('company.hero.overview.projects', 'Projects'),      value: '500+' },
+                  { label: t('company.hero.overview.countries', 'Countries'),     value: '30+'  },
                 ].map((item, idx) => (
                   <div
                     key={idx}

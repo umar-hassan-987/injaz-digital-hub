@@ -1,7 +1,8 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useMotionValueEvent, useSpring } from 'framer-motion';
 import { processSteps } from '../../data/homeData';
+import { useTranslation } from 'react-i18next';
+import { formatNumber } from '../../utils/numbers';
 
 // Import images for the process steps
 import discoveryImg from '../../assets/img/process/discovery.png';
@@ -14,6 +15,7 @@ import supportImg from '../../assets/img/process/support.png';
 const processImages = [discoveryImg, planImg, devImg, testImg, launchImg, supportImg];
 
 const Process = () => {
+  const { t, i18n } = useTranslation();
   const sectionRef = useRef(null);
   const stageRef = useRef(-1);
   const [activeIndex, setActiveIndex] = useState(-1); // Desktop active index
@@ -121,11 +123,11 @@ const Process = () => {
               >
                 <div className="flex items-center justify-center gap-4 mb-4 lg:mb-6">
                   <div className="w-8 sm:w-16 h-px bg-accent/60" />
-                  <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-accent">How We Work</span>
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-accent">{t('processSection.subtitle')}</span>
                   <div className="w-8 sm:w-16 h-px bg-accent/60" />
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 leading-[1.1] font-display tracking-tightest">
-                  Our Development Process
+                  {t('processSection.title')}
                 </h2>
               </motion.div>
             </div>
@@ -140,8 +142,8 @@ const Process = () => {
                     exit={{ opacity: 0 }}
                     className="flex w-full items-center gap-20"
                   >
-                    <div className="absolute left-0 h-[40vh] w-6 flex flex-col justify-between items-center pointer-events-none">
-                      <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[2px] bg-gray-100 rounded-full overflow-hidden">
+                    <div className="absolute start-0 h-[40vh] w-6 flex flex-col justify-between items-center pointer-events-none">
+                      <div className="absolute top-0 bottom-0 start-1/2 -translate-x-1/2 w-[2px] bg-gray-100 rounded-full overflow-hidden">
                         <motion.div
                           className="w-full bg-accent rounded-full origin-top"
                           style={{ height: progressBarHeight }}
@@ -157,7 +159,7 @@ const Process = () => {
                       ))}
                     </div>
 
-                    <div className="w-1/2 pl-16">
+                    <div className="w-1/2 ps-16">
                       <AnimatePresence mode="wait">
                         <motion.div
                           key={activeIndex}
@@ -169,14 +171,14 @@ const Process = () => {
                         >
                           <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent/40 bg-accent/10 mb-6">
                             <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-accent">
-                              Step {activeIndex + 1}
+                              {t('common.step')} {formatNumber(activeIndex + 1, i18n.language)}
                             </span>
                           </div>
                           <h3 className="text-2xl xl:text-3xl font-black font-display tracking-tight text-gray-900 mb-6">
-                            {processSteps[activeIndex]?.title}
+                            {t(`processSection.items.${processSteps[activeIndex]?.id}.title`, processSteps[activeIndex]?.title)}
                           </h3>
                           <p className="text-base text-gray-500 leading-relaxed">
-                            {processSteps[activeIndex]?.description}
+                            {t(`processSection.items.${processSteps[activeIndex]?.id}.description`, processSteps[activeIndex]?.description)}
                           </p>
                         </motion.div>
                       </AnimatePresence>
@@ -209,14 +211,16 @@ const Process = () => {
 
       {/* ═══ Mobile/Tablet View (Flowbite-Style Carousel) ═══ */}
       <div className="lg:hidden py-24 relative overflow-hidden flex flex-col items-center">
-        <div className="px-6 text-center mb-12 w-full">
-          <div className="flex items-center justify-center gap-4 mb-4 lg:mb-6">
-            <div className="w-8 sm:w-16 h-px bg-accent/60" />
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-accent">How We Work</span>
-            <div className="w-8 sm:w-16 h-px bg-accent/60" />
+        <div className="text-center mb-20">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="w-12 h-px bg-[#0F5F6A]" />
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#0F5F6A]">
+              {t('processSection.subtitle')}
+            </span>
+            <div className="w-12 h-px bg-[#0F5F6A]" />
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 leading-[1.1] font-display tracking-tightest">
-            Our Development Process
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
+            {t('processSection.title')}
           </h2>
         </div>
 
@@ -259,12 +263,15 @@ const Process = () => {
                 
                 {/* Content Area */}
                 <div className="px-4">
+                  <div className="text-[120px] font-black leading-none text-gray-100 select-none">
+                    {formatNumber(mobileIndex + 1, i18n.language)}
+                  </div>
                   <h3 className="text-4xl font-black text-accent font-display mb-6 tracking-tight">
-                    {processSteps[mobileIndex].title}
+                    {t(`processSection.items.${processSteps[mobileIndex].id}.title`, processSteps[mobileIndex].title)}
                   </h3>
                   
                   <p className="text-gray-600 text-base leading-relaxed font-medium">
-                    {processSteps[mobileIndex].description}
+                    {t(`processSection.items.${processSteps[mobileIndex].id}.description`, processSteps[mobileIndex].description)}
                   </p>
                 </div>
 
@@ -274,22 +281,22 @@ const Process = () => {
 
           {/* Left Arrow */}
           <button 
-            onClick={handlePrev}
-            className="absolute left-1 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent backdrop-blur-md transition-colors shadow-sm"
+            onClick={i18n.dir() === 'rtl' ? handleNext : handlePrev}
+            className="absolute start-1 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent backdrop-blur-md transition-colors shadow-sm"
             aria-label="Previous step"
           >
-            <svg className="w-4 h-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className={`w-4 h-4 text-gray-600 ${i18n.dir() === 'rtl' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
           {/* Right Arrow */}
           <button 
-            onClick={handleNext}
-            className="absolute right-1 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent backdrop-blur-md transition-colors shadow-sm"
+            onClick={i18n.dir() === 'rtl' ? handlePrev : handleNext}
+            className="absolute end-1 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent backdrop-blur-md transition-colors shadow-sm"
             aria-label="Next step"
           >
-            <svg className="w-4 h-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className={`w-4 h-4 text-gray-600 ${i18n.dir() === 'rtl' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>

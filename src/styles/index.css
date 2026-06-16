@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -37,6 +38,10 @@
     overflow-x: clip;
     width: 100%;
     position: relative;
+  }
+
+  html[lang="ar"] body {
+    font-family: 'Cairo', var(--font-sans);
   }
 
   #root {

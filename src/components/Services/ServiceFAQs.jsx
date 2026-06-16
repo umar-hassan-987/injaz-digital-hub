@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const ServiceFAQs = ({ service, theme = 'light' }) => {
+  const { t, i18n } = useTranslation();
   const isLight = theme === 'light';
   const faqs = service.faqs || [];
   const [openIndex, setOpenIndex] = useState(null);
@@ -16,12 +18,16 @@ const ServiceFAQs = ({ service, theme = 'light' }) => {
         <div className="text-center mb-16 lg:mb-24">
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="w-8 h-[2px] bg-accent/60" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent">Insights</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent">
+              {t('servicesDetail.faqs.insights', 'Insights')}
+            </span>
             <div className="w-8 h-[2px] bg-accent/60" />
           </div>
           <h2 className={`text-3xl lg:text-5xl font-bold font-display tracking-tight leading-tight text-gray-900`}>
-            Frequently Asked <br />
-            <span className="text-accent italic font-light">Questions</span>
+            {t('servicesDetail.faqs.title', 'Frequently Asked')} <br />
+            <span className="text-accent italic font-light">
+              {t('servicesDetail.faqs.titleHighlight', 'Questions')}
+            </span>
           </h2>
         </div>
 
@@ -37,10 +43,10 @@ const ServiceFAQs = ({ service, theme = 'light' }) => {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="w-full flex items-center justify-between p-6 lg:p-8 text-left"
+                className="w-full flex items-center justify-between p-6 lg:p-8 text-start"
               >
-                <h3 className={`text-lg font-bold font-display tracking-tight pr-8 text-gray-900`}>
-                  {faq.question}
+                <h3 className={`text-lg font-bold font-display tracking-tight pe-8 text-gray-900`}>
+                  {t(`servicesDetail.${service.slug}.faqs.${idx}.question`, faq.question)}
                 </h3>
                 <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 ${
                   openIndex === idx ? 'bg-accent text-white rotate-180' : 'bg-accent/10 text-accent'
@@ -60,7 +66,7 @@ const ServiceFAQs = ({ service, theme = 'light' }) => {
                     <div className="px-6 lg:px-8 pb-8 lg:pb-10">
                       <div className={`h-[1px] w-full mb-8 bg-gray-100`} />
                       <p className={`text-base font-medium leading-relaxed text-gray-600`}>
-                        {faq.answer}
+                        {t(`servicesDetail.${service.slug}.faqs.${idx}.answer`, faq.answer)}
                       </p>
                     </div>
                   </motion.div>

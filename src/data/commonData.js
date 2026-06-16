@@ -1,13 +1,13 @@
 export const companyInfo = {
   name: 'INJAZ Digital Hub',
   tagline: "Qatar's Premier Digital Solutions Partner",
-  phone: '+974 0000 0000',
+  phone: '+97455064240',
   email: 'info@injazdigitalhub.com',
   address: 'Lusail City, Doha, Qatar',
   socials: {
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/company/injaz-digital-huboffical/about/?viewAsMember=true',
     facebook: '#',
-    instagram: '#',
+    instagram: 'https://www.instagram.com/injazdigitalhub?igsh=eHpzbjU5djk5N2Q5',
     twitter: '#',
   },
 };

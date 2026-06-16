@@ -3,9 +3,11 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { caseStudies } from '../../data/homeData';
+import { useTranslation } from 'react-i18next';
 
 const ServiceProjects = ({ service, theme = 'light' }) => {
-  const isLight = theme === 'light';
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
   
   // Filter case studies that match this service's slug or category
   const relatedProjects = caseStudies.filter(project => 
@@ -23,21 +25,23 @@ const ServiceProjects = ({ service, theme = 'light' }) => {
           <div className="max-w-2xl">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-8 h-[2px] bg-accent/60" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent">Proof of Concept</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent">
+                {t('serviceDetail.projects.subtitle', 'Proof of Concept')}
+              </span>
             </div>
             <h2 className={`text-3xl lg:text-5xl font-bold font-display tracking-tight leading-tight text-gray-900`}>
-              Featured <br />
-              <span className="text-accent italic font-light">Case Studies</span>
+              {t('serviceDetail.projects.titlePart1', 'Featured')} <br />
+              <span className="text-accent italic font-light">{t('serviceDetail.projects.titleHighlight', 'Case Studies')}</span>
             </h2>
           </div>
           <Link to="/case-studies" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-accent hover:gap-4 transition-all">
-            Explore All Work <ArrowUpRight size={14} />
+            {t('serviceDetail.projects.cta', 'Explore All Work')} <ArrowUpRight size={14} className={isRTL ? 'rotate-[-90deg]' : ''} />
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {relatedProjects.map((project, idx) => (
-            <ProjectCard key={idx} project={project} idx={idx} />
+            <ProjectCard key={idx} project={project} idx={idx} t={t} isRTL={isRTL} />
           ))}
         </div>
       </div>
@@ -45,7 +49,7 @@ const ServiceProjects = ({ service, theme = 'light' }) => {
   );
 };
 
-const ProjectCard = ({ project, idx }) => {
+const ProjectCard = ({ project, idx, t, isRTL }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -62,29 +66,29 @@ const ProjectCard = ({ project, idx }) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
         
-        <div className="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0">
-          <ArrowUpRight size={20} />
+        <div className={`absolute top-8 end-8 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500 ${isRTL ? '-translate-x-4 group-hover:translate-x-0' : 'translate-x-4 group-hover:translate-x-0'}`}>
+          <ArrowUpRight size={20} className={isRTL ? 'rotate-[-90deg]' : ''} />
         </div>
 
-        <div className="absolute bottom-8 left-8 right-8">
+        <div className="absolute bottom-8 start-8 end-8">
           <div className="text-[10px] font-bold uppercase tracking-widest text-white mb-2">
-            {project.category}
+            {t(`caseStudies.items.${project.id}.category`, project.category)}
           </div>
           <h3 className="text-2xl font-bold font-display text-white leading-tight">
-            {project.title}
+            {t(`caseStudies.items.${project.id}.title`, project.title)}
           </h3>
         </div>
       </div>
       
-      <p className={`text-sm font-medium leading-relaxed mb-6 line-clamp-2 text-gray-600`}>
-        {project.description}
+      <p className={`text-sm font-medium leading-relaxed mb-6 line-clamp-2 text-gray-600 ${isRTL ? 'text-right' : 'text-left'}`}>
+        {t(`caseStudies.items.${project.id}.description`, project.description)}
       </p>
       
       <Link 
         to={`/case-studies/${project.slug}`}
         className={`inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-colors text-gray-900 hover:text-accent`}
       >
-        View Details <ChevronRight size={12} />
+        {t('serviceDetail.projects.viewDetails', 'View Details')} <ChevronRight size={12} className={isRTL ? 'rotate-180' : ''} />
       </Link>
     </motion.div>
   );

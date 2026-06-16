@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Compass, Target } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const cards = [
   {
@@ -23,6 +24,8 @@ const cards = [
 ];
 
 export default function VisionMission() {
+  const { t } = useTranslation();
+
   return (
     <section className="py-24 lg:py-32 bg-gray-50">
       <div className="max-w-[1400px] mx-auto px-6 xl:px-32">
@@ -37,7 +40,9 @@ export default function VisionMission() {
             className="flex items-center justify-center gap-4 mb-5"
           >
             <div className="w-10 h-px bg-accent/60" />
-            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-accent">Purpose</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-accent">
+              {t('company.visionMission.subtitle', 'Purpose')}
+            </span>
             <div className="w-10 h-px bg-accent/60" />
           </motion.div>
           <motion.h2
@@ -47,7 +52,7 @@ export default function VisionMission() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display font-bold text-gray-900 tracking-tight text-3xl sm:text-4xl lg:text-5xl"
           >
-            Vision &amp; Mission
+            {t('company.visionMission.title', 'Vision & Mission')}
           </motion.h2>
         </div>
 
@@ -67,7 +72,7 @@ export default function VisionMission() {
               >
                 {/* Corner gradient */}
                 <div
-                  className={`absolute top-0 right-0 w-72 h-72 rounded-full bg-gradient-to-br ${card.gradient} blur-[80px] opacity-70 pointer-events-none`}
+                  className={`absolute top-0 end-0 w-72 h-72 rounded-full bg-gradient-to-br ${card.gradient} blur-[80px] opacity-70 pointer-events-none`}
                 />
 
                 {/* Icon */}
@@ -76,20 +81,24 @@ export default function VisionMission() {
                 </div>
 
                 {/* Label */}
-                <div className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-3">{card.label}</div>
+                <div className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-3">
+                  {t(`company.visionMission.items.${idx}.label`, card.label)}
+                </div>
 
                 {/* Headline */}
                 <h3
                   className="font-display font-bold text-gray-900 leading-[1.2] mb-5 text-xl lg:text-2xl"
                 >
-                  {card.headline}
+                  {t(`company.visionMission.items.${idx}.headline`, card.headline)}
                 </h3>
 
                 {/* Rule */}
                 <div className="w-10 h-px bg-accent/40 mb-5" />
 
                 {/* Body */}
-                <p className="text-[14px] text-gray-600 leading-relaxed font-light">{card.body}</p>
+                <p className="text-[14px] text-gray-600 leading-relaxed font-light">
+                  {t(`company.visionMission.items.${idx}.body`, card.body)}
+                </p>
               </div>
             </motion.div>
           ))}

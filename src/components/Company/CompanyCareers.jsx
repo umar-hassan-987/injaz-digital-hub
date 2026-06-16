@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Lightbulb, Heart, Rocket } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import bgImage from '../../assets/img/Qatar.webp';
 
 const pillars = [
@@ -10,6 +11,9 @@ const pillars = [
 ];
 
 export default function CompanyCareers() {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
+
   return (
     <>
       {/* ── Careers section ── */}
@@ -37,7 +41,9 @@ export default function CompanyCareers() {
             className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="w-8 h-px bg-accent/60" />
-            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-accent">Careers</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-accent">
+              {t('company.careers.subtitle', 'Careers')}
+            </span>
             <div className="w-8 h-px bg-accent/60" />
           </motion.div>
 
@@ -49,8 +55,8 @@ export default function CompanyCareers() {
             className="font-display font-bold text-gray-900 tracking-tight leading-[1.05] mb-6"
             style={{ fontSize: 'clamp(36px, 4.5vw, 64px)' }}
           >
-            Build the future.<br />
-            <span className="text-accent italic font-light">With us.</span>
+            {t('company.careers.titlePart1', 'Build the future.')}<br />
+            <span className="text-accent italic font-light">{t('company.careers.titleHighlight', 'With us.')}</span>
           </motion.h2>
 
           <motion.p
@@ -60,8 +66,7 @@ export default function CompanyCareers() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-[15px] text-gray-600 max-w-xl mx-auto leading-relaxed mb-10 font-light"
           >
-            We're always looking for exceptional engineers, designers, and strategists who want to do the best work
-            of their careers in a culture that rewards curiosity, ownership, and craft.
+            {t('company.careers.description', "We're always looking for exceptional engineers, designers, and strategists who want to do the best work of their careers in a culture that rewards curiosity, ownership, and craft.")}
           </motion.p>
 
           <motion.div
@@ -74,8 +79,8 @@ export default function CompanyCareers() {
               to="/careers"
               className="group inline-flex items-center gap-2 px-10 py-4 bg-accent text-white font-bold text-[11px] uppercase tracking-widest rounded-xl hover:bg-black transition-colors duration-300 shadow-lg shadow-accent/20"
             >
-              View Open Roles
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              {t('company.careers.cta', 'View Open Roles')}
+              <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
             </Link>
           </motion.div>
 
@@ -90,7 +95,9 @@ export default function CompanyCareers() {
             {pillars.map((p, idx) => (
               <div key={idx} className="flex items-center gap-2.5 text-gray-600">
                 <p.icon className="w-4 h-4 text-accent" />
-                <span className="text-[13px] font-semibold">{p.label}</span>
+                <span className="text-[13px] font-semibold">
+                  {t(`company.careers.pillars.${idx}.label`, p.label)}
+                </span>
               </div>
             ))}
           </motion.div>
@@ -118,7 +125,7 @@ export default function CompanyCareers() {
             transition={{ duration: 0.6 }}
             className="inline-block text-[11px] font-black uppercase tracking-[0.3em] text-accent mb-6"
           >
-            Ready to get started?
+            {t('company.careers.finalCtaSubtitle', 'Ready to get started?')}
           </motion.span>
 
           <motion.h2
@@ -129,8 +136,8 @@ export default function CompanyCareers() {
             className="font-display font-bold text-gray-900 tracking-tight leading-[1.05] mb-6"
             style={{ fontSize: 'clamp(40px, 5vw, 72px)' }}
           >
-            Let's build something<br />
-            <span className="text-accent italic font-light">extraordinary.</span>
+            {t('company.careers.finalCtaTitlePart1', "Let's build something")}<br />
+            <span className="text-accent italic font-light">{t('company.careers.finalCtaTitleHighlight', 'extraordinary.')}</span>
           </motion.h2>
 
           <motion.p
@@ -140,8 +147,7 @@ export default function CompanyCareers() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-[16px] text-gray-800 max-w-lg mx-auto leading-relaxed mb-12 font-medium"
           >
-            Tell us about your project. We'll come back with a clear plan, a realistic timeline, and a team
-            that's genuinely excited to help you succeed.
+            {t('company.careers.finalCtaDescription', "Tell us about your project. We'll come back with a clear plan, a realistic timeline, and a team that's genuinely excited to help you succeed.")}
           </motion.p>
 
           <motion.div
@@ -155,14 +161,14 @@ export default function CompanyCareers() {
               to="/contact"
               className="group inline-flex items-center gap-2 px-10 py-5 bg-accent text-white font-bold text-[11px] uppercase tracking-widest rounded-xl hover:bg-black transition-colors duration-300 shadow-xl shadow-accent/20"
             >
-              Start a Project
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              {t('company.careers.finalCtaButton1', 'Start a Project')}
+              <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
             </Link>
             <Link
               to="/contact"
               className="group inline-flex items-center gap-2 px-10 py-5 border border-gray-200 text-gray-900 font-bold text-[11px] uppercase tracking-widest rounded-xl hover:border-accent/40 hover:bg-gray-50 transition-all duration-300 bg-white"
             >
-              Contact Us
+              {t('company.careers.finalCtaButton2', 'Contact Us')}
             </Link>
           </motion.div>
         </div>

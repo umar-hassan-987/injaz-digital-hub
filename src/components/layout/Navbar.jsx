@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { m, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight, Globe } from 'lucide-react';
 import { navLinks } from '../../data/navData';
+import { useTranslation } from 'react-i18next';
 
 import logo from '../../assets/img/enjaz-logo.svg';
 
@@ -14,7 +15,13 @@ const Navbar = () => {
   const megaTimeout = useRef(null);
   const hideTimeout = useRef(null);
   const location = useLocation();
-  const isTransparentHeroPage = location.pathname === '/' || location.pathname.startsWith('/services') || location.pathname.startsWith('/company');
+  const isTransparentHeroPage = location.pathname === '/' || location.pathname.startsWith('/company');
+  const { t, i18n } = useTranslation();
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'en' ? 'ar' : 'en';
+    i18n.changeLanguage(newLang);
+  };
 
   const headerRef = useRef(null);
 
@@ -111,11 +118,11 @@ const Navbar = () => {
             }, 1500);
           }
         }}
-        className={`fixed top-0 left-0 right-0 z-50 transform transition-all duration-500 py-4 ${
+        className={`fixed top-0 start-0 end-0 z-50 transform transition-all duration-500 py-4 ${
           activeMega 
             ? 'bg-white py-2 duration-0 is-mega-open' 
-            : !isScrolled
-              ? `bg-transparent border-transparent ${isTransparentHeroPage ? 'nav-transparent' : ''}`
+            : (!isScrolled && isTransparentHeroPage)
+              ? 'bg-transparent border-transparent nav-transparent'
               : 'bg-white/90 backdrop-blur-md border-b border-gray-100'
         }`}
       >
@@ -147,7 +154,7 @@ const Navbar = () => {
                       to={link.path}
                       className={`relative flex items-center gap-1 px-4 py-2 text-[19px] font-bold transition-all rounded-lg nav-link ${isActive ? 'text-accent is-active' : ''} ${activeMega === link.name ? 'text-accent' : ''}`}
                     >
-                      {link.name}
+                      {t(`nav.${link.name.toLowerCase()}`, link.name)}
                       {link.hasMega && <ChevronDown size={14} className={`transition-transform ${activeMega === link.name ? 'rotate-180' : ''}`} />}
 
                     </Link>
@@ -158,11 +165,19 @@ const Navbar = () => {
 
             {/* Right Actions */}
             <div className="hidden lg:flex items-center gap-6">
+              <button
+                onClick={toggleLanguage}
+                className={`flex items-center gap-2 px-3 py-2 text-sm font-bold transition-all rounded-lg ${isScrolled ? 'text-black hover:text-accent' : isTransparentHeroPage ? 'text-white/80 hover:text-white' : 'text-black hover:text-accent'}`}
+                aria-label="Toggle Language"
+              >
+                <Globe size={18} />
+                <span>{i18n.language === 'en' ? 'العربية' : 'EN'}</span>
+              </button>
               <Link
                 to="/contact"
                 className="px-7 py-3 text-base font-bold transition-all duration-300 transform hover:scale-105 shadow-lg nav-cta"
               >
-                Get in Touch
+                {t('nav.contact', 'Get in Touch')}
               </Link>
             </div>
 
@@ -182,7 +197,7 @@ const Navbar = () => {
         {/* ─── Mega Menu Dropdown (Anchored to Header for Full-Width) ─── */}
         {activeMega && (
           <div
-            className="hidden lg:block absolute top-full left-0 right-0 bg-white shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border-t border-gray-100 z-50 overflow-hidden"
+            className="hidden lg:block absolute top-full start-0 end-0 bg-white shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border-t border-gray-100 z-50 overflow-hidden"
             onMouseEnter={() => handleMegaEnter(activeMega)}
             onMouseLeave={handleMegaLeave}
             style={{ animation: 'fadeInDown 0.4s cubic-bezier(0.2, 0, 0, 1) forwards' }}
@@ -198,13 +213,13 @@ const Navbar = () => {
                       <div className="mb-12">
                         <div className="flex items-center gap-3 mb-4">
                           <div className="w-8 h-[2px] bg-accent" />
-                          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">Expertise</span>
+                          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">{t('nav.expertise', 'Expertise')}</span>
                         </div>
                         <h3 className="text-3xl lg:text-4xl font-bold text-black mb-4 leading-tight">
-                          {link.name}
+                          {t(`nav.${link.name.toLowerCase()}`, link.name)}
                         </h3>
                         <p className="text-sm text-slate-500 font-medium leading-relaxed max-w-[280px]">
-                          Strategic digital solutions engineered for the modern era.
+                          {t('nav.megaDescription', 'Strategic digital solutions engineered for the modern era.')}
                         </p>
                       </div>
                     </div>
@@ -219,19 +234,19 @@ const Navbar = () => {
                         {link.megaColumns?.map((col) => (
                           <div key={col.title} className="flex flex-col">
                             <h4 className="text-sm font-bold text-black mb-6 uppercase tracking-wider">
-                              {col.title}
+                              {t(`nav.megaColumns.${col.title}`, col.title)}
                             </h4>
                             <ul className="space-y-4">
                               {col.links.map((subLink) => (
                                 <li key={subLink.name}>
-                                  <Link
-                                    to={subLink.path}
-                                    onClick={() => setActiveMega(null)}
-                                    className="group flex items-center justify-between text-[14px] font-medium text-slate-500 hover:text-black transition-all"
-                                  >
-                                    <span className="whitespace-nowrap">{subLink.name}</span>
-                                    <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
-                                  </Link>
+                                    <Link
+                                      to={subLink.path}
+                                      onClick={() => setActiveMega(null)}
+                                      className="group flex items-center justify-between text-[14px] font-medium text-slate-500 hover:text-black transition-all"
+                                    >
+                                      <span className="whitespace-nowrap">{t(`nav.megaLinks.${subLink.name}`, subLink.name)}</span>
+                                      <ArrowRight size={12} className="opacity-0 ltr:-translate-x-2 rtl:translate-x-2 rtl:rotate-180 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
+                                    </Link>
                                 </li>
                               ))}
                             </ul>
@@ -262,7 +277,7 @@ const Navbar = () => {
 
         {/* Panel */}
         <div
-          className={`absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl transition-transform duration-500 cubic-bezier(0.2, 0, 0, 1) ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`absolute top-0 end-0 h-full w-full max-w-sm bg-white shadow-2xl transition-transform duration-500 cubic-bezier(0.2, 0, 0, 1) ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full rtl:-translate-x-full'
             } overflow-y-auto`}
         >
           <div className="p-8">
@@ -299,12 +314,19 @@ const Navbar = () => {
             {/* CTA */}
             <div className="mt-10 pt-8 border-t border-gray-100">
               <div className="flex flex-col gap-4">
+                <button
+                  onClick={toggleLanguage}
+                  className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-gray-100 text-black font-bold hover:bg-gray-200 transition-all"
+                >
+                  <Globe size={20} />
+                  {i18n.language === 'en' ? 'العربية' : 'English'}
+                </button>
                 <Link
                   to="/contact"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-black text-white font-bold hover:bg-gray-800 transition-all shadow-xl shadow-black/10"
                 >
-                  Get in Touch
+                  {t('nav.contact', 'Get in Touch')}
                 </Link>
               </div>
             </div>
@@ -326,6 +348,7 @@ const Navbar = () => {
 const MobileNavItem = ({ link, onClose }) => {
   const [expanded, setExpanded] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
   const isActive = link.path === '/' ? location.pathname === '/' : location.pathname.startsWith(link.path);
 
   if (!link.hasMega) {
@@ -335,7 +358,7 @@ const MobileNavItem = ({ link, onClose }) => {
         onClick={onClose}
         className={`block px-4 py-4 text-xl font-black rounded-2xl transition-colors ${isActive ? 'text-accent' : 'text-black hover:bg-gray-50'}`}
       >
-        {link.name}
+        {t(`nav.${link.name.toLowerCase()}`, link.name)}
       </Link>
     );
   }
@@ -348,11 +371,11 @@ const MobileNavItem = ({ link, onClose }) => {
           onClick={onClose}
           className={`flex-grow px-4 py-4 text-xl font-black transition-colors ${isActive ? 'text-accent' : 'text-black'}`}
         >
-          {link.name}
+          {t(`nav.${link.name.toLowerCase()}`, link.name)}
         </Link>
         <button
           onClick={() => setExpanded(!expanded)}
-          className={`px-6 py-4 border-l border-gray-100 transition-colors ${isActive ? 'text-accent' : 'text-black opacity-40 hover:opacity-100'}`}
+          className={`px-6 py-4 border-s border-gray-100 transition-colors ${isActive ? 'text-accent' : 'text-black opacity-40 hover:opacity-100'}`}
           aria-label={`Toggle ${link.name} menu`}
         >
           <ChevronDown
@@ -363,11 +386,11 @@ const MobileNavItem = ({ link, onClose }) => {
       </div>
 
       {expanded && (
-        <div className="pl-6 pb-4 mt-2 space-y-6">
+        <div className="ps-6 pb-4 mt-2 space-y-6">
           {link.megaColumns?.map((col) => (
             <div key={col.title} className="space-y-3">
               <p className="px-4 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
-                {col.title}
+                {t(`nav.megaColumns.${col.title}`, col.title)}
               </p>
               <div className="space-y-1">
                 {col.links.map((subLink) => (
@@ -377,7 +400,7 @@ const MobileNavItem = ({ link, onClose }) => {
                     onClick={onClose}
                     className={`block px-4 py-2 text-base font-bold transition-colors ${location.pathname === subLink.path ? 'text-accent' : 'text-gray-600 hover:text-accent'}`}
                   >
-                    {subLink.name}
+                    {t(`nav.megaLinks.${subLink.name}`, subLink.name)}
                   </Link>
                 ))}
               </div>

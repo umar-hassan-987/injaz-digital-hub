@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { CheckCircle2, Code, TrendingUp, MessageSquare, Shield, Users, Headphones } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const differentiators = [
   {
@@ -35,6 +36,9 @@ const differentiators = [
 ];
 
 export default function WhyChooseUs() {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
+
   return (
     <section className="py-24 sm:py-28 lg:py-32 bg-accent overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-24 xl:px-32">
@@ -49,7 +53,9 @@ export default function WhyChooseUs() {
             className="flex items-center gap-4 mb-5"
           >
             <div className="w-12 h-px bg-[var(--color-gold)]" />
-            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-[var(--color-gold)]">The INJAZ Difference</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-[var(--color-gold)]">
+              {t('company.whyUs.subtitle', 'The INJAZ Difference')}
+            </span>
           </motion.div>
 
           <motion.h2
@@ -59,7 +65,7 @@ export default function WhyChooseUs() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display font-bold text-white tracking-tight max-w-2xl text-3xl sm:text-4xl lg:text-5xl"
           >
-            Why choose INJAZ over 10,000 other dev shops?
+            {t('company.whyUs.title', 'Why choose INJAZ over 10,000 other dev shops?')}
           </motion.h2>
         </div>
 
@@ -68,7 +74,7 @@ export default function WhyChooseUs() {
           {differentiators.map((item, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, x: -24 }}
+              initial={{ opacity: 0, x: isRTL ? 24 : -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: idx * 0.07 }}
@@ -81,8 +87,12 @@ export default function WhyChooseUs() {
 
               {/* Content */}
               <div className="flex-1 min-w-0">
-                <h3 className="text-base sm:text-lg font-bold text-white font-display mb-1.5">{item.title}</h3>
-                <p className="text-[13px] sm:text-sm text-gray-300 leading-relaxed max-w-2xl">{item.desc}</p>
+                <h3 className="text-base sm:text-lg font-bold text-white font-display mb-1.5">
+                  {t(`company.whyUs.items.${idx}.title`, item.title)}
+                </h3>
+                <p className="text-[13px] sm:text-sm text-gray-300 leading-relaxed max-w-2xl">
+                  {t(`company.whyUs.items.${idx}.desc`, item.desc)}
+                </p>
               </div>
 
               {/* Checkmark — appears on hover */}

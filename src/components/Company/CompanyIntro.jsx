@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Code, Users, Globe, Zap } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const highlights = [
   { icon: Code,  title: 'Engineering Excellence', desc: 'Clean, maintainable code built for scale and longevity.'               },
@@ -9,6 +10,8 @@ const highlights = [
 ];
 
 export default function CompanyIntro() {
+  const { t } = useTranslation();
+
   return (
     <section className="py-24 sm:py-28 lg:py-32 bg-white overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-24 xl:px-32">
@@ -22,7 +25,9 @@ export default function CompanyIntro() {
           className="flex items-center gap-4 mb-16"
         >
           <div className="w-12 h-px bg-accent/60" />
-          <span className="text-[11px] font-black uppercase tracking-[0.25em] text-accent">Who We Are</span>
+          <span className="text-[11px] font-black uppercase tracking-[0.25em] text-accent">
+            {t('company.intro.subtitle', 'Who We Are')}
+          </span>
         </motion.div>
 
         <div className="grid lg:grid-cols-[58%_42%] gap-16 lg:gap-24 items-start">
@@ -36,7 +41,7 @@ export default function CompanyIntro() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="font-display font-bold text-gray-900 tracking-tight leading-[1.1] mb-10 text-3xl sm:text-4xl lg:text-5xl"
             >
-              A company built on the belief that great software changes lives.
+              {t('company.intro.title', 'A company built on the belief that great software changes lives.')}
             </motion.h2>
 
             {[
@@ -52,7 +57,7 @@ export default function CompanyIntro() {
                 transition={{ duration: 0.6, delay: 0.15 + idx * 0.15 }}
                 className="text-[15px] sm:text-base text-gray-600 leading-relaxed mb-6 max-w-[600px]"
               >
-                {para}
+                {t(`company.intro.paragraphs.p${idx + 1}`, para)}
               </motion.p>
             ))}
           </div>
@@ -71,8 +76,12 @@ export default function CompanyIntro() {
                 <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-4 group-hover:bg-accent/15 transition-colors duration-300">
                   <item.icon className="w-5 h-5 text-accent" />
                 </div>
-                <h3 className="text-sm sm:text-base font-bold text-gray-900 font-display mb-2 leading-tight">{item.title}</h3>
-                <p className="text-[13px] sm:text-[14px] text-gray-500 leading-relaxed">{item.desc}</p>
+                <h3 className="text-sm sm:text-base font-bold text-gray-900 font-display mb-2 leading-tight">
+                  {t(`company.intro.highlights.${idx}.title`, item.title)}
+                </h3>
+                <p className="text-[13px] sm:text-[14px] text-gray-500 leading-relaxed">
+                  {t(`company.intro.highlights.${idx}.desc`, item.desc)}
+                </p>
               </motion.div>
             ))}
           </div>

@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { testimonials } from '../../data/homeData';
+import { useTranslation } from 'react-i18next';
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right
+  const { t, i18n } = useTranslation();
 
   const handleNext = () => {
     setDirection(1);
@@ -50,11 +52,11 @@ const Testimonials = () => {
         <div className="text-center max-w-4xl mx-auto mb-20 lg:mb-24">
           <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 mb-6">
             <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent">Client Stories</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent">{t('testimonialsSection.subtitle')}</span>
           </div>
           
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 font-display tracking-tightest leading-tight">
-            Partners in <span className="text-accent italic">Strategic Growth</span>
+            {t('testimonialsSection.title')}
           </h2>
         </div>
 
@@ -91,7 +93,7 @@ const Testimonials = () => {
                     </div>
 
                     <p className="text-gray-900 text-lg md:text-xl lg:text-2xl leading-relaxed font-semibold mb-10 tracking-tightest">
-                      {currentItem.quote}
+                      {t(`testimonialsSection.items.${currentItem.id}.quote`, currentItem.quote)}
                     </p>
 
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
@@ -116,7 +118,9 @@ const Testimonials = () => {
                         </div>
                         <div>
                           <h4 className="text-gray-900 font-black text-sm mb-0.5">{currentItem.author}</h4>
-                          <p className="text-gray-500 text-[9px] font-bold uppercase tracking-widest leading-none">{currentItem.role}</p>
+                          <p className="text-gray-500 text-[9px] font-bold uppercase tracking-widest leading-none">
+                            {t(`testimonialsSection.items.${currentItem.id}.role`, currentItem.role)}
+                          </p>
                         </div>
                       </div>
 
@@ -137,13 +141,13 @@ const Testimonials = () => {
             </AnimatePresence>
           </div>
 
-          <div className="mt-14 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:w-[calc(100%+120px)] lg:left-[-60px] flex items-center justify-between gap-4 pointer-events-none">
+          <div className={`mt-14 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:w-[calc(100%+120px)] ${i18n.dir() === 'rtl' ? 'lg:right-[-60px]' : 'lg:left-[-60px]'} flex items-center justify-between gap-4 pointer-events-none`}>
             <button 
-              onClick={handlePrev}
+              onClick={i18n.dir() === 'rtl' ? handleNext : handlePrev}
               className="pointer-events-auto w-10 h-10 lg:w-12 lg:h-12 rounded-full border border-gray-200 bg-white hover:bg-accent hover:border-accent hover:text-white text-gray-600 flex items-center justify-center transition-all duration-300 backdrop-blur-md group shadow-sm"
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
+              <ChevronLeft className={`w-5 h-5 transition-transform ${i18n.dir() === 'rtl' ? 'rotate-180 group-hover:translate-x-0.5' : 'group-hover:-translate-x-0.5'}`} />
             </button>
 
             <div className="flex items-center gap-2.5 lg:hidden">
@@ -163,11 +167,11 @@ const Testimonials = () => {
             </div>
 
             <button 
-              onClick={handleNext}
+              onClick={i18n.dir() === 'rtl' ? handlePrev : handleNext}
               className="pointer-events-auto w-10 h-10 lg:w-12 lg:h-12 rounded-full border border-gray-200 bg-white hover:bg-accent hover:border-accent hover:text-white text-gray-600 flex items-center justify-center transition-all duration-300 backdrop-blur-md group shadow-sm"
               aria-label="Next testimonial"
             >
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+              <ChevronRight className={`w-5 h-5 transition-transform ${i18n.dir() === 'rtl' ? 'rotate-180 group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'}`} />
             </button>
           </div>
 

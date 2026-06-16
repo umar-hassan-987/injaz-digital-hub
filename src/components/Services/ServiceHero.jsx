@@ -2,12 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, TrendingUp, Users, CheckCircle2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImageMobile }) => {
   const isLight = theme === 'light';
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
 
   const desktopImg = bgImageDesktop || bgImage;
   const mobileImg = bgImageMobile || bgImage;
+
+  const translatedTitle = t(`servicesDetail.${service.slug}.title`, service.title);
 
   return (
     <section className={`relative min-h-screen flex flex-col justify-center overflow-hidden pt-32 pb-20 bg-white`}>
@@ -29,9 +34,9 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
                 className={`w-full h-full object-cover ${desktopImg ? 'block md:hidden' : ''}`}
               />
             )}
-            {/* ═══ Elegant Qatari Corporate Overlay ═══ */}
+            {/* ═══ Elegant Logo Colored Overlay (Teal & Gold) ═══ */}
             <div className="absolute inset-0 z-10 bg-[#0F5F6A]/30 mix-blend-multiply" />
-            <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#062A30]/95 via-[#0F5F6A]/60 to-transparent" />
+            <div className={`absolute inset-0 z-10 ${isRTL ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-[#062A30]/95 via-[#0F5F6A]/60 to-[var(--color-gold)]/15`} />
             <div className="absolute inset-0 z-10 bg-black/10" />
           </>
         )}
@@ -40,8 +45,11 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
         <div className="absolute inset-0 opacity-[0.03]" 
              style={{ backgroundImage: 'linear-gradient(#0F5F6A 1px, transparent 1px), linear-gradient(90deg, #0F5F6A 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
              
-        {/* Neural Elements */}
+        {/* Neural Elements (Teal Glow) */}
         <div className={`absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[150px] opacity-20 bg-accent/10`} />
+
+        {/* Gold Glow from logo */}
+        <div className="absolute bottom-0 start-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-15 bg-[var(--color-gold)]" />
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-24 xl:px-32 relative z-10 w-full">
@@ -53,7 +61,7 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
               transition={{ delay: 0.3, duration: 0.8 }}
               className={`text-4xl sm:text-5xl md:text-6xl xl:text-[68px] leading-[1.1] tracking-tight mb-8 text-white`}
             >
-              {service.title.split(' ').map((word, i) => (
+              {translatedTitle.split(' ').map((word, i) => (
                 <span key={i} className={i === 0 ? 'font-light block' : 'font-bold'}>
                   {word}{i === 0 ? '' : ' '}
                 </span>
@@ -64,9 +72,9 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className={`text-lg lg:text-xl font-light leading-relaxed max-w-xl mb-10 text-white/90 border-l-2 border-white/20 pl-6 py-2`}
+              className={`text-lg lg:text-xl font-light leading-relaxed max-w-xl mb-10 text-white/90 border-s-2 border-white/20 ps-6 py-2`}
             >
-              {service.headline || service.description}
+              {t(`servicesDetail.${service.slug}.headline`, service.headline || service.description)}
             </motion.p>
 
             <motion.div
@@ -76,20 +84,20 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
               className="flex flex-wrap gap-4"
             >
               <Link to="/contact" className="px-8 py-4 rounded-full bg-accent text-white font-black text-[11px] uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-500 shadow-xl shadow-accent/20">
-                Start a Project
+                {t('serviceDetail.hero.cta', 'Start a Project')}
               </Link>
               <button 
                 onClick={() => document.getElementById('methodology')?.scrollIntoView({ behavior: 'smooth' })}
                 className={`px-8 py-4 rounded-full border font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-500 border-white/40 text-white hover:bg-white hover:text-accent`}
               >
-                View Method
+                {t('serviceDetail.hero.cta2', 'View Method')}
               </button>
             </motion.div>
           </div>
 
           {/* Stats Bar / Visual Accent */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 1, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6, duration: 1 }}
             className="lg:col-span-4 lg:col-start-9 relative mt-12 lg:mt-0 z-20"
@@ -98,9 +106,13 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-gold)] animate-pulse" />
-                  <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-[var(--color-gold)]">Proven Impact</span>
+                  <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-[var(--color-gold)]">
+                    {t('serviceDetail.hero.statsTitleHighlight', 'Proven Impact')}
+                  </span>
                 </div>
-                <h3 className={`text-xl font-bold font-display tracking-tight text-white`}>Measurable Success</h3>
+                <h3 className={`text-xl font-bold font-display tracking-tight text-white`}>
+                  {t('serviceDetail.hero.statsTitle', 'Measurable Success')}
+                </h3>
               </div>
 
               <div className="grid grid-cols-1 gap-6">
@@ -108,14 +120,14 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
                   <div key={idx} className="relative group">
                     <div className="flex items-center gap-5">
                       <div className="text-3xl lg:text-4xl font-bold font-display text-[var(--color-gold)] group-hover:scale-110 transition-transform duration-500">
-                        {stat.number}
+                        {t(`servicesDetail.${service.slug}.stats.${idx}.number`, stat.number)}
                       </div>
                       <div>
                         <div className={`text-[10px] font-bold uppercase tracking-widest mb-0.5 text-white`}>
-                          {stat.label}
+                          {t(`servicesDetail.${service.slug}.stats.${idx}.label`, stat.label)}
                         </div>
                         <div className={`text-[8px] font-bold uppercase tracking-wider opacity-60 text-white/60`}>
-                          Verified Result
+                          {t('serviceDetail.hero.verifiedResult', 'Verified Result')}
                         </div>
                       </div>
                     </div>
@@ -128,16 +140,24 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
                     <div className="flex items-center gap-5">
                       <div className="text-3xl lg:text-4xl font-bold font-display text-[var(--color-gold)]">99%</div>
                       <div>
-                        <div className={`text-[10px] font-bold uppercase tracking-widest mb-0.5 text-white`}>Success Rate</div>
-                        <div className="text-[8px] font-bold uppercase tracking-wider opacity-60 text-white/60">Client Satisfaction</div>
+                        <div className={`text-[10px] font-bold uppercase tracking-widest mb-0.5 text-white`}>
+                          {t('serviceDetail.hero.fallbackStat1Label', 'Success Rate')}
+                        </div>
+                        <div className="text-[8px] font-bold uppercase tracking-wider opacity-60 text-white/60">
+                          {t('serviceDetail.hero.fallbackStat1Desc', 'Client Satisfaction')}
+                        </div>
                       </div>
                     </div>
                     <div className={`h-[1px] w-full bg-white/10`} />
                     <div className="flex items-center gap-5">
                       <div className="text-3xl lg:text-4xl font-bold font-display text-[var(--color-gold)]">100+</div>
                       <div>
-                        <div className={`text-[10px] font-bold uppercase tracking-widest mb-0.5 text-white`}>Projects</div>
-                        <div className="text-[8px] font-bold uppercase tracking-wider opacity-60 text-white/60">Delivered Globally</div>
+                        <div className={`text-[10px] font-bold uppercase tracking-widest mb-0.5 text-white`}>
+                          {t('serviceDetail.hero.fallbackStat2Label', 'Projects')}
+                        </div>
+                        <div className="text-[8px] font-bold uppercase tracking-wider opacity-60 text-white/60">
+                          {t('serviceDetail.hero.fallbackStat2Desc', 'Delivered Globally')}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -151,10 +171,10 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
                 </div>
                 <div>
                   <div className={`text-[10px] font-bold uppercase tracking-widest text-white`}>
-                    Verified Expertise
+                    {t('serviceDetail.hero.trustBadgeTitle', 'Verified Expertise')}
                   </div>
                   <div className="text-[8px] font-bold text-white/60 uppercase tracking-wider mt-1">
-                    Industry Standard Certified Partner
+                    {t('serviceDetail.hero.trustBadgeDesc', 'Industry Standard Certified Partner')}
                   </div>
                 </div>
               </div>

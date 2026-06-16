@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { services } from '../../data/homeData';
+import { useTranslation } from 'react-i18next';
 
 const Services = () => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
+
   return (
     <section className="py-24 lg:py-32 bg-accent overflow-hidden relative">
       {/* Subtle Corporate Grid Accent using Gold */}
@@ -13,23 +17,23 @@ const Services = () => {
       <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-24 xl:px-32 relative z-10">
         
         {/* ═══ Elegant Section Header ═══ */}
-        <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-px bg-[var(--color-gold)]" />
-              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-gold)]">Our Capabilities</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] tracking-tight">
-              <span className="font-light">Comprehensive</span><br />
-              <span className="font-bold">Digital Solutions</span>
-            </h2>
+        <div className="mb-20">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-12 h-px bg-[var(--color-gold)]" />
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-gold)]">
+              {t('servicesSection.subtitle')}
+            </span>
           </div>
-          <div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] tracking-tight">
+              {t('servicesSection.title')}
+            </h2>
             <Link
               to="/services"
               className="group inline-flex items-center justify-center gap-3 bg-transparent border border-white/20 text-white px-8 py-4 font-semibold text-xs uppercase tracking-widest transition-all hover:bg-[var(--color-gold)] hover:text-accent hover:border-transparent shadow-sm"
             >
-              <span>Explore All Services</span>
+              <span>{t('servicesSection.exploreAll')}</span>
+              <ArrowRight size={16} className={`transition-transform ${isRTL ? 'rotate-180 group-hover:-translate-x-2' : 'group-hover:translate-x-2'}`} />
             </Link>
           </div>
         </div>
@@ -41,6 +45,8 @@ const Services = () => {
               key={idx} 
               service={service} 
               idx={idx}
+              t={t}
+              isRTL={isRTL}
             />
           ))}
         </div>
@@ -61,8 +67,9 @@ const slugMap = {
   'Search Engine Optimization': 'seo',
 };
 
-const ServiceCard = ({ service, idx }) => {
+const ServiceCard = ({ service, idx, t, isRTL }) => {
   const slug = slugMap[service.title] || 'web-development';
+  const Icon = service.icon;
 
   return (
     <motion.div
@@ -73,24 +80,24 @@ const ServiceCard = ({ service, idx }) => {
       className="group"
     >
       <Link to={`/services/${slug}`} className="block h-full relative">
-        {/* Subtle hover accent line at the top */}
-        <div className="absolute top-0 left-0 w-full h-[3px] bg-transparent group-hover:bg-[var(--color-gold)] transition-colors duration-300 z-10" />
-        
         <div className="bg-white/5 backdrop-blur-sm p-8 lg:p-10 h-full transition-all duration-300 border border-white/10 flex flex-col relative z-0 group-hover:bg-white/10">
           
+          {/* Minimal Top Border */}
+          <div className="absolute top-0 start-0 w-full h-[3px] bg-transparent group-hover:bg-[var(--color-gold)] transition-colors duration-300 z-10" />
+
           <div className="flex items-start justify-between mb-10">
             <div className="w-14 h-14 flex items-center justify-center bg-white/5 text-[var(--color-gold)] transition-all duration-500 group-hover:bg-[var(--color-gold)] group-hover:text-accent border border-white/10 group-hover:border-transparent">
-              <service.icon size={26} strokeWidth={1.5} />
+              <Icon size={26} strokeWidth={1.5} />
             </div>
-            <ArrowRight size={22} className="text-white/20 -rotate-45 group-hover:rotate-0 group-hover:text-[var(--color-gold)] transition-all duration-300" />
+            <ArrowRight size={22} className={`text-white/20 transition-all duration-300 ${isRTL ? 'rotate-180 group-hover:-translate-x-2' : 'group-hover:translate-x-2 group-hover:text-[var(--color-gold)]'}`} />
           </div>
 
           <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 transition-colors leading-tight">
-            {service.title}
+            {t(`servicesSection.items.${service.id}.title`, service.title)}
           </h3>
           
           <p className="text-gray-300 leading-relaxed text-sm font-light flex-grow">
-            {service.description}
+            {t(`servicesSection.items.${service.id}.description`, service.description)}
           </p>
         </div>
       </Link>

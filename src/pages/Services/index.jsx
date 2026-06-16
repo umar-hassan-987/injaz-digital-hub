@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { ArrowRight, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { services } from '../../data/homeData';
 import { servicesDetail } from '../../data/servicesData';
 import ServiceCTA from '../../components/Services/ServiceCTA';
@@ -9,6 +10,9 @@ import ServiceCTA from '../../components/Services/ServiceCTA';
 import servicesImg from '../../assets/img/services.webp';
 
 const ServicesPage = () => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
+
   // Group services by category from servicesDetail
   const allServices = Object.values(servicesDetail);
   const appDevServices = allServices.filter(s => s.category === 'Application Development');
@@ -40,7 +44,7 @@ const ServicesPage = () => {
         </div>
 
         <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-24 xl:px-32 relative z-10 w-full">
-          <div className="max-w-5xl flex flex-col items-center sm:items-start text-center sm:text-left relative z-20">
+          <div className={`max-w-5xl flex flex-col items-center sm:items-start text-center sm:${isRTL ? 'text-right' : 'text-left'} relative z-20`}>
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -49,7 +53,7 @@ const ServicesPage = () => {
             >
               <div className="w-16 h-px bg-white/60"></div>
               <span className="text-sm font-semibold tracking-[0.3em] uppercase text-white/80">
-                Strategic Technical Partner
+                {t('servicesPage.heroSubtitle', 'Strategic Technical Partner')}
               </span>
             </motion.div>
             
@@ -59,8 +63,8 @@ const ServicesPage = () => {
               transition={{ duration: 1, ease: [0.2, 0, 0, 1] }} 
               className="text-5xl sm:text-6xl md:text-7xl xl:text-[84px] text-white leading-[1.1] tracking-tight mb-8"
             >
-              <span className="font-bold">We Engineer</span><br />
-              <span className="text-[var(--color-gold)] italic font-light pr-2">The Future</span>
+              <span className="font-bold">{t('servicesPage.heroTitle1', 'We Engineer')}</span><br />
+              <span className="text-[var(--color-gold)] italic font-light pe-2">{t('servicesPage.heroTitleHighlight', 'The Future')}</span>
             </motion.h1>
             
             <motion.div
@@ -69,15 +73,19 @@ const ServicesPage = () => {
               transition={{ duration: 1, delay: 0.2, ease: [0.2, 0, 0, 1] }} 
               className="flex flex-col sm:flex-row items-center sm:items-center gap-8 sm:gap-12"
             >
-              <p className="text-base sm:text-lg md:text-[20px] text-white/90 leading-relaxed max-w-2xl font-light border-l-2 border-white/20 pl-6 py-2">
-                From high-performance software to AI-driven ecosystems, we provide the engineering excellence required to scale global enterprises.
+              <p className={`text-base sm:text-lg md:text-[20px] text-white/90 leading-relaxed max-w-2xl font-light ${isRTL ? 'border-r-2 pr-6' : 'border-l-2 pl-6'} border-white/20 py-2`}>
+                {t('servicesPage.heroDescription', 'From high-performance software to AI-driven ecosystems, we provide the engineering excellence required to scale global enterprises.')}
               </p>
               
               <div className="flex items-center gap-6 sm:gap-8">
                 <div className="hidden sm:block w-[1px] h-12 bg-white/20" />
                 <div className="flex flex-col items-center sm:items-start">
-                  <span className="text-white font-bold text-3xl sm:text-4xl leading-none">100+</span>
-                  <span className="text-white/60 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mt-2 sm:mt-3">Solutions Deployed</span>
+                  <span className="text-white font-bold text-3xl sm:text-4xl leading-none">
+                    {t('servicesPage.heroStatsNumber', '100+')}
+                  </span>
+                  <span className="text-white/60 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mt-2 sm:mt-3">
+                    {t('servicesPage.heroStatsLabel', 'Solutions Deployed')}
+                  </span>
                 </div>
               </div>
             </motion.div>
@@ -95,17 +103,19 @@ const ServicesPage = () => {
           <div className="mb-10 sm:mb-14">
             <div className="flex items-center gap-4 mb-4 sm:mb-6">
               <div className="w-12 h-[1px] bg-accent/40" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-accent">01. Core Architecture</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-accent">
+                {t('servicesPage.group1.subtitle', '01. Core Architecture')}
+              </span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 font-display tracking-tight">
-              Application <br />
-              <span className="text-accent italic font-light">Development</span>
+              {t('servicesPage.group1.titlePart1', 'Application')}<br />
+              <span className="text-accent italic font-light">{t('servicesPage.group1.titleHighlight', 'Development')}</span>
             </h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {appDevServices.map((service, idx) => (
-              <ServiceGridCard key={idx} service={service} idx={idx} theme="light" />
+              <ServiceGridCard key={idx} service={service} idx={idx} theme="light" t={t} isRTL={isRTL} />
             ))}
           </div>
         </div>
@@ -116,20 +126,22 @@ const ServicesPage = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
         
         <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-24 xl:px-32 relative z-10 w-full">
-          <div className="mb-10 sm:mb-14 text-left">
-            <div className="flex items-center justify-start gap-4 mb-4 sm:mb-6">
+          <div className="mb-10 sm:mb-14">
+            <div className="flex items-center gap-4 mb-4 sm:mb-6">
               <div className="w-12 h-[1px] bg-accent/40" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-accent">02. Next-Gen Intelligence</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-accent">
+                {t('servicesPage.group2.subtitle', '02. Next-Gen Intelligence')}
+              </span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 font-display tracking-tight">
-              Advanced <br />
-              <span className="text-accent italic font-light">Tech Systems</span>
+              {t('servicesPage.group2.titlePart1', 'Advanced')}<br />
+              <span className="text-accent italic font-light">{t('servicesPage.group2.titleHighlight', 'Tech Systems')}</span>
             </h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {advTechServices.map((service, idx) => (
-              <ServiceGridCard key={idx} service={service} idx={idx} theme="light" />
+              <ServiceGridCard key={idx} service={service} idx={idx} theme="light" t={t} isRTL={isRTL} />
             ))}
           </div>
         </div>
@@ -145,17 +157,19 @@ const ServicesPage = () => {
           <div className="mb-10 sm:mb-14">
             <div className="flex items-center gap-4 mb-4 sm:mb-6">
               <div className="w-12 h-[1px] bg-accent/40" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-accent">03. Scalable Growth</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-accent">
+                {t('servicesPage.group3.subtitle', '03. Scalable Growth')}
+              </span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 font-display tracking-tight">
-              Design & <br />
-              <span className="text-accent italic font-light">Strategic Growth</span>
+              {t('servicesPage.group3.titlePart1', 'Design &')}<br />
+              <span className="text-accent italic font-light">{t('servicesPage.group3.titleHighlight', 'Strategic Growth')}</span>
             </h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {designGrowthServices.map((service, idx) => (
-              <ServiceGridCard key={idx} service={service} idx={idx} theme="light" />
+              <ServiceGridCard key={idx} service={service} idx={idx} theme="light" t={t} isRTL={isRTL} />
             ))}
           </div>
         </div>
@@ -166,7 +180,7 @@ const ServicesPage = () => {
   );
 };
 
-const ServiceGridCard = ({ service, idx, theme = 'dark' }) => {
+const ServiceGridCard = ({ service, idx, theme = 'dark', t, isRTL }) => {
   const isLight = theme === 'light';
 
   return (
@@ -185,22 +199,23 @@ const ServiceGridCard = ({ service, idx, theme = 'dark' }) => {
         <service.icon size={24} strokeWidth={1.5} />
       </div>
       <h3 className={`text-xl sm:text-2xl font-bold font-display tracking-tight mb-4 leading-tight ${isLight ? 'text-gray-900' : 'text-white'}`}>
-        {service.title}
+        {t(`servicesDetail.${service.slug}.title`, service.title)}
       </h3>
       <p className={`text-[14px] leading-relaxed mb-8 font-medium transition-colors ${isLight ? 'text-gray-500 group-hover:text-gray-600' : 'text-gray-400 group-hover:text-gray-300'}`}>
-        {service.description}
+        {t(`servicesDetail.${service.slug}.description`, service.description)}
       </p>
       <Link 
         to={`/services/${service.slug}`} 
         className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-accent group-hover:gap-4 transition-all duration-500"
       >
-        View Detail <ArrowRight size={14} />
+        {t('servicesPage.viewDetail', 'View Detail')}{' '}
+        <ArrowRight size={14} className={`transition-transform duration-300 ${isRTL ? 'rotate-180' : ''}`} />
       </Link>
     </motion.div>
   );
 };
 
-const ServiceWideCard = ({ service, idx, theme = 'dark' }) => {
+const ServiceWideCard = ({ service, idx, theme = 'dark', t, isRTL }) => {
   const isLight = theme === 'light';
 
   return (
@@ -220,13 +235,14 @@ const ServiceWideCard = ({ service, idx, theme = 'dark' }) => {
       </div>
       <div className="flex flex-col">
         <h3 className={`text-2xl sm:text-3xl lg:text-4xl font-bold font-display tracking-tight mb-4 uppercase leading-none ${isLight ? 'text-gray-900' : 'text-white'}`}>
-          {service.title}
+          {t(`servicesDetail.${service.slug}.title`, service.title)}
         </h3>
         <p className={`text-base leading-relaxed mb-8 font-medium transition-colors ${isLight ? 'text-gray-500 group-hover:text-gray-600' : 'text-gray-400 group-hover:text-gray-300'}`}>
-          {service.description}
+          {t(`servicesDetail.${service.slug}.description`, service.description)}
         </p>
         <Link to={`/services/${service.slug}`} className="group/btn inline-flex items-center gap-3 px-8 py-4 rounded-full bg-accent text-white font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-accent transition-all duration-500 shadow-xl shadow-accent/10 w-fit">
-          Explore Solution <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+          {t('servicesPage.exploreSolution', 'Explore Solution')}{' '}
+          <ArrowRight size={14} className={`transition-transform duration-300 ${isRTL ? 'rotate-180 group-hover/btn:-translate-x-1' : 'group-hover/btn:translate-x-1'}`} />
         </Link>
       </div>
     </motion.div>

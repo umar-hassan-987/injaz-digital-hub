@@ -24,41 +24,49 @@ import sarahAvatar from '../assets/img/testimonials/sarah.webp';
 // ─── Services Data ───
 export const services = [
   {
+    id: 'webDev',
     icon: Monitor,
     title: 'Web Development',
     description: 'Modern, responsive websites and web applications built with cutting-edge technologies for optimal performance.',
   },
   {
+    id: 'mobileApp',
     icon: Smartphone,
     title: 'Mobile App Development',
     description: 'Native and cross-platform mobile applications designed for seamless user experiences on iOS and Android.',
   },
   {
+    id: 'customSoftware',
     icon: Database,
     title: 'Custom Software',
     description: 'Tailored software solutions engineered to solve your unique business challenges and streamline operations.',
   },
   {
+    id: 'cloudSolutions',
     icon: Cloud,
     title: 'Cloud Solutions',
     description: 'Scalable cloud infrastructure setup, migration, and management on AWS, Azure, and Google Cloud.',
   },
   {
+    id: 'aiAutomations',
     icon: Cpu,
     title: 'AI Workflow Automations',
     description: 'Optimizing business operations through intelligent AI-driven workflows and automated processes.',
   },
   {
+    id: 'digitalMarketing',
     icon: BarChart3,
     title: 'Digital Marketing',
     description: 'Data-driven marketing strategies that amplify your brand presence and drive measurable growth.',
   },
   {
+    id: 'uiuxDesign',
     icon: Zap,
     title: 'UI/UX Design',
     description: 'User-centered design that combines aesthetics with functionality to create engaging digital experiences.',
   },
   {
+    id: 'seo',
     icon: Search,
     title: 'Search Engine Optimization',
     description: 'Strategic SEO solutions that improve your search rankings, drive organic traffic, and maximize visibility.',
@@ -68,6 +76,7 @@ export const services = [
 // ─── Case Studies / Success Stories Data ───
 export const caseStudies = [
   {
+    id: 'aiAgents',
     title: 'Autonomous AI Agents',
     client: 'Agentic Systems',
     category: 'Artificial Intelligence',
@@ -78,6 +87,7 @@ export const caseStudies = [
     tech: ['n8n', 'Make.com', 'OpenAI', 'Python'],
   },
   {
+    id: 'aiSaaS',
     title: 'AI-Integrated SaaS Platforms',
     client: 'NexaScale',
     category: 'SaaS Development',
@@ -88,6 +98,7 @@ export const caseStudies = [
     tech: ['MERN', 'Next.js', 'PostgreSQL', 'LangChain'],
   },
   {
+    id: 'cloudInfra',
     title: 'Cloud & Serverless Infrastructure',
     client: 'CloudNative',
     category: 'DevOps & Infrastructure',
@@ -98,6 +109,7 @@ export const caseStudies = [
     tech: ['.NET 8', 'Node.js', 'AWS', 'Terraform'],
   },
   {
+    id: 'fintechEscrow',
     title: 'Fintech & Escrow Ecosystems',
     client: 'TrustFlow',
     category: 'Fintech',
@@ -111,45 +123,51 @@ export const caseStudies = [
 
 // ─── Stats Data ───
 export const stats = [
-  { number: '100+', label: 'Digital Solutions Deployed' },
-  { number: '98%', label: 'Client Retention Rate' },
-  { number: '1M+', label: 'End-Users Reached' },
-  { number: '7+', label: 'Years of Excellence' },
+  { id: 'solutions', number: '100+', label: 'Digital Solutions Deployed' },
+  { id: 'retention', number: '98%', label: 'Client Retention Rate' },
+  { id: 'users', number: '1M+', label: 'End-Users Reached' },
+  { id: 'years', number: '7+', label: 'Years of Excellence' },
 ];
 
 // ─── Process Steps ───
 export const processSteps = [
   {
+    id: 'discovery',
     step: '1',
     title: 'Discovery',
     description: 'We dive deep into understanding your business, goals, and target audience to define the project scope.',
     icon: Lightbulb,
   },
   {
+    id: 'planning',
     step: '2',
     title: 'Planning & Design',
     description: 'We create wireframes, prototypes, and visual designs that align with your brand and user needs.',
     icon: Settings,
   },
   {
+    id: 'development',
     step: '3',
     title: 'Development',
     description: 'Our engineers build your solution using agile methodology with regular updates and milestones.',
     icon: Code,
   },
   {
+    id: 'testing',
     step: '4',
     title: 'Testing & QA',
     description: 'We perform rigorous testing and quality assurance to ensure your product is bug-free and performs optimally.',
     icon: Shield,
   },
   {
+    id: 'launch',
     step: '5',
     title: 'Launch',
     description: 'Over 500 successful deployments across healthcare, fintech, logistics, and ecommerce, with a 98% client retention rate that speaks for itself.',
     icon: Rocket,
   },
   {
+    id: 'support',
     step: '6',
     title: 'Support',
     description: 'We provide ongoing maintenance, monitoring, and technical support to ensure continued product success.',
@@ -160,6 +178,7 @@ export const processSteps = [
 // ─── Testimonials ───
 export const testimonials = [
   {
+    id: 'jonathan',
     quote: "INJAZ's ability to translate complex business requirements into a scalable architectural framework was remarkable. They didn't just build an app; they engineered a foundation for our next decade of growth.",
     author: "Jonathan Vance",
     role: "Chief Technology Officer",
@@ -171,6 +190,7 @@ export const testimonials = [
     image: jonathanAvatar
   },
   {
+    id: 'elena',
     quote: "The level of transparency and technical rigor INJAZ brought to our FinTech migration was unparalleled. Their team managed the transition with zero downtime, exceeding every security benchmark we set.",
     author: "Elena Rodriguez",
     role: "VP of Engineering",
@@ -182,6 +202,7 @@ export const testimonials = [
     image: elenaAvatar
   },
   {
+    id: 'marcus',
     quote: "We've worked with many agencies, but INJAZ is the only one that truly acts as a partner. Their rapid prototyping and iterative delivery allowed us to beat our competitors to market by three months.",
     author: "Marcus Thorne",
     role: "Head of Product",
@@ -193,6 +214,7 @@ export const testimonials = [
     image: marcusAvatar
   },
   {
+    id: 'sarah',
     quote: "Digital transformation is often a messy process, but INJAZ's structured methodology made it feel effortless. They revolutionized our patient intake system while maintaining strict HIPAA compliance.",
     author: "Dr. Sarah Chen",
     role: "Medical Director",

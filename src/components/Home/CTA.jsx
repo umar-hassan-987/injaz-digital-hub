@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const CTA = () => {
+  const { t, i18n } = useTranslation();
   return (
     <section className="py-20 lg:py-32 bg-white overflow-hidden relative z-10 rounded-b-[3rem] shadow-2xl">
       {/* Background Decor */}
@@ -20,7 +22,7 @@ const CTA = () => {
           viewport={{ once: true }}
           className="mb-10 inline-flex items-center gap-3 px-4 py-2 rounded-full border border-gray-100 bg-gray-50/50"
         >
-          <span className="text-gray-400 font-medium tracking-tight text-sm italic">Have a project in mind?</span>
+          <span className="text-gray-400 font-medium tracking-tight text-sm italic">{t('ctaSection.subtitle')}</span>
         </motion.div>
 
         {/* Main Heading */}
@@ -32,8 +34,7 @@ const CTA = () => {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-[1.1] tracking-tight max-w-4xl mx-auto"
           >
-            Let's bring your <br />
-            <span className="text-accent italic">vision to life</span>
+            {t('ctaSection.title')}
           </motion.h2>
         </div>
 
@@ -53,12 +54,12 @@ const CTA = () => {
             <div className="absolute inset-0 bg-[#157F8E] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
             
             <span className="relative z-10 flex items-center gap-3">
-              Start Your Project <ArrowUpRight size={18} className="group-hover:rotate-45 transition-transform duration-500" />
+              {t('ctaSection.button')} <ArrowUpRight size={18} className={`transition-transform duration-500 ${i18n.dir() === 'rtl' ? '-scale-x-100 group-hover:-rotate-45' : 'group-hover:rotate-45'}`} />
             </span>
           </Link>
           
           <p className="text-gray-400 text-xs font-bold uppercase tracking-widest">
-            Estimated response: <span className="text-gray-900">under 24 hours</span>
+            {t('ctaSection.estimatedResponse')} <span className="text-gray-900">{t('ctaSection.responseDuration')}</span>
           </p>
         </motion.div>
 

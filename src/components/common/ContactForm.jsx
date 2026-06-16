@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Send, CheckCircle, AlertCircle, ChevronRight } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { companyInfo } from '../../data/commonData';
+import { useTranslation } from 'react-i18next';
 
 // ─── EmailJS Config ────────────────────────────────────────────────────────────
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -11,6 +12,9 @@ const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 // ──────────────────────────────────────────────────────────────────────────────
 
 const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
+
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [errorMsg, setErrorMsg] = useState('');
   const [errors, setErrors] = useState({});
@@ -24,24 +28,31 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
     message: ''
   });
 
-  const projectTypes = ['Web Dev', 'Mobile', 'AI', 'Cloud', 'Design', 'Other'];
+  const projectTypes = [
+    { value: 'Web Dev', key: 'webDev' },
+    { value: 'Mobile', key: 'mobile' },
+    { value: 'AI', key: 'ai' },
+    { value: 'Cloud', key: 'cloud' },
+    { value: 'Design', key: 'design' },
+    { value: 'Other', key: 'other' }
+  ];
 
   const validate = () => {
     const newErrors = {};
     
     // Name validation
     if (!formData.name.trim()) {
-      newErrors.name = 'Full name is required';
+      newErrors.name = t('contactForm.errors.nameRequired', 'Full name is required');
     } else if (formData.name.trim().length < 2) {
-      newErrors.name = 'Name must be at least 2 characters';
+      newErrors.name = t('contactForm.errors.nameLength', 'Name must be at least 2 characters');
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
-      newErrors.email = 'Email address is required';
+      newErrors.email = t('contactForm.errors.emailRequired', 'Email address is required');
     } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = t('contactForm.errors.emailInvalid', 'Please enter a valid email address');
     }
 
     // Phone validation (International support)
@@ -49,15 +60,15 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
       // Allows + at start, then 7-15 digits with spaces, hyphens, or parentheses
       const phoneRegex = /^\+?(\d[\d\s\-\(\)]{6,18}\d)$/;
       if (!phoneRegex.test(formData.phone.trim())) {
-        newErrors.phone = 'Please enter a valid international phone number';
+        newErrors.phone = t('contactForm.errors.phoneInvalid', 'Please enter a valid international phone number');
       }
     }
 
     // Message validation
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = t('contactForm.errors.messageRequired', 'Message is required');
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters';
+      newErrors.message = t('contactForm.errors.messageLength', 'Message must be at least 10 characters');
     }
 
     setErrors(newErrors);
@@ -68,7 +79,7 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
     e.preventDefault();
     
     if (!validate()) {
-      setErrorMsg('Please correct the highlighted errors.');
+      setErrorMsg(t('contactForm.errors.general', 'Please correct the highlighted errors.'));
       setStatus('error');
       return;
     }
@@ -98,7 +109,7 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
       setStatus('success');
     } catch (error) {
       console.error('EmailJS error:', error);
-      setErrorMsg('Something went wrong. Please try again or email us directly.');
+      setErrorMsg(t('contactForm.errors.submission', 'Something went wrong. Please try again or email us directly.'));
       setStatus('error');
     }
   };
@@ -107,7 +118,7 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
 
   const getInputClasses = (fieldName) => {
     const hasError = !!errors[fieldName];
-    return `w-full px-5 py-4 rounded-2xl border transition-all duration-300 outline-none
+    return `w-full px-5 py-4 rounded-2xl border transition-all duration-300 outline-none ${isRTL ? 'text-right' : 'text-left'}
     ${isDark
         ? `bg-white/5 ${hasError ? 'border-red-500/50' : 'border-white/10'} text-white focus:border-sky-500/50 focus:bg-white/10`
         : `bg-gray-50 ${hasError ? 'border-red-500/50' : 'border-gray-200'} text-gray-900 focus:border-sky-500/50 focus:bg-white`
@@ -116,7 +127,7 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
 
   const labelClasses = (fieldName) => {
     const hasError = !!errors[fieldName];
-    return `block text-[11px] font-black uppercase tracking-[0.25em] mb-3 ${hasError ? 'text-red-400' : isDark ? 'text-gray-500' : 'text-gray-400'}`;
+    return `block text-[11px] font-black uppercase tracking-[0.25em] mb-3 ${isRTL ? 'text-right' : 'text-left'} ${hasError ? 'text-red-400' : isDark ? 'text-gray-500' : 'text-gray-400'}`;
   };
 
   const pillClasses = (active) => `px-5 py-3 rounded-xl border text-[12px] font-bold transition-all duration-500 cursor-pointer whitespace-nowrap
@@ -146,15 +157,18 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
           </motion.div>
           <div className="absolute inset-0 rounded-full bg-accent animate-ping opacity-20" />
         </div>
-        <h3 className={`text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Message Sent!</h3>
+        <h3 className={`text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+          {t('contactForm.successTitle', 'Message Sent!')}
+        </h3>
         <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>
-          Thank you for reaching out. Our team will get back to you within 24 hours.
+          {t('contactForm.successDesc', 'Thank you for reaching out. Our team will get back to you within 24 hours.')}
         </p>
         <button
           onClick={() => setStatus('idle')}
-          className="mt-8 text-sky-500 font-medium hover:underline"
+          className="mt-8 text-sky-500 font-medium hover:underline flex items-center gap-1"
         >
-          Send another message <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          {t('contactForm.sendAnother', 'Send another message')}{' '}
+          <ChevronRight size={14} className={`transition-transform ${isRTL ? 'rotate-180' : ''}`} />
         </button>
       </motion.div>
     );
@@ -165,22 +179,24 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
     <form onSubmit={handleSubmit} className="space-y-8">
       {/* Project Type */}
       <div>
-        <label className={labelClasses('projectType')}>Project Type</label>
+        <label className={labelClasses('projectType')}>
+          {t('contactForm.projectTypeLabel', 'Project Type')}
+        </label>
         <div className="flex flex-wrap gap-2">
           {projectTypes.map((type) => (
             <div
-              key={type}
+              key={type.value}
               onClick={() => {
-                setFormData({ ...formData, projectType: type });
+                setFormData({ ...formData, projectType: type.value });
                 if (errors.projectType) {
                   const newErrors = { ...errors };
                   delete newErrors.projectType;
                   setErrors(newErrors);
                 }
               }}
-              className={pillClasses(formData.projectType === type)}
+              className={pillClasses(formData.projectType === type.value)}
             >
-              {type}
+              {t(`contactForm.projectTypes.${type.key}`, type.value)}
             </div>
           ))}
         </div>
@@ -191,11 +207,13 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className={labelClasses('name')}>Full Name</label>
+          <label className={labelClasses('name')}>
+            {t('contactForm.fullNameLabel', 'Full Name')}
+          </label>
           <input
             type="text"
             className={getInputClasses('name')}
-            placeholder="John Doe"
+            placeholder={t('contactForm.fullNamePlaceholder', 'John Doe')}
             value={formData.name}
             onChange={(e) => {
               setFormData({ ...formData, name: e.target.value });
@@ -211,11 +229,13 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
           )}
         </div>
         <div>
-          <label className={labelClasses('email')}>Email Address</label>
+          <label className={labelClasses('email')}>
+            {t('contactForm.emailLabel', 'Email Address')}
+          </label>
           <input
             type="email"
             className={getInputClasses('email')}
-            placeholder="john@example.com"
+            placeholder={t('contactForm.emailPlaceholder', 'john@example.com')}
             value={formData.email}
             onChange={(e) => {
               setFormData({ ...formData, email: e.target.value });
@@ -235,11 +255,14 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
       {variant === 'full' && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className={labelClasses('phone')}>Phone Number</label>
+            <label className={labelClasses('phone')}>
+              {t('contactForm.phoneLabel', 'Phone Number')}
+            </label>
             <input
               type="tel"
+              dir="ltr"
               className={getInputClasses('phone')}
-              placeholder="+1 234 567 8900"
+              placeholder={t('contactForm.phonePlaceholder', '+1 234 567 8900')}
               value={formData.phone}
               onChange={(e) => {
                 setFormData({ ...formData, phone: e.target.value });
@@ -255,21 +278,25 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
             )}
           </div>
           <div>
-            <label className={labelClasses('company')}>Company Name</label>
+            <label className={labelClasses('company')}>
+              {t('contactForm.companyLabel', 'Company Name')}
+            </label>
             <input
               type="text"
               className={getInputClasses('company')}
-              placeholder="Your Company"
+              placeholder={t('contactForm.companyPlaceholder', 'Your Company')}
               value={formData.company}
               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
             />
           </div>
           <div className="md:col-span-2">
-            <label className={labelClasses('subject')}>Subject</label>
+            <label className={labelClasses('subject')}>
+              {t('contactForm.subjectLabel', 'Subject')}
+            </label>
             <input
               type="text"
               className={getInputClasses('subject')}
-              placeholder="How can we help?"
+              placeholder={t('contactForm.subjectPlaceholder', 'How can we help?')}
               value={formData.subject}
               onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
             />
@@ -278,11 +305,13 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
       )}
 
       <div>
-        <label className={labelClasses('message')}>Message</label>
+        <label className={labelClasses('message')}>
+          {t('contactForm.messageLabel', 'Message')}
+        </label>
         <textarea
           rows={variant === 'full' ? 5 : 3}
           className={`${getInputClasses('message')} resize-none`}
-          placeholder="Tell us about your project goals..."
+          placeholder={t('contactForm.messagePlaceholder', 'Tell us about your project goals...')}
           value={formData.message}
           onChange={(e) => {
             setFormData({ ...formData, message: e.target.value });
@@ -316,8 +345,8 @@ const ContactForm = ({ variant = 'full', theme = 'dark' }) => {
             <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
           ) : (
             <>
-              Send Message
-              <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              {t('contactForm.submitButton', 'Send Message')}
+              <Send className={`w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform ${isRTL ? 'rotate-180' : ''}`} />
             </>
           )}
         </button>

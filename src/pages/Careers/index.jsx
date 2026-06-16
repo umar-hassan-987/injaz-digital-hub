@@ -3,8 +3,12 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Mail } from 'lucide-react';
 import { companyInfo } from '../../data/commonData';
+import { useTranslation } from 'react-i18next';
 
 export default function CareersPage() {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
+
   return (
     <>
       <section className="relative min-h-[50vh] flex flex-col justify-center overflow-hidden bg-gray-50 pt-32 pb-16 border-b border-gray-100">
@@ -16,7 +20,7 @@ export default function CareersPage() {
         
         <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-24 xl:px-32 w-full relative z-10">
           <Link to="/company" className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-gray-500 hover:text-accent transition-colors duration-300 mb-8">
-            <ArrowLeft size={14} /> Back to Company
+            <ArrowLeft size={14} className={isRTL ? 'rotate-180' : ''} /> {t('careersPage.back', 'Back to Company')}
           </Link>
           
           <motion.h1 
@@ -25,17 +29,17 @@ export default function CareersPage() {
             transition={{ duration: 0.7 }} 
             className="text-4xl sm:text-5xl md:text-6xl xl:text-[68px] leading-[1.1] tracking-tight mb-6 text-gray-900"
           >
-            <span className="font-light block">Join</span>
-            <span className="font-bold">Our Team</span>
+            <span className="font-light block">{t('careersPage.titlePart1', 'Join')}</span>
+            <span className="font-bold">{t('careersPage.titlePart2', 'Our Team')}</span>
           </motion.h1>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl text-gray-600 max-w-2xl font-light border-l-2 border-accent/20 pl-6 py-2"
+            className="text-lg md:text-xl text-gray-600 max-w-2xl font-light border-s-2 border-accent/20 ps-6 py-2"
           >
-            We are always looking for exceptional talent to join our mission of building world-class digital products.
+            {t('careersPage.description', 'We are always looking for exceptional talent to join our mission of building world-class digital products.')}
           </motion.p>
         </div>
       </section>
@@ -53,15 +57,17 @@ export default function CareersPage() {
             </div>
             
             <h2 className="text-2xl lg:text-3xl font-bold font-display text-gray-900 mb-4">
-              No Current Openings
+              {t('careersPage.noOpeningsTitle', 'No Current Openings')}
             </h2>
             
-            <p className="text-gray-600 leading-relaxed max-w-lg mx-auto mb-8">
-              We don't have any open positions at this exact moment. However, we are always on the lookout for brilliant engineers, designers, and strategists.
+            <p className="text-gray-600 leading-relaxed max-w-lg mx-auto mb-8 font-light">
+              {t('careersPage.noOpeningsDesc', "We don't have any open positions at this exact moment. However, we are always on the lookout for brilliant engineers, designers, and strategists.")}
             </p>
             
             <p className="text-sm text-gray-500 max-w-md mx-auto">
-              Feel free to send your resume and portfolio to <a href={`mailto:${companyInfo.email}`} className="text-accent font-semibold hover:underline">{companyInfo.email}</a>. We'll keep your profile on file and reach out when a matching role opens up!
+              {t('careersPage.submitResumeGuidePart1', 'Feel free to send your resume and portfolio to')}{' '}
+              <a href={`mailto:${companyInfo.email}`} className="text-accent font-semibold hover:underline">{companyInfo.email}</a>
+              {t('careersPage.submitResumeGuidePart2', ". We'll keep your profile on file and reach out when a matching role opens up!")}
             </p>
           </motion.div>
         </div>

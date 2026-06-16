@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { techStack } from '../../data/commonData';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { 
   Smartphone, Globe, Layers, Database, Cloud as CloudIcon, 
   Cpu, Shield, Code, Zap, CheckCircle2, Brain 
@@ -9,6 +10,7 @@ import {
 
 const TechStack = () => {
   const [activeTab, setActiveTab] = useState(techStack[0].id);
+  const { t } = useTranslation();
 
   // Icon mapping for tabs
   const tabIcons = {
@@ -39,7 +41,7 @@ const TechStack = () => {
             className="flex items-center gap-3 mb-6"
           >
             <div className="w-12 h-[2px] bg-accent" />
-            <span className="text-xs font-bold uppercase tracking-[0.4em] text-accent">Technical Ecosystem</span>
+            <span className="text-xs font-bold uppercase tracking-[0.4em] text-accent">{t('techStackSection.subtitle')}</span>
           </motion.div>
           
           <motion.h2 
@@ -49,8 +51,8 @@ const TechStack = () => {
             transition={{ delay: 0.1 }}
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-[1.1] font-display tracking-tight mb-6"
           >
-            Building the Future with <br /> 
-            <span className="text-gray-400">Industry-Leading Technologies.</span>
+            {t('techStackSection.title')} <br /> 
+            <span className="text-gray-400">{t('techStackSection.titleHighlight')}</span>
           </motion.h2>
           
           <motion.p 
@@ -60,7 +62,7 @@ const TechStack = () => {
             transition={{ delay: 0.2 }}
             className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-2xl font-medium"
           >
-            Our specialized teams leverage a <span className="text-gray-900 font-bold underline decoration-accent/30 decoration-4 underline-offset-4">future-ready stack</span> to scale your vision from prototype to global enterprise.
+            {t('techStackSection.description')}
           </motion.p>
         </div>
 
@@ -70,8 +72,8 @@ const TechStack = () => {
           {/* Sidebar Menu - Fixed/Sticky Navigation */}
           <div className="lg:col-span-3">
             <div className="sticky top-32 space-y-2">
-              <div className="mb-8 ml-4">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Categories</span>
+              <div className="mb-8 ms-4">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">{t('techStackSection.categories')}</span>
               </div>
               
               <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-6 lg:pb-0 scrollbar-premium">
@@ -95,7 +97,7 @@ const TechStack = () => {
                         <Icon size={18} strokeWidth={2.5} />
                       </div>
                       
-                      <span className="relative z-10 tracking-tight">{tab.title}</span>
+                      <span className="relative z-10 tracking-tight">{t(`techStackSection.tabs.${tab.id}`, tab.title)}</span>
                       
                       {/* Active Indicator Background */}
                       {isActive && (
@@ -113,7 +115,7 @@ const TechStack = () => {
           </div>
 
           {/* Content Area - Technology Map (Pills) */}
-          <div className="lg:col-span-9 min-h-[500px] border-t lg:border-t-0 lg:border-l border-gray-100 pt-10 lg:pt-0 lg:pl-16">
+          <div className="lg:col-span-9 min-h-[500px] border-t lg:border-t-0 lg:border-s border-gray-100 pt-10 lg:pt-0 lg:ps-16">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -128,7 +130,7 @@ const TechStack = () => {
                     {/* Category Title */}
                     <div className="flex items-center gap-4 mb-8">
                       <h3 className="text-xl font-bold text-gray-900 font-display">
-                        {category.subtitle}
+                        {t(`techStackSection.categoriesList.${category.subtitle.toLowerCase().replace(/[^a-z0-9]/g, '')}`, category.subtitle)}
                       </h3>
                       <div className="h-px grow bg-gray-100" />
                     </div>

@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const ServiceFeatures = ({ service, theme = 'light' }) => {
-  const isLight = theme === 'light';
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
   const features = service.features || [];
 
   return (
@@ -11,11 +13,13 @@ const ServiceFeatures = ({ service, theme = 'light' }) => {
         <div className="max-w-2xl mb-16 lg:mb-24">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-8 h-[2px] bg-accent/60" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent">Capabilities</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent">
+              {t('serviceDetail.features.subtitle', 'Capabilities')}
+            </span>
           </div>
           <h2 className={`text-3xl lg:text-5xl font-bold font-display tracking-tight leading-tight text-gray-900`}>
-            Comprehensive <br />
-            <span className="text-accent italic font-light">Core Features</span>
+            {t('serviceDetail.features.titlePart1', 'Comprehensive')} <br />
+            <span className="text-accent italic font-light">{t('serviceDetail.features.titleHighlight', 'Core Features')}</span>
           </h2>
         </div>
 
@@ -25,7 +29,7 @@ const ServiceFeatures = ({ service, theme = 'light' }) => {
             : 'lg:grid-cols-3'
         } gap-6 lg:gap-8`}>
           {features.map((feature, idx) => (
-            <FeatureCard key={idx} feature={feature} idx={idx} />
+            <FeatureCard key={idx} feature={feature} idx={idx} slug={service.slug} t={t} isRTL={isRTL} />
           ))}
         </div>
       </div>
@@ -33,7 +37,7 @@ const ServiceFeatures = ({ service, theme = 'light' }) => {
   );
 };
 
-const FeatureCard = ({ feature, idx }) => {
+const FeatureCard = ({ feature, idx, slug, t, isRTL }) => {
   const Icon = feature.icon;
 
   return (
@@ -48,17 +52,17 @@ const FeatureCard = ({ feature, idx }) => {
         {Icon ? <Icon size={24} strokeWidth={1.5} /> : <div className="w-6 h-6 rounded-full border-2 border-accent" />}
       </div>
       
-      <h3 className={`text-xl font-bold font-display tracking-tight mb-4 text-gray-900`}>
-        {feature.title}
+      <h3 className={`text-xl font-bold font-display tracking-tight mb-4 text-gray-900 ${isRTL ? 'text-right' : 'text-left'}`}>
+        {t(`servicesDetail.${slug}.features.${idx}.title`, feature.title)}
       </h3>
       
-      <p className={`text-sm leading-relaxed font-medium text-gray-600`}>
-        {feature.description}
+      <p className={`text-sm leading-relaxed font-medium text-gray-600 ${isRTL ? 'text-right' : 'text-left'}`}>
+        {t(`servicesDetail.${slug}.features.${idx}.description`, feature.description)}
       </p>
 
       {/* Decorative corner element */}
-      <div className={`absolute top-0 right-0 w-16 h-16 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none`}>
-        <div className="absolute top-8 right-8 w-1 h-1 rounded-full bg-accent animate-ping" />
+      <div className={`absolute top-0 end-0 w-16 h-16 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none`}>
+        <div className="absolute top-8 end-8 w-1 h-1 rounded-full bg-accent animate-ping" />
       </div>
     </motion.div>
   );

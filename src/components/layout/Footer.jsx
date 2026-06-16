@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import { companyInfo } from '../../data/commonData';
+import { useTranslation } from 'react-i18next';
 
 import logo from '../../assets/img/footer-logo.svg';
 
 
-const FooterLinkColumn = ({ title, links }) => (
+const FooterLinkColumn = ({ title, links, isRTL }) => (
   <div className="flex flex-col gap-6">
     <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--color-gold)]">{title}</h4>
     <ul className="flex flex-col gap-4">
@@ -14,7 +15,7 @@ const FooterLinkColumn = ({ title, links }) => (
         <li key={idx}>
           <Link to={link.path} className="text-[15px] font-medium text-gray-300 hover:text-[var(--color-gold)] transition-colors flex items-center group gap-2 w-max">
             {link.name}
-            <ArrowUpRight size={14} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all text-[var(--color-gold)]" />
+            <ArrowUpRight size={14} className={`opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all text-[var(--color-gold)] ${isRTL ? '-translate-x-1 group-hover:-translate-x-0 rotate-270' : 'translate-x-1'}`} />
           </Link>
         </li>
       ))}
@@ -24,6 +25,8 @@ const FooterLinkColumn = ({ title, links }) => (
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
 
   return (
     <footer className="bg-accent pt-24 pb-8 border-t border-accent overflow-hidden">
@@ -47,7 +50,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-gray-300 text-[14px] leading-relaxed font-medium mb-10">
-              Qatar's premier digital engineering and AI-driven solutions for enterprise scaling across the GCC.
+              {t('footer.brandDescription', "Qatar's premier digital engineering and AI-driven solutions for enterprise scaling across the GCC.")}
             </p>
             <div className="flex items-center gap-4">
               <a href={companyInfo.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-11 h-11 rounded-full bg-white/5 border border-white/10 shadow-sm flex items-center justify-center text-gray-300 hover:bg-[var(--color-gold)] hover:text-accent hover:border-transparent transition-all duration-300 transform hover:-translate-y-1">
@@ -65,29 +68,33 @@ const Footer = () => {
           {/* Links Columns */}
           <div className="lg:col-span-4 grid grid-cols-2 gap-12 sm:gap-16 lg:px-8">
             <FooterLinkColumn
-              title="Solutions"
+              title={t('footer.solutions', 'Solutions')}
+              isRTL={isRTL}
               links={[
-                { name: 'Mobile App Dev', path: '/services/mobile-apps' },
-                { name: 'Web App Dev', path: '/services/web-development' },
-                { name: 'AI Automation', path: '/services/ai-automation' },
-                { name: 'Cloud & DevOps', path: '/services/cloud-devops' }
+                { name: t('footer.links.mobileApps', 'Mobile App Dev'), path: '/services/mobile-apps' },
+                { name: t('footer.links.webDev', 'Web App Dev'), path: '/services/web-development' },
+                { name: t('footer.links.aiAutomation', 'AI Automation'), path: '/services/ai-automation' },
+                { name: t('footer.links.cloudDevOps', 'Cloud & DevOps'), path: '/services/cloud-devops' }
               ]}
             />
             <FooterLinkColumn
-              title="Resources"
+              title={t('footer.resources', 'Resources')}
+              isRTL={isRTL}
               links={[
-                { name: 'Home', path: '/' },
-                { name: 'About Us', path: '/company' },
-                { name: 'Contact', path: '/contact' }
+                { name: t('footer.links.home', 'Home'), path: '/' },
+                { name: t('footer.links.aboutUs', 'About Us'), path: '/company' },
+                { name: t('footer.links.contact', 'Contact'), path: '/contact' }
               ]}
             />
           </div>
 
           {/* Contact Info */}
           <div className="lg:col-span-4">
-            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--color-gold)] mb-6">Headquarters</h4>
+            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--color-gold)] mb-6">
+              {t('footer.headquarters', 'Headquarters')}
+            </h4>
             <div className="space-y-6">
-              <a href="https://maps.google.com/?q=Office+No+3+First+Floor+Islamabad+Arcade,+G-11+Markaz+Islamabad" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
+              <a href="https://maps.google.com/?q=Lusail+City,+Doha,+Qatar" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
                 <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 shadow-sm flex items-center justify-center text-[var(--color-gold)] shrink-0 group-hover:bg-[var(--color-gold)] group-hover:text-accent transition-colors">
                   <MapPin size={20} strokeWidth={1.5} />
                 </div>
@@ -99,7 +106,7 @@ const Footer = () => {
                 <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 shadow-sm flex items-center justify-center text-[var(--color-gold)] shrink-0 group-hover:bg-[var(--color-gold)] group-hover:text-accent transition-colors">
                   <Phone size={20} strokeWidth={1.5} />
                 </div>
-                <p className="text-[15px] font-medium text-gray-300 group-hover:text-[var(--color-gold)] transition-colors">{companyInfo.phone}</p>
+                <p className="text-[15px] font-medium text-gray-300 group-hover:text-[var(--color-gold)] transition-colors"><span dir="ltr">{companyInfo.phone}</span></p>
               </a>
               <a href={`mailto:${companyInfo.email}`} className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 shadow-sm flex items-center justify-center text-[var(--color-gold)] shrink-0 group-hover:bg-[var(--color-gold)] group-hover:text-accent transition-colors">
@@ -114,11 +121,15 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-xs font-bold text-gray-400 tracking-wider">
-            &copy; {currentYear} INJAZ DIGITAL HUB. ALL RIGHTS RESERVED.
+            &copy; {currentYear} INJAZ DIGITAL HUB. {t('footer.allRightsReserved', 'ALL RIGHTS RESERVED.')}
           </p>
           <div className="flex items-center gap-8">
-            <Link to="/privacy-policy" className="text-xs font-bold text-gray-400 hover:text-[var(--color-gold)] tracking-wider transition-colors">PRIVACY POLICY</Link>
-            <Link to="/terms-of-service" className="text-xs font-bold text-gray-400 hover:text-[var(--color-gold)] tracking-wider transition-colors">TERMS OF SERVICE</Link>
+            <Link to="/privacy-policy" className="text-xs font-bold text-gray-400 hover:text-[var(--color-gold)] tracking-wider transition-colors">
+              {t('footer.privacyPolicy', 'PRIVACY POLICY')}
+            </Link>
+            <Link to="/terms-of-service" className="text-xs font-bold text-gray-400 hover:text-[var(--color-gold)] tracking-wider transition-colors">
+              {t('footer.termsOfService', 'TERMS OF SERVICE')}
+            </Link>
           </div>
         </div>
       </div>
