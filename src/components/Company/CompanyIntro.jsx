@@ -1,6 +1,8 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { Code, Users, Globe, Zap } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 const highlights = [
   { icon: Code,  title: 'Engineering Excellence', desc: 'Clean, maintainable code built for scale and longevity.'               },
@@ -10,7 +12,7 @@ const highlights = [
 ];
 
 export default function CompanyIntro() {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <section className="py-24 sm:py-28 lg:py-32 bg-white overflow-hidden">

@@ -1,13 +1,17 @@
+"use client";
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../../i18n/routing';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { services } from '../../data/homeData';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 const Services = () => {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir() === 'rtl';
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+  
 
   return (
     <section className="py-24 lg:py-32 bg-accent overflow-hidden relative">
@@ -28,8 +32,7 @@ const Services = () => {
             <h2 className="text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] tracking-tight">
               {t('servicesSection.title')}
             </h2>
-            <Link
-              to="/services"
+            <Link href="/services"
               className="group inline-flex items-center justify-center gap-3 bg-transparent border border-white/20 text-white px-8 py-4 font-semibold text-xs uppercase tracking-widest transition-all hover:bg-[var(--color-gold)] hover:text-accent hover:border-transparent shadow-sm"
             >
               <span>{t('servicesSection.exploreAll')}</span>
@@ -79,7 +82,7 @@ const ServiceCard = ({ service, idx, t, isRTL }) => {
       transition={{ duration: 0.5, delay: idx * 0.1 }}
       className="group"
     >
-      <Link to={`/services/${slug}`} className="block h-full relative">
+      <Link href={`/services/${slug}`} className="block h-full relative">
         <div className="bg-white/5 backdrop-blur-sm p-8 lg:p-10 h-full transition-all duration-300 border border-white/10 flex flex-col relative z-0 group-hover:bg-white/10">
           
           {/* Minimal Top Border */}

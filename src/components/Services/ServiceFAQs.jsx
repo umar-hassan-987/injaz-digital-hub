@@ -1,10 +1,14 @@
+"use client";
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 const ServiceFAQs = ({ service, theme = 'light' }) => {
-  const { t, i18n } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
   const isLight = theme === 'light';
   const faqs = service.faqs || [];
   const [openIndex, setOpenIndex] = useState(null);

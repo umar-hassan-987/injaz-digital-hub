@@ -1,8 +1,10 @@
+"use client";
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { techStack } from '../../data/commonData';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { Link } from '../../i18n/routing';
+import { useTranslations, useLocale } from 'next-intl';
 import { 
   Smartphone, Globe, Layers, Database, Cloud as CloudIcon, 
   Cpu, Shield, Code, Zap, CheckCircle2, Brain 
@@ -10,7 +12,7 @@ import {
 
 const TechStack = () => {
   const [activeTab, setActiveTab] = useState(techStack[0].id);
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   // Icon mapping for tabs
   const tabIcons = {
@@ -149,7 +151,7 @@ const TechStack = () => {
                           {/* Icon Container */}
                           <div className="w-10 h-10 flex items-center justify-center p-1.5 transition-all duration-300 group-hover:scale-110">
                             <img 
-                              src={tech.iconUrl} 
+                              src={tech.iconUrl?.src || tech.iconUrl} 
                               alt={tech.name}
                               className="w-full h-full object-contain transition-all duration-500 opacity-100"
                               onError={(e) => {

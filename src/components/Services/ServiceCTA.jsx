@@ -1,13 +1,17 @@
+"use client";
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../../i18n/routing';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 import bgImage from '../../assets/img/Qatar.webp';
 
 const ServiceCTA = ({ variant = 'banner', theme = 'light' }) => {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir() === 'rtl';
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+  
 
   if (variant === 'form') {
     return (
@@ -54,8 +58,7 @@ const ServiceCTA = ({ variant = 'banner', theme = 'light' }) => {
               <p className="text-base leading-relaxed mb-8 text-gray-600">
                 {t('serviceDetail.cta.cardDescription', "Our technical strategists review every request personally. Tell us about your project, and we'll get back to you within 24 hours with a realistic plan.")}
               </p>
-              <Link
-                to="/contact"
+              <Link href="/contact"
                 className="group relative inline-flex items-center justify-center gap-3 px-8 py-5 rounded-full bg-accent text-white font-bold text-[11px] uppercase tracking-[0.25em] transition-all duration-500 hover:scale-[1.02] shadow-[0_0_40px_rgba(15,95,106,0.2)] hover:shadow-[0_0_60px_rgba(15,95,106,0.4)] w-full sm:w-auto"
               >
                 {t('serviceDetail.cta.button', 'Start Your Project')}
@@ -84,7 +87,7 @@ const ServiceCTA = ({ variant = 'banner', theme = 'light' }) => {
     <section className="relative bg-[#0F5F6A] py-24 overflow-hidden">
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0">
-        <img src={bgImage} alt="Background" className="w-full h-full object-cover object-center absolute inset-0" />
+        <img src={bgImage?.src || bgImage} alt="Background" className="w-full h-full object-cover object-center absolute inset-0" />
         <div className="absolute inset-0 bg-[#0F5F6A]/40 mix-blend-multiply" />
         <div className="absolute inset-0 bg-black/20" />
       </div>
@@ -106,7 +109,7 @@ const ServiceCTA = ({ variant = 'banner', theme = 'light' }) => {
             </span>
           </h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-10 sm:mt-16">
-            <Link to="/contact" className="group relative px-8 sm:px-12 py-4 sm:py-6 rounded-full bg-white text-[#0F5F6A] font-bold text-[10px] sm:text-xs uppercase tracking-[0.25em] transition-all duration-500 hover:scale-105 shadow-xl w-full sm:w-auto">
+            <Link href="/contact" className="group relative px-8 sm:px-12 py-4 sm:py-6 rounded-full bg-white text-[#0F5F6A] font-bold text-[10px] sm:text-xs uppercase tracking-[0.25em] transition-all duration-500 hover:scale-105 shadow-xl w-full sm:w-auto">
               {t('serviceDetail.cta.bannerButton', 'Contact Our Experts')}
               <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
             </Link>

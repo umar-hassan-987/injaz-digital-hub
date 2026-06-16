@@ -1,9 +1,11 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { m, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, ArrowRight, Globe } from 'lucide-react';
 import { navLinks } from '../../data/navData';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 import logo from '../../assets/img/enjaz-logo.svg';
 
@@ -14,13 +16,17 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const megaTimeout = useRef(null);
   const hideTimeout = useRef(null);
-  const location = useLocation();
-  const isTransparentHeroPage = location.pathname === '/' || location.pathname.startsWith('/company');
-  const { t, i18n } = useTranslation();
+  const pathname = usePathname();
+  const isTransparentHeroPage = pathname === '/' || pathname.startsWith('/company') || pathname.startsWith('/services');
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+
+  const router = useRouter();
 
   const toggleLanguage = () => {
-    const newLang = i18n.language === 'en' ? 'ar' : 'en';
-    i18n.changeLanguage(newLang);
+    const newLang = locale === 'en' ? 'ar' : 'en';
+    router.replace(pathname, { locale: newLang });
   };
 
   const headerRef = useRef(null);
@@ -129,9 +135,9 @@ const Navbar = () => {
         <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-24">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex items-center shrink-0 max-w-[140px] sm:max-w-[180px] lg:max-w-none">
+            <Link href="/" className="flex items-center shrink-0 max-w-[140px] sm:max-w-[180px] lg:max-w-none">
               <img
-                src={logo}
+                src={logo?.src || logo}
                 alt="INJAZ Digital Hub"
                 width="200"
                 height="65"
@@ -142,7 +148,7 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => {
-                const isActive = link.path === '/' ? location.pathname === '/' : location.pathname.startsWith(link.path);
+                const isActive = link.path === '/' ? pathname === '/' : pathname.startsWith(link.path);
                 return (
                   <div
                     key={link.name}
@@ -150,8 +156,7 @@ const Navbar = () => {
                     onMouseEnter={() => link.hasMega && handleMegaEnter(link.name)}
                     onMouseLeave={() => link.hasMega && handleMegaLeave()}
                   >
-                    <Link
-                      to={link.path}
+                    <Link href={link.path}
                       className={`relative flex items-center gap-1 px-4 py-2 text-[19px] font-bold transition-all rounded-lg nav-link ${isActive ? 'text-accent is-active' : ''} ${activeMega === link.name ? 'text-accent' : ''}`}
                     >
                       {t(`nav.${link.name.toLowerCase()}`, link.name)}
@@ -171,10 +176,9 @@ const Navbar = () => {
                 aria-label="Toggle Language"
               >
                 <Globe size={18} />
-                <span>{i18n.language === 'en' ? 'العربية' : 'EN'}</span>
+                <span>{locale === 'en' ? 'العربية' : 'EN'}</span>
               </button>
-              <Link
-                to="/contact"
+              <Link href="/contact"
                 className="px-7 py-3 text-base font-bold transition-all duration-300 transform hover:scale-105 shadow-lg nav-cta"
               >
                 {t('nav.contact', 'Get in Touch')}
@@ -239,8 +243,7 @@ const Navbar = () => {
                             <ul className="space-y-4">
                               {col.links.map((subLink) => (
                                 <li key={subLink.name}>
-                                    <Link
-                                      to={subLink.path}
+                                    <Link href={subLink.path}
                                       onClick={() => setActiveMega(null)}
                                       className="group flex items-center justify-between text-[14px] font-medium text-slate-500 hover:text-black transition-all"
                                     >
@@ -285,7 +288,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between mb-10">
               <div className="flex items-center">
                 <img 
-                  src={logo} 
+                  src={logo?.src || logo} 
                   alt="INJAZ Digital Hub" 
                   width="140"
                   height="40"
@@ -319,10 +322,9 @@ const Navbar = () => {
                   className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-gray-100 text-black font-bold hover:bg-gray-200 transition-all"
                 >
                   <Globe size={20} />
-                  {i18n.language === 'en' ? 'العربية' : 'English'}
+                  {locale === 'en' ? 'العربية' : 'English'}
                 </button>
-                <Link
-                  to="/contact"
+                <Link href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-black text-white font-bold hover:bg-gray-800 transition-all shadow-xl shadow-black/10"
                 >
@@ -347,14 +349,13 @@ const Navbar = () => {
 /* ─── Mobile Nav Item with Expandable Sub-links ─── */
 const MobileNavItem = ({ link, onClose }) => {
   const [expanded, setExpanded] = useState(false);
-  const location = useLocation();
-  const { t } = useTranslation();
-  const isActive = link.path === '/' ? location.pathname === '/' : location.pathname.startsWith(link.path);
+  const pathname = usePathname();
+  const t = useTranslations();
+  const isActive = link.path === '/' ? pathname === '/' : pathname.startsWith(link.path);
 
   if (!link.hasMega) {
     return (
-      <Link
-        to={link.path}
+      <Link href={link.path}
         onClick={onClose}
         className={`block px-4 py-4 text-xl font-black rounded-2xl transition-colors ${isActive ? 'text-accent' : 'text-black hover:bg-gray-50'}`}
       >
@@ -366,8 +367,7 @@ const MobileNavItem = ({ link, onClose }) => {
   return (
     <div>
       <div className={`flex items-center justify-between w-full rounded-2xl transition-colors ${isActive ? 'bg-accent/5' : 'hover:bg-gray-50'}`}>
-        <Link
-          to={link.path}
+        <Link href={link.path}
           onClick={onClose}
           className={`flex-grow px-4 py-4 text-xl font-black transition-colors ${isActive ? 'text-accent' : 'text-black'}`}
         >
@@ -394,11 +394,9 @@ const MobileNavItem = ({ link, onClose }) => {
               </p>
               <div className="space-y-1">
                 {col.links.map((subLink) => (
-                  <Link
-                    key={subLink.name}
-                    to={subLink.path}
+                  <Link href={subLink.path}
                     onClick={onClose}
-                    className={`block px-4 py-2 text-base font-bold transition-colors ${location.pathname === subLink.path ? 'text-accent' : 'text-gray-600 hover:text-accent'}`}
+                    className={`block px-4 py-2 text-base font-bold transition-colors ${pathname === subLink.path ? 'text-accent' : 'text-gray-600 hover:text-accent'}`}
                   >
                     {t(`nav.megaLinks.${subLink.name}`, subLink.name)}
                   </Link>

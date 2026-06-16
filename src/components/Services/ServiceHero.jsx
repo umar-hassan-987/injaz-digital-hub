@@ -1,13 +1,17 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link } from '../../i18n/routing';
 import { Shield, TrendingUp, Users, CheckCircle2 } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImageMobile }) => {
   const isLight = theme === 'light';
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir() === 'rtl';
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+  
 
   const desktopImg = bgImageDesktop || bgImage;
   const mobileImg = bgImageMobile || bgImage;
@@ -22,14 +26,14 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
           <>
             {desktopImg && (
               <img 
-                src={desktopImg} 
+                src={desktopImg?.src || desktopImg} 
                 alt="" 
                 className={`w-full h-full object-cover ${mobileImg ? 'hidden md:block' : ''}`}
               />
             )}
             {mobileImg && (
               <img 
-                src={mobileImg} 
+                src={mobileImg?.src || mobileImg} 
                 alt="" 
                 className={`w-full h-full object-cover ${desktopImg ? 'block md:hidden' : ''}`}
               />
@@ -83,7 +87,7 @@ const ServiceHero = ({ service, theme = 'dark', bgImage, bgImageDesktop, bgImage
               transition={{ delay: 0.5 }}
               className="flex flex-wrap gap-4"
             >
-              <Link to="/contact" className="px-8 py-4 rounded-full bg-accent text-white font-black text-[11px] uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-500 shadow-xl shadow-accent/20">
+              <Link href="/contact" className="px-8 py-4 rounded-full bg-accent text-white font-black text-[11px] uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-500 shadow-xl shadow-accent/20">
                 {t('serviceDetail.hero.cta', 'Start a Project')}
               </Link>
               <button 

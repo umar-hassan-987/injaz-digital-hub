@@ -1,7 +1,9 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { ArrowRight, Lightbulb, Heart, Rocket } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { Link } from '../../i18n/routing';
+import { useTranslations, useLocale } from 'next-intl';
 import bgImage from '../../assets/img/Qatar.webp';
 
 const pillars = [
@@ -11,8 +13,10 @@ const pillars = [
 ];
 
 export default function CompanyCareers() {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir() === 'rtl';
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+  
 
   return (
     <>
@@ -75,8 +79,7 @@ export default function CompanyCareers() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <Link
-              to="/careers"
+            <Link href="/careers"
               className="group inline-flex items-center gap-2 px-10 py-4 bg-accent text-white font-bold text-[11px] uppercase tracking-widest rounded-xl hover:bg-black transition-colors duration-300 shadow-lg shadow-accent/20"
             >
               {t('company.careers.cta', 'View Open Roles')}
@@ -108,7 +111,7 @@ export default function CompanyCareers() {
       <section className="py-24 lg:py-36 relative overflow-hidden">
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0">
-          <img src={bgImage} alt="Qatar Background" className="w-full h-full object-cover object-center" />
+          <img src={bgImage?.src || bgImage} alt="Qatar Background" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-white/75 backdrop-blur-[2px]" />
         </div>
 
@@ -157,15 +160,13 @@ export default function CompanyCareers() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-wrap items-center justify-center gap-4"
           >
-            <Link
-              to="/contact"
+            <Link href="/contact"
               className="group inline-flex items-center gap-2 px-10 py-5 bg-accent text-white font-bold text-[11px] uppercase tracking-widest rounded-xl hover:bg-black transition-colors duration-300 shadow-xl shadow-accent/20"
             >
               {t('company.careers.finalCtaButton1', 'Start a Project')}
               <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
             </Link>
-            <Link
-              to="/contact"
+            <Link href="/contact"
               className="group inline-flex items-center gap-2 px-10 py-5 border border-gray-200 text-gray-900 font-bold text-[11px] uppercase tracking-widest rounded-xl hover:border-accent/40 hover:bg-gray-50 transition-all duration-300 bg-white"
             >
               {t('company.careers.finalCtaButton2', 'Contact Us')}

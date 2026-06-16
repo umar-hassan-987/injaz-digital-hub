@@ -1,26 +1,53 @@
-# Logs
-logs
+# ── Dependencies ──
+node_modules/
+.pnp/
+.pnp.js
+
+# ── Next.js ──
+.next/
+out/
+
+# ── Build / Production ──
+build/
+dist/
+dist-ssr/
+
+# ── Environment Variables ──
+.env
+.env*.local
+
+# ── Logs ──
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# ── Testing ──
+coverage/
 
-# Editor directories and files
+# ── TypeScript ──
+*.tsbuildinfo
+next-env.d.ts
+
+# ── OS Files ──
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ── Editor / IDE ──
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+!.vscode/settings.json
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-.env
+# ── Misc ──
+*.local
+*.pem

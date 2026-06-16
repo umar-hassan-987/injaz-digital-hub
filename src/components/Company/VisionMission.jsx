@@ -1,6 +1,8 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { Compass, Target } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 const cards = [
   {
@@ -24,7 +26,7 @@ const cards = [
 ];
 
 export default function VisionMission() {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <section className="py-24 lg:py-32 bg-gray-50">

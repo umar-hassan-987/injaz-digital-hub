@@ -1,13 +1,17 @@
+"use client";
+
 import React, { useState } from 'react';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { testimonials } from '../../data/homeData';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right
-  const { t, i18n } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
 
   const handleNext = () => {
     setDirection(1);
@@ -103,7 +107,7 @@ const Testimonials = () => {
                         >
                           {currentItem.image ? (
                             <img 
-                              src={currentItem.image} 
+                              src={currentItem.image?.src || currentItem.image} 
                               alt={currentItem.author} 
                               className="w-full h-full object-cover"
                             />
@@ -141,13 +145,13 @@ const Testimonials = () => {
             </AnimatePresence>
           </div>
 
-          <div className={`mt-14 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:w-[calc(100%+120px)] ${i18n.dir() === 'rtl' ? 'lg:right-[-60px]' : 'lg:left-[-60px]'} flex items-center justify-between gap-4 pointer-events-none`}>
+          <div className={`mt-14 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:w-[calc(100%+120px)] ${isRTL ? 'lg:right-[-60px]' : 'lg:left-[-60px]'} flex items-center justify-between gap-4 pointer-events-none`}>
             <button 
-              onClick={i18n.dir() === 'rtl' ? handleNext : handlePrev}
+              onClick={isRTL ? handleNext : handlePrev}
               className="pointer-events-auto w-10 h-10 lg:w-12 lg:h-12 rounded-full border border-gray-200 bg-white hover:bg-accent hover:border-accent hover:text-white text-gray-600 flex items-center justify-center transition-all duration-300 backdrop-blur-md group shadow-sm"
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className={`w-5 h-5 transition-transform ${i18n.dir() === 'rtl' ? 'rotate-180 group-hover:translate-x-0.5' : 'group-hover:-translate-x-0.5'}`} />
+              <ChevronLeft className={`w-5 h-5 transition-transform ${isRTL ? 'rotate-180 group-hover:translate-x-0.5' : 'group-hover:-translate-x-0.5'}`} />
             </button>
 
             <div className="flex items-center gap-2.5 lg:hidden">
@@ -167,11 +171,11 @@ const Testimonials = () => {
             </div>
 
             <button 
-              onClick={i18n.dir() === 'rtl' ? handlePrev : handleNext}
+              onClick={isRTL ? handlePrev : handleNext}
               className="pointer-events-auto w-10 h-10 lg:w-12 lg:h-12 rounded-full border border-gray-200 bg-white hover:bg-accent hover:border-accent hover:text-white text-gray-600 flex items-center justify-center transition-all duration-300 backdrop-blur-md group shadow-sm"
               aria-label="Next testimonial"
             >
-              <ChevronRight className={`w-5 h-5 transition-transform ${i18n.dir() === 'rtl' ? 'rotate-180 group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'}`} />
+              <ChevronRight className={`w-5 h-5 transition-transform ${isRTL ? 'rotate-180 group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'}`} />
             </button>
           </div>
 

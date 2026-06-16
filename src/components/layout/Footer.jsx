@@ -1,8 +1,10 @@
+"use client";
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../../i18n/routing';
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import { companyInfo } from '../../data/commonData';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 import logo from '../../assets/img/footer-logo.svg';
 
@@ -13,7 +15,7 @@ const FooterLinkColumn = ({ title, links, isRTL }) => (
     <ul className="flex flex-col gap-4">
       {links.map((link, idx) => (
         <li key={idx}>
-          <Link to={link.path} className="text-[15px] font-medium text-gray-300 hover:text-[var(--color-gold)] transition-colors flex items-center group gap-2 w-max">
+          <Link href={link.path} className="text-[15px] font-medium text-gray-300 hover:text-[var(--color-gold)] transition-colors flex items-center group gap-2 w-max">
             {link.name}
             <ArrowUpRight size={14} className={`opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all text-[var(--color-gold)] ${isRTL ? '-translate-x-1 group-hover:-translate-x-0 rotate-270' : 'translate-x-1'}`} />
           </Link>
@@ -25,8 +27,10 @@ const FooterLinkColumn = ({ title, links, isRTL }) => (
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir() === 'rtl';
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+  
 
   return (
     <footer className="bg-accent pt-24 pb-8 border-t border-accent overflow-hidden">
@@ -37,10 +41,10 @@ const Footer = () => {
 
           {/* Brand Info */}
           <div className="lg:col-span-4 max-w-sm">
-            <Link to="/" className="inline-block mb-8">
+            <Link href="/" className="inline-block mb-8">
               <div className="bg-white px-6 py-4 rounded-2xl shadow-lg inline-flex items-center justify-center">
                 <img 
-                  src={logo} 
+                  src={logo?.src || logo} 
                   alt="INJAZ Digital Hub" 
                   width="240"
                   height="80"
@@ -124,10 +128,10 @@ const Footer = () => {
             &copy; {currentYear} INJAZ DIGITAL HUB. {t('footer.allRightsReserved', 'ALL RIGHTS RESERVED.')}
           </p>
           <div className="flex items-center gap-8">
-            <Link to="/privacy-policy" className="text-xs font-bold text-gray-400 hover:text-[var(--color-gold)] tracking-wider transition-colors">
+            <Link href="/privacy-policy" className="text-xs font-bold text-gray-400 hover:text-[var(--color-gold)] tracking-wider transition-colors">
               {t('footer.privacyPolicy', 'PRIVACY POLICY')}
             </Link>
-            <Link to="/terms-of-service" className="text-xs font-bold text-gray-400 hover:text-[var(--color-gold)] tracking-wider transition-colors">
+            <Link href="/terms-of-service" className="text-xs font-bold text-gray-400 hover:text-[var(--color-gold)] tracking-wider transition-colors">
               {t('footer.termsOfService', 'TERMS OF SERVICE')}
             </Link>
           </div>

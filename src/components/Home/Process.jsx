@@ -1,7 +1,9 @@
+"use client";
+
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useMotionValueEvent, useSpring } from 'framer-motion';
 import { processSteps } from '../../data/homeData';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 import { formatNumber } from '../../utils/numbers';
 
 // Import images for the process steps
@@ -15,7 +17,9 @@ import supportImg from '../../assets/img/process/support.png';
 const processImages = [discoveryImg, planImg, devImg, testImg, launchImg, supportImg];
 
 const Process = () => {
-  const { t, i18n } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
   const sectionRef = useRef(null);
   const stageRef = useRef(-1);
   const [activeIndex, setActiveIndex] = useState(-1); // Desktop active index
@@ -171,7 +175,7 @@ const Process = () => {
                         >
                           <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent/40 bg-accent/10 mb-6">
                             <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-accent">
-                              {t('common.step')} {formatNumber(activeIndex + 1, i18n.language)}
+                              {t('common.step')} {formatNumber(activeIndex + 1, locale)}
                             </span>
                           </div>
                           <h3 className="text-2xl xl:text-3xl font-black font-display tracking-tight text-gray-900 mb-6">
@@ -189,7 +193,7 @@ const Process = () => {
                         <AnimatePresence initial={false} mode="popLayout">
                           <motion.img
                             key={activeIndex}
-                            src={processImages[activeIndex]}
+                            src={processImages[activeIndex]?.src || processImages[activeIndex]}
                             alt={`Process Step ${activeIndex + 1}`}
                             initial={{ y: '100%', opacity: 0.5 }}
                             animate={{ y: 0, opacity: 1 }}
@@ -254,7 +258,7 @@ const Process = () => {
                 {/* Large Pill-Shaped Image */}
                 <div className="w-full h-[340px] rounded-[100px] overflow-hidden mb-10 relative border border-gray-200 shadow-[0_10px_40px_rgba(15,95,106,0.1)]">
                   <img 
-                    src={processImages[mobileIndex]} 
+                    src={processImages[mobileIndex]?.src || processImages[mobileIndex]} 
                     alt={processSteps[mobileIndex].title} 
                     className="w-full h-full object-cover" 
                   />
@@ -264,7 +268,7 @@ const Process = () => {
                 {/* Content Area */}
                 <div className="px-4">
                   <div className="text-[120px] font-black leading-none text-gray-100 select-none">
-                    {formatNumber(mobileIndex + 1, i18n.language)}
+                    {formatNumber(mobileIndex + 1, locale)}
                   </div>
                   <h3 className="text-4xl font-black text-accent font-display mb-6 tracking-tight">
                     {t(`processSection.items.${processSteps[mobileIndex].id}.title`, processSteps[mobileIndex].title)}
@@ -281,22 +285,22 @@ const Process = () => {
 
           {/* Left Arrow */}
           <button 
-            onClick={i18n.dir() === 'rtl' ? handleNext : handlePrev}
+            onClick={isRTL ? handleNext : handlePrev}
             className="absolute start-1 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent backdrop-blur-md transition-colors shadow-sm"
             aria-label="Previous step"
           >
-            <svg className={`w-4 h-4 text-gray-600 ${i18n.dir() === 'rtl' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className={`w-4 h-4 text-gray-600 ${isRTL ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
           {/* Right Arrow */}
           <button 
-            onClick={i18n.dir() === 'rtl' ? handlePrev : handleNext}
+            onClick={isRTL ? handlePrev : handleNext}
             className="absolute end-1 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent backdrop-blur-md transition-colors shadow-sm"
             aria-label="Next step"
           >
-            <svg className={`w-4 h-4 text-gray-600 ${i18n.dir() === 'rtl' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className={`w-4 h-4 text-gray-600 ${isRTL ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>

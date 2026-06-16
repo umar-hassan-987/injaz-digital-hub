@@ -1,7 +1,9 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { caseStudies, stats } from '../../data/homeData';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 import { formatNumber } from '../../utils/numbers';
 
 // Import case study images
@@ -22,7 +24,7 @@ const AnimatedCounter = ({ target, suffix = '', duration = 2000 }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
-  const { i18n } = useTranslation();
+  const locale = useLocale();
   const numericTarget = parseInt(target.replace(/[^0-9]/g, ''));
 
   useEffect(() => {
@@ -54,13 +56,13 @@ const AnimatedCounter = ({ target, suffix = '', duration = 2000 }) => {
 
   return (
     <span ref={ref} className="tabular-nums">
-      {formatNumber(count.toLocaleString(), i18n.language)}{formatNumber(suffix, i18n.language)}
+      {formatNumber(count.toLocaleString(), locale)}{formatNumber(suffix, locale)}
     </span>
   );
 };
 
 const CaseStudies = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <section className="py-24 lg:py-32 bg-white overflow-hidden relative">
@@ -102,7 +104,7 @@ const CaseStudies = () => {
                       className="aspect-[4/3] overflow-hidden bg-gray-50 group"
                     >
                       <img 
-                        src={imageMap[study.image]} 
+                        src={imageMap[study.image]?.src || imageMap[study.image]} 
                         alt={t(`caseStudies.items.${study.id}.title`, study.title)} 
                         width="800"
                         height="600"

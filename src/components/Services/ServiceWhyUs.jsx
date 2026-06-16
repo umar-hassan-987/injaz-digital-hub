@@ -1,10 +1,12 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Zap, Target, Users, CheckCircle2, TrendingUp, BarChart3, Globe } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 const ServiceWhyUs = ({ service, theme = 'dark' }) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const whyUs = service.whyUs || [];
 
   if (whyUs.length === 0) return null;

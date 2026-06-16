@@ -1,5 +1,7 @@
+"use client";
+
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 const values = [
   { num: '01', title: 'Client-First Thinking',  desc: "We optimize for your business outcomes, not just the technical brief. Every decision starts with 'what does this mean for the client?'" },
@@ -11,7 +13,7 @@ const values = [
 ];
 
 export default function CoreValues() {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <section className="py-24 sm:py-28 lg:py-32 bg-white overflow-hidden">

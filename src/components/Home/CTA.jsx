@@ -1,11 +1,15 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { Link } from '../../i18n/routing';
+import { useTranslations, useLocale } from 'next-intl';
 
 const CTA = () => {
-  const { t, i18n } = useTranslation();
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
   return (
     <section className="py-20 lg:py-32 bg-white overflow-hidden relative z-10 rounded-b-[3rem] shadow-2xl">
       {/* Background Decor */}
@@ -46,15 +50,14 @@ const CTA = () => {
           transition={{ delay: 0.3 }}
           className="flex flex-col items-center gap-6"
         >
-          <Link 
-            to="/contact"
+          <Link href="/contact"
             className="group relative bg-accent text-white px-8 py-4 rounded-full font-bold text-base overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95 shadow-2xl shadow-accent/20 inline-block"
           >
             {/* Hover Slide Effect */}
             <div className="absolute inset-0 bg-[#157F8E] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
             
             <span className="relative z-10 flex items-center gap-3">
-              {t('ctaSection.button')} <ArrowUpRight size={18} className={`transition-transform duration-500 ${i18n.dir() === 'rtl' ? '-scale-x-100 group-hover:-rotate-45' : 'group-hover:rotate-45'}`} />
+              {t('ctaSection.button')} <ArrowUpRight size={18} className={`transition-transform duration-500 ${isRTL ? '-scale-x-100 group-hover:-rotate-45' : 'group-hover:rotate-45'}`} />
             </span>
           </Link>
           

@@ -1,13 +1,17 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link } from '../../i18n/routing';
 import { ArrowUpRight } from 'lucide-react';
 import { caseStudies } from '../../data/homeData';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 const ServiceProjects = ({ service, theme = 'light' }) => {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir() === 'rtl';
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+  
   
   // Filter case studies that match this service's slug or category
   const relatedProjects = caseStudies.filter(project => 
@@ -34,7 +38,7 @@ const ServiceProjects = ({ service, theme = 'light' }) => {
               <span className="text-accent italic font-light">{t('serviceDetail.projects.titleHighlight', 'Case Studies')}</span>
             </h2>
           </div>
-          <Link to="/case-studies" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-accent hover:gap-4 transition-all">
+          <Link href="/case-studies" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-accent hover:gap-4 transition-all">
             {t('serviceDetail.projects.cta', 'Explore All Work')} <ArrowUpRight size={14} className={isRTL ? 'rotate-[-90deg]' : ''} />
           </Link>
         </div>
@@ -60,7 +64,7 @@ const ProjectCard = ({ project, idx, t, isRTL }) => {
     >
       <div className="relative aspect-[4/5] rounded-[40px] overflow-hidden mb-8 bg-gray-100 shadow-lg shadow-gray-200/50">
         <img 
-          src={project.image} 
+          src={project.image?.src || project.image} 
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
@@ -84,8 +88,7 @@ const ProjectCard = ({ project, idx, t, isRTL }) => {
         {t(`caseStudies.items.${project.id}.description`, project.description)}
       </p>
       
-      <Link 
-        to={`/case-studies/${project.slug}`}
+      <Link href={`/case-studies/${project.slug}`}
         className={`inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-colors text-gray-900 hover:text-accent`}
       >
         {t('serviceDetail.projects.viewDetails', 'View Details')} <ChevronRight size={12} className={isRTL ? 'rotate-180' : ''} />

@@ -1,6 +1,8 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { CheckCircle2, Code, TrendingUp, MessageSquare, Shield, Users, Headphones } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
 
 const differentiators = [
   {
@@ -36,8 +38,10 @@ const differentiators = [
 ];
 
 export default function WhyChooseUs() {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir() === 'rtl';
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+  
 
   return (
     <section className="py-24 sm:py-28 lg:py-32 bg-accent overflow-hidden">

@@ -1,7 +1,9 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, Users, Globe, Award } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { Link } from '../../i18n/routing';
+import { useTranslations, useLocale } from 'next-intl';
 import heroImg from '../../assets/img/subservice/subServiceV.webp';
 
 const FadeUp = ({ children, delay = 0, className = '' }) => (
@@ -17,15 +19,17 @@ const FadeUp = ({ children, delay = 0, className = '' }) => (
 
 
 export default function CompanyHero() {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir() === 'rtl';
+  const t = useTranslations();
+  const locale = useLocale();
+  const isRTL = locale === 'ar';
+  
 
   return (
     <section className="relative min-h-[100dvh] lg:h-screen flex items-center overflow-hidden bg-gray-50 py-0">
       {/* Background Image & glow blobs */}
       <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
         <img 
-          src={heroImg} 
+          src={heroImg?.src || heroImg} 
           alt="Company Hero Background" 
           className="w-full h-full object-cover"
         />
@@ -70,8 +74,7 @@ export default function CompanyHero() {
 
             <FadeUp delay={0.9}>
               <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                <Link
-                  to="/contact"
+                <Link href="/contact"
                   className="group inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-bold text-sm rounded-xl hover:bg-black transition-colors duration-300 shadow-lg shadow-accent/20 uppercase tracking-widest text-[11px]"
                 >
                   {t('company.hero.cta', "Let's Talk")}
