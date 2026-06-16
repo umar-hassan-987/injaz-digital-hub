@@ -1,5 +1,8 @@
 import PageComponent from '../../../views/PrivacyPolicy';
+import { setRequestLocale } from 'next-intl/server';
 
-export default function Page() {
+export default async function Page({ params }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return <PageComponent />;
 }

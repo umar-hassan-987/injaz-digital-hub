@@ -49,18 +49,18 @@ export const techStack = [
       {
         subtitle: 'Agentic Workflows',
         techs: [
-          { name: 'LangChain', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
-          { name: 'n8n', iconUrl: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/n8n.svg' },
-          { name: 'CrewAI', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' }
+          { name: 'LangChain', iconUrl: 'https://skillicons.dev/icons?i=python' },
+          { name: 'n8n', iconUrl: 'https://cdn.simpleicons.org/n8n' },
+          { name: 'CrewAI', iconUrl: 'https://skillicons.dev/icons?i=python' }
         ]
       },
       {
         subtitle: 'Intelligence Layers',
         techs: [
-          { name: 'OpenAI', iconUrl: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/openai.svg' },
-          { name: 'Anthropic', iconUrl: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/anthropic.svg' },
-          { name: 'Ollama', iconUrl: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/ollama.svg' },
-          { name: 'Hugging Face', iconUrl: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/huggingface.svg' },
+          { name: 'OpenAI', iconUrl: 'https://cdn.simpleicons.org/openai' },
+          { name: 'Anthropic', iconUrl: 'https://cdn.simpleicons.org/anthropic' },
+          { name: 'Ollama', iconUrl: 'https://cdn.simpleicons.org/ollama' },
+          { name: 'Hugging Face', iconUrl: 'https://cdn.simpleicons.org/huggingface' },
         ]
       }
     ]
@@ -74,8 +74,8 @@ export const techStack = [
         techs: [
           { name: 'SwiftUI', iconUrl: 'https://skillicons.dev/icons?i=swift' },
           { name: 'Jetpack Compose', iconUrl: 'https://skillicons.dev/icons?i=android' },
-          { name: 'App Store Connect', iconUrl: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/appstore.svg' },
-          { name: 'Play Store Console', iconUrl: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/googleplay.svg' },
+          { name: 'App Store Connect', iconUrl: 'https://cdn.simpleicons.org/appstore' },
+          { name: 'Play Store Console', iconUrl: 'https://cdn.simpleicons.org/googleplay' },
         ]
       },
       {
@@ -84,7 +84,7 @@ export const techStack = [
           { name: 'Flutter', iconUrl: 'https://skillicons.dev/icons?i=flutter' },
           { name: 'React Native', iconUrl: 'https://skillicons.dev/icons?i=react' },
           { name: 'Kotlin Multiplatform', iconUrl: 'https://skillicons.dev/icons?i=kotlin' },
-          { name: 'Capacitor', iconUrl: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/capacitor.svg' },
+          { name: 'Capacitor', iconUrl: 'https://cdn.simpleicons.org/capacitor' },
         ]
       }
     ]
@@ -125,8 +125,8 @@ export const techStack = [
         subtitle: 'CMS',
         techs: [
           { name: 'WordPress', iconUrl: 'https://skillicons.dev/icons?i=wordpress' },
-          { name: 'Shopify', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/shopify/shopify-original.svg' },
-          { name: 'Contentful', iconUrl: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/contentful.svg' }
+          { name: 'Shopify', iconUrl: 'https://cdn.simpleicons.org/shopify' },
+          { name: 'Contentful', iconUrl: 'https://cdn.simpleicons.org/contentful' }
         ]
       }
     ]
@@ -142,7 +142,7 @@ export const techStack = [
           { name: 'MySQL', iconUrl: 'https://skillicons.dev/icons?i=mysql' },
           { name: 'Supabase', iconUrl: 'https://skillicons.dev/icons?i=supabase' },
           { name: 'SQLite', iconUrl: 'https://skillicons.dev/icons?i=sqlite' },
-          { name: 'MariaDB', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mariadb/mariadb-original.svg' }
+          { name: 'MariaDB', iconUrl: 'https://cdn.simpleicons.org/mariadb' }
         ]
       },
       {
@@ -169,7 +169,7 @@ export const techStack = [
           { name: 'Kubernetes', iconUrl: 'https://skillicons.dev/icons?i=kubernetes' },
           { name: 'Terraform', iconUrl: 'https://skillicons.dev/icons?i=terraform' },
           { name: 'Vercel', iconUrl: 'https://skillicons.dev/icons?i=vercel' },
-          { name: 'Railway', iconUrl: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/railway.svg' }
+          { name: 'Railway', iconUrl: 'https://cdn.simpleicons.org/railway' }
         ]
       },
       {
@@ -178,8 +178,8 @@ export const techStack = [
           { name: 'GitHub Actions', iconUrl: 'https://skillicons.dev/icons?i=githubactions' },
           { name: 'Cloudflare', iconUrl: 'https://skillicons.dev/icons?i=cloudflare' },
           { name: 'Sentry', iconUrl: 'https://skillicons.dev/icons?i=sentry' },
-          { name: 'PostHog', iconUrl: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/posthog.svg' },
-          { name: 'Clerk', iconUrl: 'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/clerk.svg' }
+          { name: 'PostHog', iconUrl: 'https://cdn.simpleicons.org/posthog' },
+          { name: 'Clerk', iconUrl: 'https://cdn.simpleicons.org/clerk' }
         ]
       }
     ]
