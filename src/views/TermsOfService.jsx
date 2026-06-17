@@ -45,13 +45,17 @@ const TermsOfService = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="prose prose-lg prose-slate max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-a:text-[#0F5F6A] prose-a:no-underline hover:prose-a:underline"
         >
-          <h2>{t('termsOfService.section1.title', '1. Agreement to Terms')}</h2>
-          <p>
+          <h2 className="text-xl md:text-2xl font-bold font-display text-gray-900 mt-12 mb-6">
+            {t('termsOfService.section1.title', 'Agreement to Terms')}
+          </h2>
+          <p className="text-gray-600 leading-relaxed mb-6 font-light">
             {t('termsOfService.section1.content', 'By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the service.')}
           </p>
 
-          <h2>{t('termsOfService.section2.title', '2. Intellectual Property')}</h2>
-          <p>
+          <h2 className="text-xl md:text-2xl font-bold font-display text-gray-900 mt-12 mb-6">
+            {t('termsOfService.section2.title', 'Intellectual Property')}
+          </h2>
+          <p className="text-gray-600 leading-relaxed mb-6 font-light">
             {t('termsOfService.section2.content', 'The Service and its original content, features, and functionality are and will remain the exclusive property of INJAZ Digital Hub and its licensors. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of INJAZ Digital Hub.')}
           </p>
 

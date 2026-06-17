@@ -112,7 +112,7 @@ export default function CompanyCareers() {
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0">
           <img src={bgImage?.src || bgImage} alt="Qatar Background" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-white/75 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-white/50 backdrop-blur-[2px]" />
         </div>
 
         {/* Central radial glow */}

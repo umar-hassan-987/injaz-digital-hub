@@ -45,14 +45,20 @@ const PrivacyPolicy = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="prose prose-lg prose-slate max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-a:text-[#0F5F6A] prose-a:no-underline hover:prose-a:underline"
         >
-          <h2>{t('privacyPolicy.section1.title', '1. Information We Collect')}</h2>
-          <p>
+          <h2 className="text-xl md:text-2xl font-bold font-display text-gray-900 mt-12 mb-6">
+            {t('privacyPolicy.section1.title', 'Information We Collect')}
+          </h2>
+          <p className="text-gray-600 leading-relaxed mb-6 font-light">
             {t('privacyPolicy.section1.content', 'We collect information you provide directly to us when you request our services, contact customer support, or otherwise communicate with us. The types of information we may collect include your name, email address, postal address, phone number, and any other information you choose to provide.')}
           </p>
 
-          <h2>{t('privacyPolicy.section2.title', '2. How We Use Your Information')}</h2>
-          <p>{t('privacyPolicy.section2.content', 'We use the information we collect to:')}</p>
-          <ul>
+          <h2 className="text-xl md:text-2xl font-bold font-display text-gray-900 mt-12 mb-6">
+            {t('privacyPolicy.section2.title', 'How We Use Your Information')}
+          </h2>
+          <p className="text-gray-600 leading-relaxed mb-4 font-light">
+            {t('privacyPolicy.section2.content', 'We use the information we collect to:')}
+          </p>
+          <ul className="list-disc pl-5 mb-6 text-gray-600 leading-relaxed font-light space-y-2">
             <li>{t('privacyPolicy.section2.list1', 'Provide, maintain, and improve our digital services and products.')}</li>
             <li>{t('privacyPolicy.section2.list2', 'Process transactions and send related information.')}</li>
             <li>{t('privacyPolicy.section2.list3', 'Send technical notices, updates, security alerts, and support messages.')}</li>
@@ -60,11 +66,13 @@ const PrivacyPolicy = () => {
             <li>{t('privacyPolicy.section2.list5', 'Communicate with you about products, services, offers, and events offered by INJAZ Digital Hub.')}</li>
           </ul>
 
-          <h2>{t('privacyPolicy.section3.title', '3. Sharing of Information')}</h2>
-          <p>
+          <h2 className="text-xl md:text-2xl font-bold font-display text-gray-900 mt-12 mb-6">
+            {t('privacyPolicy.section3.title', 'Sharing of Information')}
+          </h2>
+          <p className="text-gray-600 leading-relaxed mb-4 font-light">
             {t('privacyPolicy.section3.content', 'We may share information about you as follows or as otherwise described in this Privacy Policy:')}
           </p>
-          <ul>
+          <ul className="list-disc pl-5 mb-6 text-gray-600 leading-relaxed font-light space-y-2">
             <li>{t('privacyPolicy.section3.list1', 'With vendors, consultants, and other service providers who need access to such information to carry out work on our behalf.')}</li>
             <li>{t('privacyPolicy.section3.list2', 'In response to a request for information if we believe disclosure is in accordance with, or required by, any applicable law or legal process.')}</li>
             <li>{t('privacyPolicy.section3.list3', 'With your consent or at your direction.')}</li>
