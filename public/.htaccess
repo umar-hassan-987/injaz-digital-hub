@@ -1,0 +1,24 @@
+DirectoryIndex index.html
+
+RewriteEngine On
+
+# If the request is a file or directory that exists, serve it directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# If the request does not have a trailing slash, and the directory exists, Apache usually adds it.
+# However, if it's a Next.js route without a trailing slash, we want to rewrite to the directory's index.html
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# For paths that Next.js generated as directories with index.html (trailingSlash: true)
+RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+RewriteRule ^(.*[^/])$ $1/index.html [L]
+
+# If it has a trailing slash, check if the index.html exists
+RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+RewriteRule ^(.*)/$ $1/index.html [L]
+
+# Error handling - point to 404
+ErrorDocument 404 /404.html
