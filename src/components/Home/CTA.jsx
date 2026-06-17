@@ -30,7 +30,7 @@ const CTA = () => {
         </motion.div>
 
         {/* Main Heading */}
-        <div className="mb-14 overflow-hidden">
+        <div className="mb-14 overflow-hidden pb-4">
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
