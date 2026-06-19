@@ -186,10 +186,18 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Controls */}
-            <div className="flex items-center gap-2 lg:hidden">
+            <div className="flex items-center gap-1 lg:hidden">
+              <button
+                onClick={toggleLanguage}
+                className={`flex items-center gap-1.5 px-2 py-2 text-[15px] font-bold transition-all rounded-lg ${isScrolled ? 'text-black hover:text-accent' : isTransparentHeroPage ? 'text-white/90 hover:text-white' : 'text-black hover:text-accent'}`}
+                aria-label="Toggle Language"
+              >
+                <Globe size={22} />
+                <span className="mb-0.5">{locale === 'en' ? 'العربية' : 'EN'}</span>
+              </button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg transition-colors nav-mobile-toggle"
+                className={`p-2 rounded-lg transition-colors nav-mobile-toggle ${isScrolled ? 'text-black hover:text-accent' : isTransparentHeroPage ? 'text-white/90 hover:text-white' : 'text-black hover:text-accent'}`}
                 aria-label="Toggle Menu"
               >
                 {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
